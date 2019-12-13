@@ -13,3 +13,53 @@
 - Justify why you made the choices you made as a group.
 
 - If you want, you can also fill up with individual reflections and observations.
+
+Day 1 - 2019-12-12
+Sprint 1: Decide the project, Decide programming language, Find out user stories ... 
+Decide the project: Cookbook
+
+Decide programming language: JS
+
+Collect ideas
+
+Find out user stories:
+As a  hemmafru  ,
+i want to seach for quick recepies  ,
+so that i can save time  !
+--------------------------
+As a  allergiker ,
+i want sålla bort sånt jag inte tål  ,
+so that så jag kan äta utan att dö  !
+--------------------------
+As a festfixare  ,
+i want to  skala recepeten ,
+so that för antalet gäster  !
+--------------------------
+As a  veckohandlare ,
+i want to  trycka på en knapp  ,
+so that  för att få en hel veckas recept !
+--------------------------
+As a student / snåljåp,
+I want cheap food,
+so I dont have to spend to much money on food
+--------------------------
+As a vegetarian
+I want to eat something special, no meat!
+so I can protect the earth against killing more animals!
+
+
+Day 2 - 2019-12-13 
+Sprint 1: ... + find out user stories, collect all the info of recipes, design interface by using Whimsical and finally test them. 
+recipes categories: 
+- Laktosfria huvudrätter
+- Vegetarisk
+- Förrätter
+- Veganska 
+- Kötträtter
+
+Decide interface test design tool: Whimsical
+
+Roles: (screenshots)
+
+
+
