@@ -36,6 +36,7 @@ nav{
   padding-right: 60px;
   margin: 25px;
   background-color: aquamarine;
+  border-radius: 10px;
 }
 
 section h1, p{
