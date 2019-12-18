@@ -107,9 +107,14 @@ hr {
   display: inline-block;
   color: black;
   font-size: 24px ;
-  margin: 20px 63px;
   padding: 15px 60px;
   background-color: aquamarine;
   border-radius: 10px;
   text-decoration: none;
+}
+
+#main-footer{
+  margin: 5px 0px;
+  display: flex;
+  justify-content: center;
 }

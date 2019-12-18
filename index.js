@@ -205,16 +205,331 @@ function starter(){
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
-
+  let mainFooter = document.createElement('footer');
+  mainFooter.setAttribute('id', 'main-footer');
+  section.appendChild(mainFooter);
   let aTag = document.createElement("a");
   aTag.setAttribute("href", "index.html");
   aTag.setAttribute("class", "button");
   aTag.textContent = "Huvudmeny";
-  section.appendChild(aTag);
+  mainFooter.appendChild(aTag);
 }
 
 function mainCourse(){
-  console.log("main");
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let rubrik = "Mannerströms oxfilé med pepparsås";
+  let matBild = "/Kötträtter/MannerströmsOxfile/oxfile.jpg";
+  let tillagningsTid = "60min";
+  let ingrediensRubrik1 = "Pepparsås";
+  let ingrediensRubrik2 = "Oxfilé";
+  let ingrediensRubrik3 = "";
+  let ingrediensRubrik4 = "";
+  let ingrediensRubrik5 = "";
+  let ingrediens1 = "2msk vitpepparkorn";
+  let ingrediens2 = "1st schalottenlök, finhackad";
+  let ingrediens3 = "0,5msk grönpeppar";
+  let ingrediens4 = "0,5msk estragon, finhackad";
+  let ingrediens5 = "olja";
+  let ingrediens6 = "3dl kalvfond";
+  let ingrediens7 = "1dl rött vin";
+  let ingrediens8 = "2msk cognac";
+  let ingrediens9 = "2dl grädde";
+  let ingrediens10 = "1000g oxfilé, i 4 bitar";
+  let ingrediens11 = "peppar, att rulla köttet i";
+  let ingrediens12 = "";
+  let ingrediens13 = "";
+  let ingrediens14 = "";
+  let ingrediens15 = "";
+  let ingrediens16 = "";
+  let ingrediens17 = "";
+  let ingrediens18 = "";
+  let ingrediens19 = "";
+  let ingrediens20 = "";
+  let beskrivningsRubrik1 = "Pepparsåsentest";
+  let beskrivningsRubrik2 = "Test igen";
+  let beskrivningsRubrik3 = "";
+  let beskrivningsRubrik4 = "";
+  let beskrivningsRubrik5 = "";
+  let beskrivning1 = "";
+  let beskrivning2 = "";
+  let beskrivning3 = "";
+  let beskrivning4 = "";
+  let beskrivning5 = "";
+  let beskrivning6 = "";
+  let beskrivning7 = "";
+  let beskrivning8 = "";
+  let beskrivning9 = "";
+  let beskrivning10 = "";
+  let beskrivning11 = "";
+  let beskrivning12 = "";
+  let beskrivning13 = "";
+  let beskrivning14 = "";
+  let beskrivning15 = "";
+  let beskrivning16 = "";
+  let beskrivning17 = "";
+  let beskrivning18 = "";
+  let beskrivning19 = "";
+  let beskrivning20 = "";
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
+
+  //Skapar header
+  let header = document.createElement("header");
+  header.setAttribute("id", "rec-header");
+  section.appendChild(header);
+
+  //Skapar rubriken
+  let headerH1 = document.createElement("h1");
+  headerH1.textContent = rubrik; 
+  header.appendChild(headerH1);
+
+  //Bild på maten
+  let image = document.createElement("img");
+  image.src = matBild;
+  section.appendChild(image);
+
+  //Div innehållandes tillagningstid och för hur många personer
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+
+  //Sättär tillagningstiden
+  cookTime.textContent = tillagningsTid;
+
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  
+  //Välj "utgångsläge" för hur många portioner. Appenda fler options för fler val (Senare vid skalning)
+  selector.appendChild(option4);
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+
+  //Skapar break-line
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //Div container innehållandes ingredienser
+  let divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+
+  //Skapar UL listan för ingredienser
+  let list = document.createElement("ul");
+
+  //Ingrediensrubriker 1-5
+  let head1 = document.createElement("li");
+  head1.textContent = ingrediensRubrik1;
+  head1.setAttribute("class", "listHeader");
+  let head2 = document.createElement("li");
+  head2.textContent = ingrediensRubrik2;
+  head2.setAttribute("class", "listHeader");
+  let head3 = document.createElement("li");
+  head3.textContent = ingrediensRubrik3;
+  head3.setAttribute("class", "listHeader");
+  let head4 = document.createElement("li");
+  head4.textContent = ingrediensRubrik4;
+  head4.setAttribute("class", "listHeader");
+  let head5 = document.createElement("li");
+  head5.textContent = ingrediensRubrik5;
+  head5.setAttribute("class", "listHeader");
+
+  //Ingredienser
+  let ing1 = document.createElement("li");
+  ing1.textContent = ingrediens1;
+  let ing2 = document.createElement("li");
+  ing2.textContent = ingrediens2;
+  let ing3 = document.createElement("li");
+  ing3.textContent = ingrediens3;
+  let ing4 = document.createElement("li");
+  ing4.textContent = ingrediens4;
+  let ing5 = document.createElement("li");
+  ing5.textContent = ingrediens5;
+  let ing6 = document.createElement("li");
+  ing6.textContent = ingrediens6;
+  let ing7 = document.createElement("li");
+  ing7.textContent = ingrediens7;
+  let ing8 = document.createElement("li");
+  ing8.textContent = ingrediens8;
+  let ing9 = document.createElement("li");
+  ing9.textContent = ingrediens9;
+  let ing10 = document.createElement("li");
+  ing10.textContent = ingrediens10;
+  let ing11 = document.createElement("li");
+  ing11.textContent = ingrediens11;
+  let ing12 = document.createElement("li");
+  ing12.textContent = ingrediens12;
+  let ing13 = document.createElement("li");
+  ing13.textContent = ingrediens13;
+  let ing14 = document.createElement("li");
+  ing14.textContent = ingrediens14;
+  let ing15 = document.createElement("li");
+  ing15.textContent = ingrediens15;
+  let ing16 = document.createElement("li");
+  ing16.textContent = ingrediens16;
+  let ing17 = document.createElement("li");
+  ing17.textContent = ingrediens17;
+  let ing18 = document.createElement("li");
+  ing18.textContent = ingrediens18;
+  let ing19 = document.createElement("li");
+  ing19.textContent = ingrediens19;
+  let ing20 = document.createElement("li");
+  ing20.textContent = ingrediens20;
+
+  //Appenda ingredienser och ingrediensrubriker
+  divIngredients.appendChild(list); // ul listan
+  list.appendChild(head1); //Rubrik 1
+  list.appendChild(ing1);
+  list.appendChild(ing2);
+  list.appendChild(ing3);
+  list.appendChild(ing4);
+  list.appendChild(ing5);
+  list.appendChild(ing6);
+  list.appendChild(ing7);
+  list.appendChild(ing8);
+  list.appendChild(ing9);
+  list.appendChild(head2); //Rubrik 2
+  list.appendChild(ing10);
+  list.appendChild(ing11);
+  // list.appendChild(ing12);
+  // list.appendChild(ing13);
+  // list.appendChild(ing14);
+  // list.appendChild(ing15);
+  // list.appendChild(ing16);
+  // list.appendChild(ing17);
+  // list.appendChild(ing18);
+  // list.appendChild(ing19);
+  // list.appendChild(ing20);
+  // list.appendChild(head3); //Rubrik 3
+  // list.appendChild(head4); //Rubrik 4
+  // list.appendChild(head5); //Rubrik 5
+
+  //Div container innehållandes tillagningsbeskrivningar
+  let divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+
+  //Skapar ol flr beskrivningar
+  let descriptionList = document.createElement("ol");
+  
+  //Rubriker för beskrivningen
+  let descriptionHeader1 = document.createElement("h4");
+  descriptionHeader1.innerText = beskrivningsRubrik1;
+  let descriptionHeader2 = document.createElement("h4");
+  descriptionHeader2.innerText = beskrivningsRubrik2;
+  let descriptionHeader3 = document.createElement("h4");
+  descriptionHeader3.innerText = beskrivningsRubrik3;
+  let descriptionHeader4 = document.createElement("h4");
+  descriptionHeader4.innerText = beskrivningsRubrik4;
+  let descriptionHeader5 = document.createElement("h4");
+  descriptionHeader5.innerText = beskrivningsRubrik5;
+
+  //Beskrivningar
+  let desc1 = document.createElement("li");
+  desc1.textContent = beskrivning1;
+  let desc2 = document.createElement("li");
+  desc2.textContent = beskrivning2;
+  let desc3 = document.createElement("li");
+  desc3.textContent = beskrivning3;
+  let desc4 = document.createElement("li");
+  desc4.textContent = beskrivning4;
+  let desc5 = document.createElement("li");
+  desc5.textContent = beskrivning5;
+  let desc6 = document.createElement("li");
+  desc6.textContent = beskrivning6;
+  let desc7 = document.createElement("li");
+  desc7.textContent = beskrivning7;
+  let desc8 = document.createElement("li");
+  desc8.textContent = beskrivning8;
+  let desc9 = document.createElement("li");
+  desc9.textContent = beskrivning9;
+  let desc10 = document.createElement("li");
+  desc10.textContent = beskrivning10;
+  let desc11 = document.createElement("li");
+  desc11.textContent = beskrivning11;
+  let desc12 = document.createElement("li");
+  desc12.textContent = beskrivning12;
+  let desc13 = document.createElement("li");
+  desc13.textContent = beskrivning13;
+  let desc14 = document.createElement("li");
+  desc14.textContent = beskrivning14;
+  let desc15 = document.createElement("li");
+  desc15.textContent = beskrivning15;
+  let desc16 = document.createElement("li");
+  desc16.textContent = beskrivning16;
+  let desc17 = document.createElement("li");
+  desc17.textContent = beskrivning17;
+  let desc18 = document.createElement("li");
+  desc18.textContent = beskrivning18;
+  let desc19 = document.createElement("li");
+  desc19.textContent = beskrivning19;
+  let desc20 = document.createElement("li");
+  desc20.textContent = beskrivning20;
+
+  //Appenda OL med rubriker och beskrivningar
+  divDescription.appendChild(descriptionList); //OL listan
+  descriptionList.appendChild(descriptionHeader1) //Rubrik 1
+  descriptionList.appendChild(desc1);
+  descriptionList.appendChild(desc2);
+  descriptionList.appendChild(desc3);
+  descriptionList.appendChild(desc4);
+  descriptionList.appendChild(desc5);
+  descriptionList.appendChild(desc6);
+  //descriptionList.appendChild(desc7);
+  //descriptionList.appendChild(desc8);
+  //descriptionList.appendChild(desc9);
+  //descriptionList.appendChild(desc10);
+  //descriptionList.appendChild(desc10);
+  //descriptionList.appendChild(desc12);
+  //descriptionList.appendChild(desc13);
+  //descriptionList.appendChild(desc14);
+  //descriptionList.appendChild(desc15);
+  //descriptionList.appendChild(desc16);
+  //descriptionList.appendChild(desc17);
+  //descriptionList.appendChild(desc18);
+  //descriptionList.appendChild(desc19);
+  //descriptionList.appendChild(desc20);
+  //descriptionList.appendChild(descriptionHeader2) //Rubrik 2
+  //descriptionList.appendChild(descriptionHeader3) //Rubrik 3
+  //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
+  //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
+
+  let mainFooter = document.createElement('footer');
+  mainFooter.setAttribute('id', 'main-footer');
+  section.appendChild(mainFooter);
+  let aTag = document.createElement("a");
+  aTag.setAttribute("href", "index.html");
+  aTag.setAttribute("class", "button");
+  aTag.textContent = "Huvudmeny";
+  mainFooter.appendChild(aTag);
 }
 
 function dessert(){
