@@ -26,7 +26,6 @@ nav{
   margin: auto;
   list-style: none;
   display: inline-block;
-  
 }
 
 #nav-list li{
@@ -89,3 +88,28 @@ hr {
   padding-left: 55px;
 }
 
+.listHeader {
+  list-style-type: none;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.container h4{
+  margin-top: 8px;
+}
+
+.container ol {
+  padding-left: 18px;
+  padding-top: 3px;
+}
+
+.button {
+  display: inline-block;
+  color: black;
+  font-size: 24px ;
+  margin: 20px 63px;
+  padding: 15px 60px;
+  background-color: aquamarine;
+  border-radius: 10px;
+  text-decoration: none;
+}

@@ -4,7 +4,11 @@ function init(){
 }
 
 function addEventListeners(){
-  document.getElementById("starters").addEventListener("click", starter, true);
+  document.getElementById("starters").addEventListener("click", starter);
+  document.getElementById("maincourse").addEventListener("click", mainCourse);
+  document.getElementById("dessert").addEventListener("click", dessert);
+  document.getElementById("vegetarian").addEventListener("click", vegetarian);
+  document.getElementById("vegan").addEventListener("click", vegan);
 }
 
 function starter(){
@@ -45,7 +49,7 @@ function starter(){
   imgTime.src = "media/timer.png";
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
-  cookTime.textContent = "? min";
+  cookTime.textContent = "38 min";
   option2.text = "2 port";
   option4.text = "4 port";
   option6.text = "6 port";
@@ -97,79 +101,132 @@ function starter(){
   ing6.textContent = "1 1/2 dl tonic";
   list.appendChild(ing6);
 
+  let head1 = document.createElement("li");
+  head1.textContent = "Limesås:";
+  head1.setAttribute("class", "listHeader");
+  list.appendChild(head1);
 
+  let ing7 = document.createElement("li");
+  ing7.textContent = "1 dl crème fraiche";
+  list.appendChild(ing7);
 
+  let ing8 = document.createElement("li");
+  ing8.textContent = "1 lime, saft och rivet skal";
+  list.appendChild(ing8);
+
+  let ing9 = document.createElement("li");
+  ing9.textContent = "1 dl gräddfil";
+  list.appendChild(ing9);
+
+  let ing10 = document.createElement("li");
+  ing10.textContent = "socker";
+  list.appendChild(ing10);
+
+  let ing11 = document.createElement("li");
+  ing11.textContent = "salt och nymalen svartpeppar";
+  list.appendChild(ing11);
+
+  let head2 = document.createElement("li");
+  head2.textContent = "Inlagd gurka:";
+  head2.setAttribute("class", "listHeader");
+  list.appendChild(head2);
+
+  let ing12 = document.createElement("li");
+  ing12.textContent = "4 snacksgurkor";
+  list.appendChild(ing12);
+
+  let ing13 = document.createElement("li");
+  ing13.textContent = "1/2 dl ättika, 12%";
+  list.appendChild(ing13);
+
+  let ing14 = document.createElement("li");
+  ing14.textContent = "1/2 dl socker";
+  list.appendChild(ing14);
+
+  let ing15 = document.createElement("li");
+  ing15.textContent = "1/2 dl tonic";
+  list.appendChild(ing15);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
   divDescription.id = "description";
   section.appendChild(divDescription);
 
-  let descriptionP = document.createElement("p");
-  descriptionP.id = "descriptionText";
-  descriptionP.innerText = `Gör laxen så här:
-    Lägg laxen i en liten form, inte mycket större än biten själv. Mortla enbär, blanda med salt och socker och klappa in över laxen. Häll över gin och tonic och täck formen med plastfolie. Ställ i kylen i 12 timmar, vänd laxen och ställ i kylen ytterligare 12 timmar.\n
-    Gör limesåsen så här:
-    Rör samman crème fraiche, gräddfil, finrivet limeskal och limesaft. Smaka av med socker, salt och peppar.\n
-    Gör den inlagda gurkan så här:
-    Skölj gurkan och hyvla i tunna skivor på längden. Vispa ihop ättika, socker och tonic och häll lagen över gurkorna. Låt dra 10 minuter. Ta upp laxfilén ur lagen, klappa torr med hushållspapper. Skär i tunna skivor och lägg upp på tallrik tillsammans med inlagd gurka, limesås, rostat rågbröd och örter.`;
-  divDescription.appendChild(descriptionP);
+  //  Gör laxen.
+  let descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör laxen såhär:";
+  divDescription.appendChild(descriptionHeader);
+  let descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+  let desc1 = document.createElement("li");
+  desc1.textContent = "Lägg laxen i en liten form, inte mycket större än biten själv.";
+  let desc2 = document.createElement("li");
+  desc2.textContent = "Mortla enbär, blanda med salt och socker och klappa in över laxen.";
+  let desc3 = document.createElement("li");
+  desc3.textContent = "Häll över gin och tonic och täck formen med plastfolie. Ställ i kylen i 12 timmar, vänd laxen och ställ i kylen ytterligare 12 timmar.";
+
+  descriptionList.appendChild(desc1);
+  descriptionList.appendChild(desc2);
+  descriptionList.appendChild(desc3);
+
+  //  Gör såsen.
+  let descriptionHeader2 = document.createElement("h4");
+  descriptionHeader2.innerText = "Gör limesåsen så här:";
+  divDescription.appendChild(descriptionHeader2);
+  let descriptionList2 = document.createElement("ol");
+  divDescription.appendChild(descriptionList2);
+
+  let descr1 = document.createElement("li");
+  descr1.textContent = "Rör samman crème fraiche, gräddfil, finrivet limeskal och limesaft.";
+  let descr2 = document.createElement("li");
+  descr2.textContent = "Smaka av med socker, salt och peppar.";
+
+
+  descriptionList2.appendChild(descr1);
+  descriptionList2.appendChild(descr2);
+
+
+  // Gurka
+  let descriptionHeader3 = document.createElement("h4");
+  descriptionHeader3.innerText = "Gör den inlagda så här:";
+  divDescription.appendChild(descriptionHeader3);
+  let descriptionList3 = document.createElement("ol");
+  divDescription.appendChild(descriptionList3);
+
+  let descri1 = document.createElement("li");
+  descri1.textContent = "Skölj gurkan och hyvla i tunna skivor på längden.";
+  let descri2 = document.createElement("li");
+  descri2.textContent = "Vispa ihop ättika, socker och tonic och häll lagen över gurkorna. Låt dra 10 minuter.";
+  let descri3 = document.createElement("li");
+  descri3.textContent = "Ta upp laxfilén ur lagen, klappa torr med hushållspapper. Skär i tunna skivor och lägg upp på tallrik tillsammans med inlagd gurka, limesås, rostat rågbröd och örter.";
+
+
+  descriptionList3.appendChild(descri1);
+  descriptionList3.appendChild(descri2);
+  descriptionList3.appendChild(descri3);
+
+
+  let aTag = document.createElement("a");
+  aTag.setAttribute("href", "index.html");
+  aTag.setAttribute("class", "button");
+  aTag.textContent = "Huvudmeny";
+  section.appendChild(aTag);
 }
 
-/*
-Gin & tonic-gravad lax med inlagd gurka och limesås
-Gin & tonic-gravad lax med inlagd gurka.
+function mainCourse(){
+  console.log("main");
+}
 
-Gillar du också gin & tonic? Då är det här den perfekta rätten för dig! Gin & tonic-gravad lax med inlagd gurka – fungerar både som förrätt och huvudrätt.
+function dessert(){
+  console.log("dessert");
+}
 
+function vegetarian(){
+  console.log("vegetarian");
+}
 
-AV REDAKTIONEN
-Dags att uppdatera den gravade laxen med pigg gin & tonic-smak!
-
-6–8 personer
-
-Gin & tonic-gravad lax:
-600 g sushilax
-6 enbär
-75 g salt
-1/2 dl socker
-1/2 dl gin
-1 1/2 dl tonic
-
-Limesås:
-1 dl crème fraiche
-1 lime, saft och rivet skal
-1 dl gräddfil
-socker
-salt och nymalen svartpeppar
-
-Inlagd gurka:
-4 snacksgurkor
-1/2 dl ättika, 12 %
-1/2 dl socker
-1/2 dl tonic
-
-Till servering:
-4 tunna skivor rågbröd
-färska örter
-
-Gör laxen så här:
-Lägg laxen i en liten form, inte mycket större än biten själv.
-Mortla enbär, blanda med salt och socker och klappa in över laxen.
-Häll över gin och tonic och täck formen med plastfolie. Ställ i kylen i 12 timmar, vänd laxen och ställ i kylen ytterligare 12 timmar.
-Gör limesåsen så här:
-Rör samman crème fraiche, gräddfil, finrivet limeskal och limesaft.
-Smaka av med socker, salt och peppar.
-Gör den inlagda gurkan så här:
-Skölj gurkan och hyvla i tunna skivor på längden.
-Vispa ihop ättika, socker och tonic och häll lagen över gurkorna. Låt dra 10 minuter.
-Ta upp laxfilén ur lagen, klappa torr med hushållspapper.
-Skär i tunna skivor och lägg upp på tallrik tillsammans med inlagd gurka, limesås, rostat rågbröd och örter.
-Recept på gin & tonic-gravad lax med inlagd gurka och limesås.
-Gin & tonic-gravad lax med inlagd gurka.
-
-Av: Gitte Heidi Rasmussen, Julie Hey
-Foto: Stine Christiansen, Betina Hastoft
-*/
+function vegan(){
+  console.log("vegan");
+}
 
 document.addEventListener("DOMContentLoaded", init);
