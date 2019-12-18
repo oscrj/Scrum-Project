@@ -219,7 +219,7 @@ function mainCourse(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let rubrik = "Mannerströms oxfilé med pepparsås";
-  let matBild = "/Kötträtter/MannerströmsOxfile/oxfile.jpg";
+  let matBild = "/Kötträtter/Mannerströms Oxfile/oxfile.jpg";
   let tillagningsTid = "60min";
   let ingrediensRubrik1 = "Pepparsås";
   let ingrediensRubrik2 = "Oxfilé";
@@ -246,17 +246,17 @@ function mainCourse(){
   let ingrediens18 = "";
   let ingrediens19 = "";
   let ingrediens20 = "";
-  let beskrivningsRubrik1 = "Pepparsåsentest";
-  let beskrivningsRubrik2 = "Test igen";
+  let beskrivningsRubrik1 = "";
+  let beskrivningsRubrik2 = "";
   let beskrivningsRubrik3 = "";
   let beskrivningsRubrik4 = "";
   let beskrivningsRubrik5 = "";
-  let beskrivning1 = "";
-  let beskrivning2 = "";
-  let beskrivning3 = "";
-  let beskrivning4 = "";
-  let beskrivning5 = "";
-  let beskrivning6 = "";
+  let beskrivning1 = "Rosta vitpeppar i ugnen på 150 grader i 10min eller i en varm, torr panna, stöt den sedan grovt i mortel.";
+  let beskrivning2 = "Fräs schalottenlöken, grönpeppar, estragon samt lite av den rostade vitpepparen.";
+  let beskrivning3 = "Slå i lite olja, slå på kalvfond, rödvin, konjak. OBS! Om du använder koncentrerad fond på flaska måste du späda ut den enligt förpackningen så att du får 3 dl buljong.";
+  let beskrivning4 = "Låt koka ihop i ca 10 min. Slå sedan i grädden och låt koka ytterligare i ca 10 min.";
+  let beskrivning5 = "Rulla kanterna på oxfilébitarna i peppar och stek köttet.";
+  let beskrivning6 = "Servera med pepparsåsen.";
   let beskrivning7 = "";
   let beskrivning8 = "";
   let beskrivning9 = "";
