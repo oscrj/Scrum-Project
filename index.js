@@ -533,7 +533,157 @@ function mainCourse(){
 }
 
 function dessert(){
-  console.log("dessert");
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let section;  //  Create section-tag that will wrap the recepie 
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediens = [
+    "2 st Bananer",
+    "2 dl hasselnötter",
+    "1/2dl kakao",
+    "2 tsk agavesirap",
+    "2 tsk vaniljepulver en nypa havssalt",
+    "1 msk kokosolja värmd över vattenbad", 
+    "5 dl mandelmjölk",
+    "1 avocado"
+  ]
+  let ingrediensVegan = [
+    "3-4 msk kokosolja värmd över vattenbad",
+    "5-6 msk raw kakaopulver",
+    "1 tsk cayennepeppar",
+    "2-3 msk agavesirap",
+    "1 knivsudd himalayasalt"
+  ]
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Skär bananen längs med.",
+    "Gröp ut i mitten med sked. Innandömet är perfekt att äta direkt eller ha i en smoothie.",
+    "Fyll bananen med till exempel jordnötssmör och kokosflingor eller nutella och hackade hasselnötter.",
+    "Lägg ihop banandelarna och smeta på en topping.",
+    "Skär i bitar och servera gärna med chokladsås att doppa i. Klart!"
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "BANANSUSHI MED JORDNÖTSSMÖR OCH NUTELLA";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/Desserts/Banansushi/banana-sushi.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "10 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option2);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+  
+  let ingrediensHeader = document.createElement("h4");
+  ingrediensHeader.textContent = "Raw nutella:";
+  ingrediensHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensHeader);
+
+  for(let i = 0; i < ingrediens.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediens[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensSecondHeader = document.createElement("h4");
+  ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
+  ingrediensSecondHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensSecondHeader);
+  
+  for(let i = 0; i < ingrediensVegan.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensVegan[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
+  //  "Go-Back-Button"
+  mainFooter = document.createElement('footer');
+  mainFooter.setAttribute('id', 'main-footer');
+  section.appendChild(mainFooter);
+  let aTag = document.createElement("a");
+  aTag.setAttribute("href", "index.html");
+  aTag.setAttribute("class", "button");
+  aTag.textContent = "Huvudmeny";
+  mainFooter.appendChild(aTag);
 }
 
 function vegetarian(){
