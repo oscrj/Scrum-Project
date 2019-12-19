@@ -691,7 +691,167 @@ function vegetarian(){
 }
 
 function vegan(){
-  console.log("vegan");
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
+
+  let header = document.createElement("header");
+  header.setAttribute("id", "rec-header");
+  section.appendChild(header);
+
+  let headerH1 = document.createElement("h1");
+  headerH1.textContent = "BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU";
+  header.appendChild(headerH1);
+
+  let image = document.createElement("img");
+  image.src = "vegan/broccolisoppa-med-kryddrostade-kikärter-och-tofu/broccolisoppa-med-kryddrostade-kikärter-och-tofu.jpg";
+  section.appendChild(image);
+
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "45 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  
+  selector.appendChild(option4);
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  let divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+
+  let list = document.createElement("ul");
+  divIngredients.appendChild(list);
+
+  let ing1 = document.createElement("li");
+  ing1.textContent = "1 gul lök";
+  list.appendChild(ing1);
+
+  let ing2 = document.createElement("li");
+  ing2.textContent = "2 broccoli (à 250 g)";
+  list.appendChild(ing2);
+
+  let ing3 = document.createElement("li");
+  ing3.textContent = "1 msk riven ingefära";
+  list.appendChild(ing3);
+
+  let ing4 = document.createElement("li");
+  ing4.textContent = "1 tsk olja";
+  list.appendChild(ing4);
+
+  let ing5 = document.createElement("li");
+  ing5.textContent = "1 vitlöksklyfta";
+  list.appendChild(ing5);
+
+  let ing6 = document.createElement("li");
+  ing6.textContent = "1 tsk sambal oelek";
+  list.appendChild(ing6);
+
+  let ing7 = document.createElement("li");
+  ing7.textContent = "400 ml kokosmjölk";
+  list.appendChild(ing7);
+
+  let ing8 = document.createElement("li");
+  ing8.textContent = "7 1/2 dl grönsaksbuljong";
+  list.appendChild(ing8);
+
+  let ing9 = document.createElement("li");
+  ing9.textContent = "1 förp kokta kikärter (à 380 g)";
+  list.appendChild(ing9);
+
+  let ing10 = document.createElement("li");
+  ing10.textContent = "1 tsk olivolja";
+  list.appendChild(ing10);
+
+  let ing11 = document.createElement("li");
+  ing11.textContent = "1/2 tsk spiskummin";
+  list.appendChild(ing11);
+
+  let ing12 = document.createElement("li");
+  ing12.textContent = "1/2 kruka persilja";
+  list.appendChild(ing12);
+
+  let ing13 = document.createElement("li");
+  ing13.textContent = "270 g tofu";
+  list.appendChild(ing13);
+
+  let ing14 = document.createElement("li");
+  ing14.textContent = "Salt och peppar";
+  list.appendChild(ing14);
+
+  let divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+
+  let descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här";
+  divDescription.appendChild(descriptionHeader);
+  let descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+  let desc1 = document.createElement("li")
+  desc1.textContent = "Skala och hacka löken. Ansa och skiva broccolin. Skala och riv ingefäran.";
+  let desc2 = document.createElement("li");
+  desc2.textContent = "Fräs lök och broccoli i olja i en gryta.";
+  let desc3 = document.createElement("li");
+  desc3.textContent = "Sänk värmen och rör i ingefära, pressad vitlök och sambal. Tillsätt kokosmjölk, buljong och vatten i grytan och sjud ca 12 minuter.";
+  let desc4 = document.createElement("li");
+  desc4.textContent = "Skölj kikärterna och låt dem rinna av ordentligt. Rosta dem i en het stekpanna i olivolja. Krydda med spiskummin, salt och peppar.";
+  let desc5 = document.createElement("li");
+  desc5.textContent = "Mixa soppan slät och smaka av med salt och peppar.";
+  let desc6 = document.createElement("li");
+  desc6.textContent = "Hacka persiljan och skär tofun i bitar.";
+  let desc7 = document.createElement("li");
+  desc7.textContent = "Servera soppan med kikärter, tofu och persilja.";
+
+  descriptionList.appendChild(desc1);
+  descriptionList.appendChild(desc2);
+  descriptionList.appendChild(desc3);
+  descriptionList.appendChild(desc4);
+  descriptionList.appendChild(desc5);
+  descriptionList.appendChild(desc6);
+  descriptionList.appendChild(desc7);
+
+  let mainFooter = document.createElement('footer');
+  mainFooter.setAttribute('id', 'main-footer');
+  section.appendChild(mainFooter);
+  let aTag = document.createElement("a");
+  aTag.setAttribute("href", "index.html");
+  aTag.setAttribute("class", "button");
+  aTag.textContent = "Huvudmeny";
+  mainFooter.appendChild(aTag);
 }
 
 document.addEventListener("DOMContentLoaded", init);
