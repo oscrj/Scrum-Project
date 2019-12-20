@@ -1,5 +1,6 @@
 function init(){
   addEventListeners();
+  var section;  // Create section-tag that will wrap the recepie 
 
 }
 
@@ -14,7 +15,7 @@ function addEventListeners(){
 function starter(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
   document.body.appendChild(section);
 
   let header = document.createElement("header");
@@ -205,14 +206,7 @@ function starter(){
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
-  let mainFooter = document.createElement('footer');
-  mainFooter.setAttribute('id', 'main-footer');
-  section.appendChild(mainFooter);
-  let aTag = document.createElement("a");
-  aTag.setAttribute("href", "index.html");
-  aTag.setAttribute("class", "button");
-  aTag.textContent = "Huvudmeny";
-  mainFooter.appendChild(aTag);
+  btnBack();
 }
 
 function mainCourse(){
@@ -272,7 +266,7 @@ function mainCourse(){
   let beskrivning19 = "";
   let beskrivning20 = "";
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
   document.body.appendChild(section);
 
   //Skapar header
@@ -522,20 +516,12 @@ function mainCourse(){
   //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
   //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
 
-  let mainFooter = document.createElement('footer');
-  mainFooter.setAttribute('id', 'main-footer');
-  section.appendChild(mainFooter);
-  let aTag = document.createElement("a");
-  aTag.setAttribute("href", "index.html");
-  aTag.setAttribute("class", "button");
-  aTag.textContent = "Huvudmeny";
-  mainFooter.appendChild(aTag);
+  btnBack();
 }
 
 function dessert(){
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
-  let section;  //  Create section-tag that will wrap the recepie 
   let headerWrapper;  //  Create header-tag, contains mainHeader
   let mainHeader;  //  Create recepie header
   let recepieImage;  //  Recepie image
@@ -687,13 +673,181 @@ function dessert(){
 }
 
 function vegetarian(){
-  console.log("vegetarian");
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingredientsList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+
+  //  Array of ingredians
+  let ingredients = ["500 g pasta (gärna kort som t.ex. penne)"];
+
+  let ingredients2 = [
+    "350 g passerade tomater",
+    "350 g krossade tomater",
+    "4 klyftor vitlök",
+    "1 kruka basilika, strimlade basilikablad",
+    "ca 1 tsk salt",
+    "1 tsk strösocker",
+    "4 msk olivolja",
+    "500 g aubergine, skuren i bitar",
+    "3-4 msk olivolja",
+    "1 tsk salt",
+    "0,5 krm svartpeppar",
+    "1,5 dl parmesanost",
+    "ca 250 g mozzarellaost",
+    "1-2 dl ströbröd"
+  ];
+
+  let ingredients3 = [
+    "1 huvudsallad",
+    "3 msk olivolja",
+    "1 msk balsamvinäger (av god kvalitet)",
+    "1 rödlök"
+  ];
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Värm upp olivoljan i en kastrull. Låt vitlöksklyftorna fräsa långsamt i oljan, utan att de tar färg.",
+    "Tillsätt tomater, basilika, salt och socker. Späd med lite vatten om det behövs. Låt tomatsåsen koka under lock på svag värme i ca 45 minuter.",
+    "Plocka upp och kasta vitlöksklyftorna, smaka av med salt.",
+    "Lägg auberginebitarna på en lutande skärbräda i 30 minuter. Strö över lite salt och låt lite av den beska vätskan rinna ur.",
+    "Sätt ugnen på 200 grader.",
+    "Värm hälften av olivoljan i en stor stekpanna, lägg i auberginebitarna och låt dem fräsa på hög värme i ca 5 minuter. Tillsätt ytterligare lite olivolja om det behövs. För att bitarna inte ska bli översaltade smaka först av, salta och peppra sedan. Passa noga så att de inte bränns.",
+    "Koka upp lättsaltat pastavatten i en kastrull. Koka pastan ett par minuter kortare tid än vad som anges på förpackningen. Pastan ska vara ordentligt 'al dente'. Låt rinna av i ett durkslag.",
+    "Häll tillbaka pastan i kastrullen. Blanda den noga med tomatsås, aubergine och de båda ostsorterna.",
+    "Smörj en ugnsform rikligt med olivolja och strö ett lager ströbröd i botten på formen.",
+    "Häll sedan försiktigt över lite av pastablandningen i formen. Riv över hälften av osten. Häll över resten av pastabladningen. Riv över resten av osten. Strö sedan över ett jämnt lager ströbröd. Ringla över lite olivolja.",
+    "Sätt in formen i ugnen och gratinera pastan ca 15-20 minuter. Stäng av ugnen och låt formen stå kvar i ugnen i 5 minuter.",
+    "Skölj salladsbladen i kallt vatten och torka dem med en salladsslunga eller skaka dem torra i en kökshandduk. Riv bladen i bitar och lägg dem i en rymlig salladsskål. Rör ihop alla ingredienser till dressingen och blanda ner den i salladen, försiktigt men noga.",
+    "Glöm inte att matsortera resterna från vitlök, basilika och rödlök för en mer hållbar matlagning, och njut av din pastagratäng."
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "ITALIENSK PASTAGRATÄNG MED AUBERGINE";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "Vegetarisk/pastagratang/pastagratang.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "60 min";  // estimated cooking time
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingredients
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingredientsList = document.createElement("ul");
+  divIngredients.appendChild(ingredientsList);
+  
+  let ingredientsHeader = document.createElement("h4");
+  ingredientsHeader.textContent = "Pasta:";
+  ingredientsHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsHeader);
+
+  for(let i = 0; i < ingredients.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingredients[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsSecondHeader = document.createElement("h4");
+  ingredientsSecondHeader.textContent = "Tomatsås:";
+  ingredientsSecondHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsSecondHeader);
+  
+  for(let i = 0; i < ingredients2.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients2[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsThirdHeader = document.createElement("h4");
+  ingredientsThirdHeader.textContent = "Sallad:";
+  ingredientsThirdHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsThirdHeader);
+  
+  for(let i = 0; i < ingredients3.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients3[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
+  btnBack();
 }
 
 function vegan(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
   document.body.appendChild(section);
 
   let header = document.createElement("header");
@@ -844,6 +998,11 @@ function vegan(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
 
+  btnBack();
+}
+
+function btnBack(){
+  //  "Go-Back-Button"
   let mainFooter = document.createElement('footer');
   mainFooter.setAttribute('id', 'main-footer');
   section.appendChild(mainFooter);
