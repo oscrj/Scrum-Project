@@ -660,16 +660,8 @@ function dessert(){
     description.textContent = howTo[i];
     descriptionList.appendChild(description);
   }
-
-  //  "Go-Back-Button"
-  mainFooter = document.createElement('footer');
-  mainFooter.setAttribute('id', 'main-footer');
-  section.appendChild(mainFooter);
-  let aTag = document.createElement("a");
-  aTag.setAttribute("href", "index.html");
-  aTag.setAttribute("class", "button");
-  aTag.textContent = "Huvudmeny";
-  mainFooter.appendChild(aTag);
+  
+  btnBack();
 }
 
 function vegetarian(){
