@@ -106,17 +106,26 @@ hr {
 .button {
   display: inline-block;
   color: rgb(88, 88, 88);
-  font-size: 24px;
-  padding: 13px 55px;
+  font-size: 22px;
+  padding: 7px 27px;
   background-color: aquamarine;
   border-radius: 10px;
   text-decoration: none;
+}
+.thumbs {
+  padding: 7px 9px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.arrow{
+  padding: 7px 14px;
+  font-size: 24px;
 }
 
 #main-footer{
   margin: 5px 0px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 #video-background{

@@ -1,3 +1,5 @@
+let mainFooter = document.createElement('footer');
+
 function init(){
   addEventListeners();
   var section;  // Create section-tag that will wrap the recepie 
@@ -5,11 +7,86 @@ function init(){
 }
 
 function addEventListeners(){
-  document.getElementById("starters").addEventListener("click", starter3);
-  document.getElementById("maincourse").addEventListener("click", mainCourse3);
-  document.getElementById("dessert").addEventListener("click", dessert2);
-  document.getElementById("vegetarian").addEventListener("click", vegetarian3);
-  document.getElementById("vegan").addEventListener("click", vegan3);
+  document.getElementById("starters").addEventListener("click", starter);
+  document.getElementById("maincourse").addEventListener("click", mainCourse);
+  document.getElementById("dessert").addEventListener("click", dessert);
+  document.getElementById("vegetarian").addEventListener("click", vegetarian);
+  document.getElementById("vegan").addEventListener("click", vegan);
+}
+
+//Starters
+function starter(){
+  let randomNr = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNr === 1){
+    starter1();
+  }
+  if (randomNr === 2){
+    starter2();
+  }
+  if (randomNr === 3){
+    starter3();
+  }
+}
+
+//Main courses
+function mainCourse(){
+  let randomNr = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNr === 1){
+    mainCourse1();
+  }
+  if (randomNr === 2){
+    mainCourse2();
+  }
+  if (randomNr === 3){
+    mainCourse3();
+  }
+}
+
+//Desserts
+function dessert(){
+  let randomNr = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNr === 1){
+    dessert1();
+  }
+  if (randomNr === 2){
+    dessert2();
+  }
+  if (randomNr === 3){
+    dessert3();
+  }
+}
+
+//Vegeterian
+function vegetarian(){
+  let randomNr = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNr === 1){
+    vegetarian1();
+  }
+  if (randomNr === 2){
+    vegetarian2();
+  }
+  if (randomNr === 3){
+    vegetarian3();
+  }
+}
+
+//Vegan
+function vegan(){
+  let randomNr = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNr === 1){
+    vegan1();
+  }
+  if (randomNr === 2){
+    vegan2();
+  }
+  if (randomNr === 3){
+    vegan3();
+  }
 }
 
 /** Start1 - Gin */
@@ -206,6 +283,9 @@ function starter1(){
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -355,6 +435,9 @@ function starter2(){
   descriptionList.appendChild(desc2);
   descriptionList.appendChild(desc3);
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -540,6 +623,9 @@ function starter3(){
   descriptionList.appendChild(desc7);
   descriptionList.appendChild(desc8);
   
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -850,7 +936,9 @@ function mainCourse1(){
   //descriptionList.appendChild(descriptionHeader3) //Rubrik 3
   //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
   //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
-
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -1162,6 +1250,9 @@ function mainCourse2(){
   //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
   //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -1453,7 +1544,7 @@ function mainCourse3(){
   descriptionList.appendChild(desc3);
   descriptionList.appendChild(desc4);
   descriptionList.appendChild(desc5);
-  // descriptionList.appendChild(desc6);
+  //descriptionList.appendChild(desc6);
   //descriptionList.appendChild(desc7);
   //descriptionList.appendChild(desc8);
   //descriptionList.appendChild(desc9);
@@ -1473,6 +1564,9 @@ function mainCourse3(){
   //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
   //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -1619,6 +1713,9 @@ function dessert1(){
     descriptionList.appendChild(description);
   }
   
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -1757,6 +1854,9 @@ function dessert2(){
     descriptionList.appendChild(description);
   }
   
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -1891,6 +1991,9 @@ function dessert3(){
     descriptionList.appendChild(description);
   }
   
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2064,6 +2167,9 @@ function vegetarian1(){
     descriptionList.appendChild(description);
   }
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2213,6 +2319,9 @@ function vegetarian2(){
     descriptionList.appendChild(description);
   }
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2384,6 +2493,9 @@ function vegetarian3(){
     descriptionList.appendChild(description);
   }
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2542,6 +2654,9 @@ function vegan1(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2690,6 +2805,9 @@ function vegan2(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
@@ -2861,19 +2979,57 @@ function vegan3(){
   descriptionList.appendChild(desc7);
   descriptionList.appendChild(desc8);
 
+  footer();
+  btnBackOneStep();
+  btnsLikeDislike();
   btnBack();
 }
 
-function btnBack(){
-  //  "Go-Back-Button"
-  let mainFooter = document.createElement('footer');
+function footer(){
   mainFooter.setAttribute('id', 'main-footer');
   section.appendChild(mainFooter);
+}
+function btnBack(){
+  //  "Go-Back-Button"
   let aTag = document.createElement("a");
   aTag.setAttribute("href", "index.html");
   aTag.setAttribute("class", "button");
   aTag.textContent = "Huvudmeny";
   mainFooter.appendChild(aTag);
+}
+
+function btnsLikeDislike(){
+  let likeButton = document.createElement("a");
+  //likeButton.setAttribute("href", "#");
+  likeButton.setAttribute("class", "button thumbs");
+  likeButton.textContent = '👍';
+  likeButton.addEventListener('click', function(){
+    likeButton.style.backgroundColor = "black";
+    alert("Gillat!\nFler funktioner kommer....");
+  })
+  let dislikeButton = document.createElement("a");
+  //dislikeButton.setAttribute("href", "#");
+  dislikeButton.setAttribute("class", "button thumbs");
+  dislikeButton.textContent = '👎';
+  dislikeButton.addEventListener('click', function(){
+    dislikeButton.style.backgroundColor = "black";
+    alert("Testa något annat då....!\nFler funktioner kommer....");
+  })
+  let holdButtonsDiv = document.createElement('div');
+  mainFooter.appendChild(holdButtonsDiv)
+  holdButtonsDiv.appendChild(likeButton);
+  holdButtonsDiv.appendChild(dislikeButton);
+}
+
+function btnBackOneStep(){
+  let backOneButton = document.createElement("a");
+  //dislikeButton.setAttribute("href", "#");
+  backOneButton.setAttribute("class", "button arrow");
+  backOneButton.textContent = '⟵';
+  mainFooter.appendChild(backOneButton);
+  backOneButton.addEventListener('click', function(){
+    alert("Ingen funktion ännu....");
+  })
 }
 
 document.addEventListener("DOMContentLoaded", init);
