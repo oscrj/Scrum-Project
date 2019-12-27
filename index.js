@@ -1,21 +1,20 @@
 let mainFooter = document.createElement('footer');
+let section = document.createElement("section");
 
 function init(){
   addEventListeners();
-  var section;  // Create section-tag that will wrap the recepie 
-
 }
 
 function addEventListeners(){
-  document.getElementById("starters").addEventListener("click", starter);
-  document.getElementById("maincourse").addEventListener("click", mainCourse);
-  document.getElementById("dessert").addEventListener("click", dessert);
-  document.getElementById("vegetarian").addEventListener("click", vegetarian);
-  document.getElementById("vegan").addEventListener("click", vegan);
+  document.getElementById("starters").addEventListener("click", starterMenu);
+  document.getElementById("maincourse").addEventListener("click", mainCourseMenu);
+  document.getElementById("dessert").addEventListener("click", dessertMenu);
+  document.getElementById("vegetarian").addEventListener("click", vegetarianMenu);
+  document.getElementById("vegan").addEventListener("click", veganMenu);
 }
 
 //Starters
-function starter(){
+function randomStarter(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
   if (randomNr === 1){
@@ -30,7 +29,7 @@ function starter(){
 }
 
 //Main courses
-function mainCourse(){
+function randomMainCourse(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
   if (randomNr === 1){
@@ -45,7 +44,7 @@ function mainCourse(){
 }
 
 //Desserts
-function dessert(){
+function randomDessert(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
   if (randomNr === 1){
@@ -60,7 +59,7 @@ function dessert(){
 }
 
 //Vegeterian
-function vegetarian(){
+function randomVegetarian(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
   if (randomNr === 1){
@@ -75,7 +74,7 @@ function vegetarian(){
 }
 
 //Vegan
-function vegan(){
+function randomVegan(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
   if (randomNr === 1){
@@ -87,6 +86,23 @@ function vegan(){
   if (randomNr === 3){
     vegan3();
   }
+}
+
+//  selection of three recepies and choose to random pick one of them.  
+function starterMenu(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  document.body.appendChild(headerWrapper);
+
+  //  Page Header
+  let secondMainHeader = document.createElement("h1");
+  secondMainHeader.textContent = "Förrätt";
+  headerWrapper.appendChild(secondMainHeader);
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
 }
 
 /** Start1 - Gin */
@@ -627,6 +643,24 @@ function starter3(){
   btnBackOneStep();
   btnsLikeDislike();
   btnBack();
+}
+
+//  selection of three recepies and choose to random pick one of them.  
+function mainCourseMenu(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+
+  let headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  document.body.appendChild(headerWrapper);
+
+  //  Page Header
+  let secondMainHeader = document.createElement("h1");
+  secondMainHeader.textContent = "Huvudrätt";
+  headerWrapper.appendChild(secondMainHeader);
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
 }
 
 /** Maincourse1 - MANNERSTRÖM OXFILE MED PEPPARSÅS */
@@ -1570,6 +1604,77 @@ function mainCourse3(){
   btnBack();
 }
 
+//  selection of three recepies and choose to random pick one of them.  
+function dessertMenu(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  document.body.appendChild(headerWrapper);
+
+  //  Page Header
+  let secondMainHeader = document.createElement("h1");
+  secondMainHeader.textContent = "Efterrätt";
+  headerWrapper.appendChild(secondMainHeader);
+
+  section = document.createElement("section");
+  section.id = "secondMenuSection"
+  document.body.appendChild(section);
+
+  for(let i = 0; i < 4; i++){
+    let divWrapper = document.createElement("div");
+    divWrapper.setAttribute("class","secondMenuWrapper");
+    section.appendChild(divWrapper);
+  }
+
+  let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
+  let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
+  let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+
+  //  add eventlisterner
+  recepie1.addEventListener("click", dessert1);
+  recepie2.addEventListener("click", dessert2);
+  recepie3.addEventListener("click", dessert3);
+  randomBtn.addEventListener("click", randomDessert);
+
+  //  recepie1
+  let recepieImg = document.createElement("img");
+  recepieImg.src = "/Desserts/Banansushi/banana-sushi.jpg";
+  recepie1.appendChild(recepieImg);
+
+  let recepieHeader = document.createElement("h5");
+  recepieHeader.textContent = "BANANSUSHI MED JORDNÖTSSMÖR OCH NUTELLA"
+  recepie1.appendChild(recepieHeader);
+
+  //  recepie2
+  let recepieImg2 = document.createElement("img");
+  recepieImg2.src = "/Desserts/Chokladmousse/avokado-choklad-mousse-shutterstock.jpg";
+  recepie2.appendChild(recepieImg2);
+
+  let recepieHeader2 = document.createElement("h5");
+  recepieHeader2.textContent = "CHOKLADMOUSSE PÅ AVOKADO OCH BANANA"
+  recepie2.appendChild(recepieHeader2);
+
+  //  recepie3
+  let recepieImg3 = document.createElement("img");
+  recepieImg3.src = "/Desserts/Fudge-brownies/vegan-fudge-brownie-980x515-c.jpg";
+  recepie3.appendChild(recepieImg3);
+
+  let recepieHeader3 = document.createElement("h5");
+  recepieHeader3.textContent = "FUDGE BROWNIES"
+  recepie3.appendChild(recepieHeader3);
+
+  //  Random recepie
+  let randomAtag = document.createElement("a");
+  randomAtag.setAttribute("class", "button");
+  randomAtag.textContent = "Slumpa ett recept";
+  randomBtn.appendChild(randomAtag);
+  
+  footer();
+  btnBack();
+}
+
 /** Dessert1 - BANANSUSHI MED JORDNÖTSSMÖR OCH NUTELLA */
 function dessert1(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -1582,7 +1687,6 @@ function dessert1(){
   let divDescription;  //  Create a list of "How to do" the recepie
   let descriptionHeader;  //  Descripton header
   let descriptionList;  //  Create a list of step by step description
-  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
 
   //  Array of ingredians
   let ingrediens = [
@@ -1716,7 +1820,6 @@ function dessert1(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Dessert2 - CHOKLADMOUSSE PÅ AVOKADO OCH BANAN */
@@ -1731,7 +1834,6 @@ function dessert2(){
   let divDescription;  //  Create a list of "How to do" the recepie
   let descriptionHeader;  //  Descripton header
   let descriptionList;  //  Create a list of step by step description
-  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
 
   //  Array of ingredians
   let ingrediens = [
@@ -1857,7 +1959,6 @@ function dessert2(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Dessert3 - FUDGE BROWNIES */
@@ -1872,7 +1973,6 @@ function dessert3(){
   let divDescription;  //  Create a list of "How to do" the recepie
   let descriptionHeader;  //  Descripton header
   let descriptionList;  //  Create a list of step by step description
-  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
 
   //  Array of ingredians
   let ingrediens = [
@@ -1994,7 +2094,24 @@ function dessert3(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
+}
+
+//  selection of three recepies and choose to random pick one of them.  
+function vegetarianMenu(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  document.body.appendChild(headerWrapper);
+
+  //  Page Header
+  let secondMainHeader = document.createElement("h1");
+  secondMainHeader.textContent = "Vegetariskt";
+  headerWrapper.appendChild(secondMainHeader);
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
+
 }
 
 /** Vegetarian1 - ITALIENSK PASTAGRATÄNG MED AUBERGINE */
@@ -2499,6 +2616,24 @@ function vegetarian3(){
   btnBack();
 }
 
+//  selection of three recepies and choose to random pick one of them.  
+function veganMenu(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+
+  let headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  document.body.appendChild(headerWrapper);
+
+  //  Page Header
+  let secondMainHeader = document.createElement("h1");
+  secondMainHeader.textContent = "Veganskt";
+  headerWrapper.appendChild(secondMainHeader);
+
+  let section = document.createElement("section");
+  document.body.appendChild(section);
+  
+}
+
 /** Vegan1 - BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU */
 function vegan1(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -2987,8 +3122,9 @@ function vegan3(){
 
 function footer(){
   mainFooter.setAttribute('id', 'main-footer');
-  section.appendChild(mainFooter);
+  document.body.appendChild(mainFooter);
 }
+
 function btnBack(){
   //  "Go-Back-Button"
   let aTag = document.createElement("a");
