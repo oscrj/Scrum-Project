@@ -101,8 +101,62 @@ function starterMenu(){
   secondMainHeader.textContent = "Förrätt";
   headerWrapper.appendChild(secondMainHeader);
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
+  section.id = "secondMenuSection"
   document.body.appendChild(section);
+
+  for(let i = 0; i < 4; i++){
+    let divWrapper = document.createElement("div");
+    divWrapper.setAttribute("class","secondMenuWrapper");
+    section.appendChild(divWrapper);
+  }
+
+  let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
+  let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
+  let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+
+  //  add eventlisterner
+  recepie1.addEventListener("click", starter1);
+  recepie2.addEventListener("click", starter3);
+  recepie3.addEventListener("click", starter3);
+  randomBtn.addEventListener("click", randomStarter);
+
+  //  recepie1
+  let recepieImg = document.createElement("img");
+  recepieImg.src = "starters/gin/starter1.jpg";
+  recepie1.appendChild(recepieImg);
+
+  let recepieHeader = document.createElement("h5");
+  recepieHeader.textContent = "GIN & TONIC-GRAVAD LAX MED INLAGD GURKA"
+  recepie1.appendChild(recepieHeader);
+
+  //  recepie2
+  let recepieImg2 = document.createElement("img");
+  recepieImg2.src = "starters/sill/pask-rora-sill-potatis-agg-glas-utvald-980x515-c.jpg";
+  recepie2.appendChild(recepieImg2);
+
+  let recepieHeader2 = document.createElement("h5");
+  recepieHeader2.textContent = "RÖRA MED SILL, POTATIS OCH ÄGG I GLAS"
+  recepie2.appendChild(recepieHeader2);
+
+  //  recepie3
+  let recepieImg3 = document.createElement("img");
+  recepieImg3.src = "starters/soppa/vargron-artsoppa-recept-980x515-c.jpg";
+  recepie3.appendChild(recepieImg3);
+
+  let recepieHeader3 = document.createElement("h5");
+  recepieHeader3.textContent = "VÅRGRÖN ÄRTSOPPA MED VITT VIN"
+  recepie3.appendChild(recepieHeader3);
+
+  //  Random recepie
+  let randomAtag = document.createElement("a");
+  randomAtag.setAttribute("class", "button");
+  randomAtag.textContent = "Slumpa ett recept";
+  randomBtn.appendChild(randomAtag);
+  
+  footer();
+  btnBack();
 }
 
 /** Start1 - Gin */
@@ -302,7 +356,7 @@ function starter1(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
+
 }
 
 /**Start2 - sill */
@@ -454,7 +508,6 @@ function starter2(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /**Start3 - soppa */
@@ -642,13 +695,11 @@ function starter3(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 //  selection of three recepies and choose to random pick one of them.  
 function mainCourseMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
-
 
   let headerWrapper = document.createElement("header");
   headerWrapper.setAttribute("id", "rec-header");
@@ -659,8 +710,62 @@ function mainCourseMenu(){
   secondMainHeader.textContent = "Huvudrätt";
   headerWrapper.appendChild(secondMainHeader);
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
+  section.id = "secondMenuSection"
   document.body.appendChild(section);
+
+  for(let i = 0; i < 4; i++){
+    let divWrapper = document.createElement("div");
+    divWrapper.setAttribute("class","secondMenuWrapper");
+    section.appendChild(divWrapper);
+  }
+
+  let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
+  let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
+  let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+
+  //  add eventlisterner
+  recepie1.addEventListener("click", mainCourse1);
+  recepie2.addEventListener("click", mainCourse2);
+  recepie3.addEventListener("click", mainCourse3);
+  randomBtn.addEventListener("click", randomMainCourse);
+
+  //  recepie1
+  let recepieImg = document.createElement("img");
+  recepieImg.src = "/Kötträtter/Mannerströms Oxfile/oxfile.jpg";
+  recepie1.appendChild(recepieImg);
+
+  let recepieHeader = document.createElement("h5");
+  recepieHeader.textContent = "MANNERSTRÖM OXFILE MED PEPPARSÅS"
+  recepie1.appendChild(recepieHeader);
+
+  //  recepie2
+  let recepieImg2 = document.createElement("img");
+  recepieImg2.src = "/Kötträtter/Korv Stroganoff/korvstroganoff.jpg";
+  recepie2.appendChild(recepieImg2);
+
+  let recepieHeader2 = document.createElement("h5");
+  recepieHeader2.textContent = "KORV STROGANOFF"
+  recepie2.appendChild(recepieHeader2);
+
+  //  recepie3
+  let recepieImg3 = document.createElement("img");
+  recepieImg3.src = "/Kötträtter/Mustig Lövbiffsgryta/lövbiffsgryta.jpg";
+  recepie3.appendChild(recepieImg3);
+
+  let recepieHeader3 = document.createElement("h5");
+  recepieHeader3.textContent = "MUSTIG LÖVBIFFSGRYTA"
+  recepie3.appendChild(recepieHeader3);
+
+  //  Random recepie
+  let randomAtag = document.createElement("a");
+  randomAtag.setAttribute("class", "button");
+  randomAtag.textContent = "Slumpa ett recept";
+  randomBtn.appendChild(randomAtag);
+  
+  footer();
+  btnBack();
 }
 
 /** Maincourse1 - MANNERSTRÖM OXFILE MED PEPPARSÅS */
@@ -973,7 +1078,6 @@ function mainCourse1(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Maincourse2 - KORV STROGANOFF */
@@ -1287,7 +1391,6 @@ function mainCourse2(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Maincourse3 - MUSTIG LÖVBIFFSGRYTA */
@@ -1601,7 +1704,6 @@ function mainCourse3(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 //  selection of three recepies and choose to random pick one of them.  
@@ -2109,9 +2211,62 @@ function vegetarianMenu(){
   secondMainHeader.textContent = "Vegetariskt";
   headerWrapper.appendChild(secondMainHeader);
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
+  section.id = "secondMenuSection"
   document.body.appendChild(section);
 
+  for(let i = 0; i < 4; i++){
+    let divWrapper = document.createElement("div");
+    divWrapper.setAttribute("class","secondMenuWrapper");
+    section.appendChild(divWrapper);
+  }
+
+  let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
+  let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
+  let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+
+  //  add eventlisterner
+  recepie1.addEventListener("click", vegetarian1);
+  recepie2.addEventListener("click", vegetarian2);
+  recepie3.addEventListener("click", vegetarian3);
+  randomBtn.addEventListener("click", randomVegetarian);
+
+  //  recepie1
+  let recepieImg = document.createElement("img");
+  recepieImg.src = "Vegetarisk/pastagratang/pastagratang.jpg";
+  recepie1.appendChild(recepieImg);
+
+  let recepieHeader = document.createElement("h5");
+  recepieHeader.textContent = "ITALIENSK PASTAGRATÄNG MED AUBERGINE"
+  recepie1.appendChild(recepieHeader);
+
+  //  recepie2
+  let recepieImg2 = document.createElement("img");
+  recepieImg2.src = "Vegetarisk/Vegobullar/vegobullar-med-kryddpeppar-och-karameliserad-lok.jpg";
+  recepie2.appendChild(recepieImg2);
+
+  let recepieHeader2 = document.createElement("h5");
+  recepieHeader2.textContent = "VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK"
+  recepie2.appendChild(recepieHeader2);
+
+  //  recepie3
+  let recepieImg3 = document.createElement("img");
+  recepieImg3.src = "Vegetarisk/Vegetariska kroppkakor/vegetariska-kroppkakor-med-brynt-smor-och-krasse.jpg";
+  recepie3.appendChild(recepieImg3);
+
+  let recepieHeader3 = document.createElement("h5");
+  recepieHeader3.textContent = "VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KARSSE"
+  recepie3.appendChild(recepieHeader3);
+
+  //  Random recepie
+  let randomAtag = document.createElement("a");
+  randomAtag.setAttribute("class", "button");
+  randomAtag.textContent = "Slumpa ett recept";
+  randomBtn.appendChild(randomAtag);
+  
+  footer();
+  btnBack();
 }
 
 /** Vegetarian1 - ITALIENSK PASTAGRATÄNG MED AUBERGINE */
@@ -2287,7 +2442,6 @@ function vegetarian1(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Vegetarian2 - VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK */
@@ -2439,7 +2593,6 @@ function vegetarian2(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Vegetarian3 - VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KARSSE */
@@ -2613,7 +2766,6 @@ function vegetarian3(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 //  selection of three recepies and choose to random pick one of them.  
@@ -2629,9 +2781,62 @@ function veganMenu(){
   secondMainHeader.textContent = "Veganskt";
   headerWrapper.appendChild(secondMainHeader);
 
-  let section = document.createElement("section");
+  section = document.createElement("section");
+  section.id = "secondMenuSection"
   document.body.appendChild(section);
+
+  for(let i = 0; i < 4; i++){
+    let divWrapper = document.createElement("div");
+    divWrapper.setAttribute("class","secondMenuWrapper");
+    section.appendChild(divWrapper);
+  }
+
+  let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
+  let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
+  let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+
+  //  add eventlisterner
+  recepie1.addEventListener("click", vegan1);
+  recepie2.addEventListener("click", vegan2);
+  recepie3.addEventListener("click", vegan3);
+  randomBtn.addEventListener("click", randomVegan);
+
+  //  recepie1
+  let recepieImg = document.createElement("img");
+  recepieImg.src = "vegan/broccolisoppa-med-kryddrostade-kikärter-och-tofu/broccolisoppa-med-kryddrostade-kikärter-och-tofu.jpg";
+  recepie1.appendChild(recepieImg);
+
+  let recepieHeader = document.createElement("h5");
+  recepieHeader.textContent = "BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU"
+  recepie1.appendChild(recepieHeader);
+
+  //  recepie2
+  let recepieImg2 = document.createElement("img");
+  recepieImg2.src = "vegan/sötpotatisbiffar-med-ingefära-och-nötter/sötpotatisbiffar-med-ingefära-och-nötter.jpg";
+  recepie2.appendChild(recepieImg2);
+
+  let recepieHeader2 = document.createElement("h5");
+  recepieHeader2.textContent = "SÖTPOTATISBIFFAR MED INGEFÖRA OCH NÖTTER"
+  recepie2.appendChild(recepieHeader2);
+
+  //  recepie3
+  let recepieImg3 = document.createElement("img");
+  recepieImg3.src = "vegan/vegansk-kalops/vegansk-kalops.jpg";
+  recepie3.appendChild(recepieImg3);
+
+  let recepieHeader3 = document.createElement("h5");
+  recepieHeader3.textContent = "VEGANSK KALOPS"
+  recepie3.appendChild(recepieHeader3);
+
+  //  Random recepie
+  let randomAtag = document.createElement("a");
+  randomAtag.setAttribute("class", "button");
+  randomAtag.textContent = "Slumpa ett recept";
+  randomBtn.appendChild(randomAtag);
   
+  footer();
+  btnBack();
 }
 
 /** Vegan1 - BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU */
@@ -2792,7 +2997,6 @@ function vegan1(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Vegan2 - SÖTPOTATISBIFFAR MED INGEFÖRA OCH NÖTTER */
@@ -2943,7 +3147,6 @@ function vegan2(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 /** Vegan3 - VEGANSK KALOPS */
@@ -3117,7 +3320,6 @@ function vegan3(){
   footer();
   btnBackOneStep();
   btnsLikeDislike();
-  btnBack();
 }
 
 function footer(){
