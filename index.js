@@ -162,8 +162,10 @@ function starterMenu(){
 /** Start1 - Gin */
 function starter1(){
   document.getElementsByTagName("body")[0].innerHTML = "";
+  section.innerHTML = "";
+  
 
-  section = document.createElement("section");
+  //section = document.createElement("section");
   document.body.appendChild(section);
 
   let header = document.createElement("header");
@@ -353,8 +355,11 @@ function starter1(){
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
+  
   footer();
   btnBackOneStep();
+  btnBack();
+  
   btnsLikeDislike();
 
 }
@@ -3323,6 +3328,7 @@ function vegan3(){
 }
 
 function footer(){
+  mainFooter.innerHTML = "";
   mainFooter.setAttribute('id', 'main-footer');
   document.body.appendChild(mainFooter);
 }
