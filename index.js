@@ -13,7 +13,7 @@ function addEventListeners(){
   document.getElementById("vegan").addEventListener("click", veganMenu);
 }
 
-//Starters
+//Starters - random
 function randomStarter(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
@@ -28,7 +28,7 @@ function randomStarter(){
   }
 }
 
-//Main courses
+//Main courses - random
 function randomMainCourse(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
@@ -43,7 +43,7 @@ function randomMainCourse(){
   }
 }
 
-//Desserts
+//Desserts - random
 function randomDessert(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
@@ -58,7 +58,7 @@ function randomDessert(){
   }
 }
 
-//Vegeterian
+//Vegeterian - random
 function randomVegetarian(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
@@ -73,7 +73,7 @@ function randomVegetarian(){
   }
 }
 
-//Vegan
+//Vegan - random
 function randomVegan(){
   let randomNr = Math.floor(Math.random() * 3) + 1;
 
@@ -88,7 +88,7 @@ function randomVegan(){
   }
 }
 
-//  selection of three recepies and choose to random pick one of them.  
+//  Starter recipes list  
 function starterMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
@@ -162,10 +162,8 @@ function starterMenu(){
 /** Start1 - Gin */
 function starter1(){
   document.getElementsByTagName("body")[0].innerHTML = "";
-  section.innerHTML = "";
   
-
-  //section = document.createElement("section");
+  section = document.createElement("section");
   document.body.appendChild(section);
 
   let header = document.createElement("header");
@@ -332,7 +330,6 @@ function starter1(){
   let descr2 = document.createElement("li");
   descr2.textContent = "Smaka av med socker, salt och peppar.";
 
-
   descriptionList2.appendChild(descr1);
   descriptionList2.appendChild(descr2);
 
@@ -350,18 +347,14 @@ function starter1(){
   let descri3 = document.createElement("li");
   descri3.textContent = "Ta upp laxfilén ur lagen, klappa torr med hushållspapper. Skär i tunna skivor och lägg upp på tallrik tillsammans med inlagd gurka, limesås, rostat rågbröd och örter.";
 
-
   descriptionList3.appendChild(descri1);
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
-  
   footer();
   btnBackOneStep();
   btnBack();
-  
   btnsLikeDislike();
-
 }
 
 /**Start2 - sill */
@@ -512,6 +505,7 @@ function starter2(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -699,10 +693,11 @@ function starter3(){
   
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
-//  selection of three recepies and choose to random pick one of them.  
+//  Main course recipes list  
 function mainCourseMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
@@ -782,9 +777,6 @@ function mainCourse1(){
   let tillagningsTid = "60min";
   let ingrediensRubrik1 = "Pepparsås";
   let ingrediensRubrik2 = "Oxfilé";
-  let ingrediensRubrik3 = "";
-  let ingrediensRubrik4 = "";
-  let ingrediensRubrik5 = "";
   let ingrediens1 = "2msk vitpepparkorn";
   let ingrediens2 = "1st schalottenlök, finhackad";
   let ingrediens3 = "0,5msk grönpeppar";
@@ -796,40 +788,13 @@ function mainCourse1(){
   let ingrediens9 = "2dl grädde";
   let ingrediens10 = "1000g oxfilé, i 4 bitar";
   let ingrediens11 = "peppar, att rulla köttet i";
-  let ingrediens12 = "";
-  let ingrediens13 = "";
-  let ingrediens14 = "";
-  let ingrediens15 = "";
-  let ingrediens16 = "";
-  let ingrediens17 = "";
-  let ingrediens18 = "";
-  let ingrediens19 = "";
-  let ingrediens20 = "";
-  let beskrivningsRubrik1 = "";
-  let beskrivningsRubrik2 = "";
-  let beskrivningsRubrik3 = "";
-  let beskrivningsRubrik4 = "";
-  let beskrivningsRubrik5 = "";
+  let beskrivningsRubrik1 = "Gör såhär:";
   let beskrivning1 = "Rosta vitpeppar i ugnen på 150 grader i 10min eller i en varm, torr panna, stöt den sedan grovt i mortel.";
   let beskrivning2 = "Fräs schalottenlöken, grönpeppar, estragon samt lite av den rostade vitpepparen.";
   let beskrivning3 = "Slå i lite olja, slå på kalvfond, rödvin, konjak. OBS! Om du använder koncentrerad fond på flaska måste du späda ut den enligt förpackningen så att du får 3 dl buljong.";
   let beskrivning4 = "Låt koka ihop i ca 10 min. Slå sedan i grädden och låt koka ytterligare i ca 10 min.";
   let beskrivning5 = "Rulla kanterna på oxfilébitarna i peppar och stek köttet.";
   let beskrivning6 = "Servera med pepparsåsen.";
-  let beskrivning7 = "";
-  let beskrivning8 = "";
-  let beskrivning9 = "";
-  let beskrivning10 = "";
-  let beskrivning11 = "";
-  let beskrivning12 = "";
-  let beskrivning13 = "";
-  let beskrivning14 = "";
-  let beskrivning15 = "";
-  let beskrivning16 = "";
-  let beskrivning17 = "";
-  let beskrivning18 = "";
-  let beskrivning19 = "";
-  let beskrivning20 = "";
 
   section = document.createElement("section");
   document.body.appendChild(section);
@@ -910,15 +875,6 @@ function mainCourse1(){
   let head2 = document.createElement("li");
   head2.textContent = ingrediensRubrik2;
   head2.setAttribute("class", "listHeader");
-  let head3 = document.createElement("li");
-  head3.textContent = ingrediensRubrik3;
-  head3.setAttribute("class", "listHeader");
-  let head4 = document.createElement("li");
-  head4.textContent = ingrediensRubrik4;
-  head4.setAttribute("class", "listHeader");
-  let head5 = document.createElement("li");
-  head5.textContent = ingrediensRubrik5;
-  head5.setAttribute("class", "listHeader");
 
   //Ingredienser
   let ing1 = document.createElement("li");
@@ -943,24 +899,6 @@ function mainCourse1(){
   ing10.textContent = ingrediens10;
   let ing11 = document.createElement("li");
   ing11.textContent = ingrediens11;
-  let ing12 = document.createElement("li");
-  ing12.textContent = ingrediens12;
-  let ing13 = document.createElement("li");
-  ing13.textContent = ingrediens13;
-  let ing14 = document.createElement("li");
-  ing14.textContent = ingrediens14;
-  let ing15 = document.createElement("li");
-  ing15.textContent = ingrediens15;
-  let ing16 = document.createElement("li");
-  ing16.textContent = ingrediens16;
-  let ing17 = document.createElement("li");
-  ing17.textContent = ingrediens17;
-  let ing18 = document.createElement("li");
-  ing18.textContent = ingrediens18;
-  let ing19 = document.createElement("li");
-  ing19.textContent = ingrediens19;
-  let ing20 = document.createElement("li");
-  ing20.textContent = ingrediens20;
 
   //Appenda ingredienser och ingrediensrubriker
   divIngredients.appendChild(list); // ul listan
@@ -977,18 +915,6 @@ function mainCourse1(){
   list.appendChild(head2); //Rubrik 2
   list.appendChild(ing10);
   list.appendChild(ing11);
-  // list.appendChild(ing12);
-  // list.appendChild(ing13);
-  // list.appendChild(ing14);
-  // list.appendChild(ing15);
-  // list.appendChild(ing16);
-  // list.appendChild(ing17);
-  // list.appendChild(ing18);
-  // list.appendChild(ing19);
-  // list.appendChild(ing20);
-  // list.appendChild(head3); //Rubrik 3
-  // list.appendChild(head4); //Rubrik 4
-  // list.appendChild(head5); //Rubrik 5
 
   //Div container innehållandes tillagningsbeskrivningar
   let divDescription = document.createElement("div");
@@ -1002,14 +928,6 @@ function mainCourse1(){
   //Rubriker för beskrivningen
   let descriptionHeader1 = document.createElement("h4");
   descriptionHeader1.innerText = beskrivningsRubrik1;
-  let descriptionHeader2 = document.createElement("h4");
-  descriptionHeader2.innerText = beskrivningsRubrik2;
-  let descriptionHeader3 = document.createElement("h4");
-  descriptionHeader3.innerText = beskrivningsRubrik3;
-  let descriptionHeader4 = document.createElement("h4");
-  descriptionHeader4.innerText = beskrivningsRubrik4;
-  let descriptionHeader5 = document.createElement("h4");
-  descriptionHeader5.innerText = beskrivningsRubrik5;
 
   //Beskrivningar
   let desc1 = document.createElement("li");
@@ -1024,34 +942,6 @@ function mainCourse1(){
   desc5.textContent = beskrivning5;
   let desc6 = document.createElement("li");
   desc6.textContent = beskrivning6;
-  let desc7 = document.createElement("li");
-  desc7.textContent = beskrivning7;
-  let desc8 = document.createElement("li");
-  desc8.textContent = beskrivning8;
-  let desc9 = document.createElement("li");
-  desc9.textContent = beskrivning9;
-  let desc10 = document.createElement("li");
-  desc10.textContent = beskrivning10;
-  let desc11 = document.createElement("li");
-  desc11.textContent = beskrivning11;
-  let desc12 = document.createElement("li");
-  desc12.textContent = beskrivning12;
-  let desc13 = document.createElement("li");
-  desc13.textContent = beskrivning13;
-  let desc14 = document.createElement("li");
-  desc14.textContent = beskrivning14;
-  let desc15 = document.createElement("li");
-  desc15.textContent = beskrivning15;
-  let desc16 = document.createElement("li");
-  desc16.textContent = beskrivning16;
-  let desc17 = document.createElement("li");
-  desc17.textContent = beskrivning17;
-  let desc18 = document.createElement("li");
-  desc18.textContent = beskrivning18;
-  let desc19 = document.createElement("li");
-  desc19.textContent = beskrivning19;
-  let desc20 = document.createElement("li");
-  desc20.textContent = beskrivning20;
 
   //Appenda OL med rubriker och beskrivningar
   divDescription.appendChild(descriptionList); //OL listan
@@ -1062,26 +952,10 @@ function mainCourse1(){
   descriptionList.appendChild(desc4);
   descriptionList.appendChild(desc5);
   descriptionList.appendChild(desc6);
-  //descriptionList.appendChild(desc7);
-  //descriptionList.appendChild(desc8);
-  //descriptionList.appendChild(desc9);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc12);
-  //descriptionList.appendChild(desc13);
-  //descriptionList.appendChild(desc14);
-  //descriptionList.appendChild(desc15);
-  //descriptionList.appendChild(desc16);
-  //descriptionList.appendChild(desc17);
-  //descriptionList.appendChild(desc18);
-  //descriptionList.appendChild(desc19);
-  //descriptionList.appendChild(desc20);
-  //descriptionList.appendChild(descriptionHeader2) //Rubrik 2
-  //descriptionList.appendChild(descriptionHeader3) //Rubrik 3
-  //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
-  //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
+
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -1094,9 +968,6 @@ function mainCourse2(){
   let tillagningsTid = "30min";
   let ingrediensRubrik1 = "";
   let ingrediensRubrik2 = "Servering";
-  let ingrediensRubrik3 = "";
-  let ingrediensRubrik4 = "";
-  let ingrediensRubrik5 = "";
   let ingrediens1 = "500 g falukorv (av god kvalitet)";
   let ingrediens2 = "2 gula lökar";
   let ingrediens3 = "2 msk smör";
@@ -1111,37 +982,11 @@ function mainCourse2(){
   let ingrediens12 = "peppar";
   let ingrediens13 = "kokt ris";
   let ingrediens14 = "gräddfil";
-  let ingrediens15 = "";
-  let ingrediens16 = "";
-  let ingrediens17 = "";
-  let ingrediens18 = "";
-  let ingrediens19 = "";
-  let ingrediens20 = "";
   let beskrivningsRubrik1 = "Gör så här";
-  let beskrivningsRubrik2 = "";
-  let beskrivningsRubrik3 = "";
-  let beskrivningsRubrik4 = "";
-  let beskrivningsRubrik5 = "";
   let beskrivning1 = "Skär korven i centimetertjocka stavar. Skala och hacka löken.";
   let beskrivning2 = "Fräs korv och lök i smör i en stor stekpanna.";
   let beskrivning3 = "Rör ner tomatpuré, paprikapulver och lagerblad och fräs i ytterligare några minuter. Späd med buljongen och grädden. Låt sjuda tills såsen är smidig och simmig – inte för tunn och inte för stabbig. Red eventuellt av med aningen redningsmjöl. Smaka av med salt och peppar.";
   let beskrivning4 = "Servera med kokt ris och en klick gräddfil.";
-  let beskrivning5 = "";
-  let beskrivning6 = "";
-  let beskrivning7 = "";
-  let beskrivning8 = "";
-  let beskrivning9 = "";
-  let beskrivning10 = "";
-  let beskrivning11 = "";
-  let beskrivning12 = "";
-  let beskrivning13 = "";
-  let beskrivning14 = "";
-  let beskrivning15 = "";
-  let beskrivning16 = "";
-  let beskrivning17 = "";
-  let beskrivning18 = "";
-  let beskrivning19 = "";
-  let beskrivning20 = "";
 
   section = document.createElement("section");
   document.body.appendChild(section);
@@ -1222,15 +1067,6 @@ function mainCourse2(){
   let head2 = document.createElement("li");
   head2.textContent = ingrediensRubrik2;
   head2.setAttribute("class", "listHeader");
-  let head3 = document.createElement("li");
-  head3.textContent = ingrediensRubrik3;
-  head3.setAttribute("class", "listHeader");
-  let head4 = document.createElement("li");
-  head4.textContent = ingrediensRubrik4;
-  head4.setAttribute("class", "listHeader");
-  let head5 = document.createElement("li");
-  head5.textContent = ingrediensRubrik5;
-  head5.setAttribute("class", "listHeader");
 
   //Ingredienser
   let ing1 = document.createElement("li");
@@ -1261,18 +1097,6 @@ function mainCourse2(){
   ing13.textContent = ingrediens13;
   let ing14 = document.createElement("li");
   ing14.textContent = ingrediens14;
-  let ing15 = document.createElement("li");
-  ing15.textContent = ingrediens15;
-  let ing16 = document.createElement("li");
-  ing16.textContent = ingrediens16;
-  let ing17 = document.createElement("li");
-  ing17.textContent = ingrediens17;
-  let ing18 = document.createElement("li");
-  ing18.textContent = ingrediens18;
-  let ing19 = document.createElement("li");
-  ing19.textContent = ingrediens19;
-  let ing20 = document.createElement("li");
-  ing20.textContent = ingrediens20;
 
   //Appenda ingredienser och ingrediensrubriker
   divIngredients.appendChild(list); // ul listan
@@ -1292,15 +1116,6 @@ function mainCourse2(){
   list.appendChild(head2); //Rubrik 2
   list.appendChild(ing13);
   list.appendChild(ing14);
-  // list.appendChild(ing15);
-  // list.appendChild(ing16);
-  // list.appendChild(ing17);
-  // list.appendChild(ing18);
-  // list.appendChild(ing19);
-  // list.appendChild(ing20);
-  // list.appendChild(head3); //Rubrik 3
-  // list.appendChild(head4); //Rubrik 4
-  // list.appendChild(head5); //Rubrik 5
 
   //Div container innehållandes tillagningsbeskrivningar
   let divDescription = document.createElement("div");
@@ -1314,14 +1129,6 @@ function mainCourse2(){
   //Rubriker för beskrivningen
   let descriptionHeader1 = document.createElement("h4");
   descriptionHeader1.innerText = beskrivningsRubrik1;
-  let descriptionHeader2 = document.createElement("h4");
-  descriptionHeader2.innerText = beskrivningsRubrik2;
-  let descriptionHeader3 = document.createElement("h4");
-  descriptionHeader3.innerText = beskrivningsRubrik3;
-  let descriptionHeader4 = document.createElement("h4");
-  descriptionHeader4.innerText = beskrivningsRubrik4;
-  let descriptionHeader5 = document.createElement("h4");
-  descriptionHeader5.innerText = beskrivningsRubrik5;
 
   //Beskrivningar
   let desc1 = document.createElement("li");
@@ -1332,38 +1139,6 @@ function mainCourse2(){
   desc3.textContent = beskrivning3;
   let desc4 = document.createElement("li");
   desc4.textContent = beskrivning4;
-  let desc5 = document.createElement("li");
-  desc5.textContent = beskrivning5;
-  let desc6 = document.createElement("li");
-  desc6.textContent = beskrivning6;
-  let desc7 = document.createElement("li");
-  desc7.textContent = beskrivning7;
-  let desc8 = document.createElement("li");
-  desc8.textContent = beskrivning8;
-  let desc9 = document.createElement("li");
-  desc9.textContent = beskrivning9;
-  let desc10 = document.createElement("li");
-  desc10.textContent = beskrivning10;
-  let desc11 = document.createElement("li");
-  desc11.textContent = beskrivning11;
-  let desc12 = document.createElement("li");
-  desc12.textContent = beskrivning12;
-  let desc13 = document.createElement("li");
-  desc13.textContent = beskrivning13;
-  let desc14 = document.createElement("li");
-  desc14.textContent = beskrivning14;
-  let desc15 = document.createElement("li");
-  desc15.textContent = beskrivning15;
-  let desc16 = document.createElement("li");
-  desc16.textContent = beskrivning16;
-  let desc17 = document.createElement("li");
-  desc17.textContent = beskrivning17;
-  let desc18 = document.createElement("li");
-  desc18.textContent = beskrivning18;
-  let desc19 = document.createElement("li");
-  desc19.textContent = beskrivning19;
-  let desc20 = document.createElement("li");
-  desc20.textContent = beskrivning20;
 
   //Appenda OL med rubriker och beskrivningar
   divDescription.appendChild(descriptionList); //OL listan
@@ -1372,29 +1147,10 @@ function mainCourse2(){
   descriptionList.appendChild(desc2);
   descriptionList.appendChild(desc3);
   descriptionList.appendChild(desc4);
-  // descriptionList.appendChild(desc5);
-  // descriptionList.appendChild(desc6);
-  //descriptionList.appendChild(desc7);
-  //descriptionList.appendChild(desc8);
-  //descriptionList.appendChild(desc9);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc12);
-  //descriptionList.appendChild(desc13);
-  //descriptionList.appendChild(desc14);
-  //descriptionList.appendChild(desc15);
-  //descriptionList.appendChild(desc16);
-  //descriptionList.appendChild(desc17);
-  //descriptionList.appendChild(desc18);
-  //descriptionList.appendChild(desc19);
-  //descriptionList.appendChild(desc20);
-  //descriptionList.appendChild(descriptionHeader2) //Rubrik 2
-  //descriptionList.appendChild(descriptionHeader3) //Rubrik 3
-  //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
-  //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -1406,10 +1162,6 @@ function mainCourse3(){
   let matBild = "/Kötträtter/Mustig Lövbiffsgryta/lövbiffsgryta.jpg";
   let tillagningsTid = "2h";
   let ingrediensRubrik1 = "";
-  let ingrediensRubrik2 = "";
-  let ingrediensRubrik3 = "";
-  let ingrediensRubrik4 = "";
-  let ingrediensRubrik5 = "";
   let ingrediens1 = "800 g lövbiff";
   let ingrediens2 = "smör, att steka i";
   let ingrediens3 = "4 msk tomatpuré";
@@ -1419,42 +1171,12 @@ function mainCourse3(){
   let ingrediens7 = "3 dl crème fraîche";
   let ingrediens8 = "flingsalt";
   let ingrediens9 = "persilja, att garnera med";
-  let ingrediens10 = "";
-  let ingrediens11 = "";
-  let ingrediens12 = "";
-  let ingrediens13 = "";
-  let ingrediens14 = "";
-  let ingrediens15 = "";
-  let ingrediens16 = "";
-  let ingrediens17 = "";
-  let ingrediens18 = "";
-  let ingrediens19 = "";
-  let ingrediens20 = "";
   let beskrivningsRubrik1 = "Gör så här";
-  let beskrivningsRubrik2 = "";
-  let beskrivningsRubrik3 = "";
-  let beskrivningsRubrik4 = "";
-  let beskrivningsRubrik5 = "";
   let beskrivning1 = "Skär lövbiffen i centimeterbreda strimlor. Hetta upp en stekpanna med smör och bryn köttet tills det får färg.";
   let beskrivning2 = "Rör ner tomatpurén och låt fräsa en kort stund.";
   let beskrivning3 = "Blanda ner vattnet och låt sjuda under lock på svag värme i 1,5-2 timmar. Nästan allt vattnet ska ha ångat bort.";
   let beskrivning4 = "Tillsätt oxfond, soja, grädde och crème fraiche. Rör ihop och låt alltsammans sjuda i några minuter och smaka av med flingsalt.";
   let beskrivning5 = "Klipp över persilja och servera med kokt potatis eller ris.";
-  let beskrivning6 = "";
-  let beskrivning7 = "";
-  let beskrivning8 = "";
-  let beskrivning9 = "";
-  let beskrivning10 = "";
-  let beskrivning11 = "";
-  let beskrivning12 = "";
-  let beskrivning13 = "";
-  let beskrivning14 = "";
-  let beskrivning15 = "";
-  let beskrivning16 = "";
-  let beskrivning17 = "";
-  let beskrivning18 = "";
-  let beskrivning19 = "";
-  let beskrivning20 = "";
 
   section = document.createElement("section");
   document.body.appendChild(section);
@@ -1532,18 +1254,6 @@ function mainCourse3(){
   let head1 = document.createElement("li");
   head1.textContent = ingrediensRubrik1;
   head1.setAttribute("class", "listHeader");
-  let head2 = document.createElement("li");
-  head2.textContent = ingrediensRubrik2;
-  head2.setAttribute("class", "listHeader");
-  let head3 = document.createElement("li");
-  head3.textContent = ingrediensRubrik3;
-  head3.setAttribute("class", "listHeader");
-  let head4 = document.createElement("li");
-  head4.textContent = ingrediensRubrik4;
-  head4.setAttribute("class", "listHeader");
-  let head5 = document.createElement("li");
-  head5.textContent = ingrediensRubrik5;
-  head5.setAttribute("class", "listHeader");
 
   //Ingredienser
   let ing1 = document.createElement("li");
@@ -1564,28 +1274,6 @@ function mainCourse3(){
   ing8.textContent = ingrediens8;
   let ing9 = document.createElement("li");
   ing9.textContent = ingrediens9;
-  let ing10 = document.createElement("li");
-  ing10.textContent = ingrediens10;
-  let ing11 = document.createElement("li");
-  ing11.textContent = ingrediens11;
-  let ing12 = document.createElement("li");
-  ing12.textContent = ingrediens12;
-  let ing13 = document.createElement("li");
-  ing13.textContent = ingrediens13;
-  let ing14 = document.createElement("li");
-  ing14.textContent = ingrediens14;
-  let ing15 = document.createElement("li");
-  ing15.textContent = ingrediens15;
-  let ing16 = document.createElement("li");
-  ing16.textContent = ingrediens16;
-  let ing17 = document.createElement("li");
-  ing17.textContent = ingrediens17;
-  let ing18 = document.createElement("li");
-  ing18.textContent = ingrediens18;
-  let ing19 = document.createElement("li");
-  ing19.textContent = ingrediens19;
-  let ing20 = document.createElement("li");
-  ing20.textContent = ingrediens20;
 
   //Appenda ingredienser och ingrediensrubriker
   divIngredients.appendChild(list); // ul listan
@@ -1599,21 +1287,6 @@ function mainCourse3(){
   list.appendChild(ing7);
   list.appendChild(ing8);
   list.appendChild(ing9);
-  // list.appendChild(ing10);
-  // list.appendChild(ing11);
-  // list.appendChild(ing12);
-  // list.appendChild(head2); //Rubrik 2
-  // list.appendChild(ing13);
-  // list.appendChild(ing14);
-  // list.appendChild(ing15);
-  // list.appendChild(ing16);
-  // list.appendChild(ing17);
-  // list.appendChild(ing18);
-  // list.appendChild(ing19);
-  // list.appendChild(ing20);
-  // list.appendChild(head3); //Rubrik 3
-  // list.appendChild(head4); //Rubrik 4
-  // list.appendChild(head5); //Rubrik 5
 
   //Div container innehållandes tillagningsbeskrivningar
   let divDescription = document.createElement("div");
@@ -1627,14 +1300,6 @@ function mainCourse3(){
   //Rubriker för beskrivningen
   let descriptionHeader1 = document.createElement("h4");
   descriptionHeader1.innerText = beskrivningsRubrik1;
-  let descriptionHeader2 = document.createElement("h4");
-  descriptionHeader2.innerText = beskrivningsRubrik2;
-  let descriptionHeader3 = document.createElement("h4");
-  descriptionHeader3.innerText = beskrivningsRubrik3;
-  let descriptionHeader4 = document.createElement("h4");
-  descriptionHeader4.innerText = beskrivningsRubrik4;
-  let descriptionHeader5 = document.createElement("h4");
-  descriptionHeader5.innerText = beskrivningsRubrik5;
 
   //Beskrivningar
   let desc1 = document.createElement("li");
@@ -1647,36 +1312,6 @@ function mainCourse3(){
   desc4.textContent = beskrivning4;
   let desc5 = document.createElement("li");
   desc5.textContent = beskrivning5;
-  let desc6 = document.createElement("li");
-  desc6.textContent = beskrivning6;
-  let desc7 = document.createElement("li");
-  desc7.textContent = beskrivning7;
-  let desc8 = document.createElement("li");
-  desc8.textContent = beskrivning8;
-  let desc9 = document.createElement("li");
-  desc9.textContent = beskrivning9;
-  let desc10 = document.createElement("li");
-  desc10.textContent = beskrivning10;
-  let desc11 = document.createElement("li");
-  desc11.textContent = beskrivning11;
-  let desc12 = document.createElement("li");
-  desc12.textContent = beskrivning12;
-  let desc13 = document.createElement("li");
-  desc13.textContent = beskrivning13;
-  let desc14 = document.createElement("li");
-  desc14.textContent = beskrivning14;
-  let desc15 = document.createElement("li");
-  desc15.textContent = beskrivning15;
-  let desc16 = document.createElement("li");
-  desc16.textContent = beskrivning16;
-  let desc17 = document.createElement("li");
-  desc17.textContent = beskrivning17;
-  let desc18 = document.createElement("li");
-  desc18.textContent = beskrivning18;
-  let desc19 = document.createElement("li");
-  desc19.textContent = beskrivning19;
-  let desc20 = document.createElement("li");
-  desc20.textContent = beskrivning20;
 
   //Appenda OL med rubriker och beskrivningar
   divDescription.appendChild(descriptionList); //OL listan
@@ -1686,32 +1321,14 @@ function mainCourse3(){
   descriptionList.appendChild(desc3);
   descriptionList.appendChild(desc4);
   descriptionList.appendChild(desc5);
-  //descriptionList.appendChild(desc6);
-  //descriptionList.appendChild(desc7);
-  //descriptionList.appendChild(desc8);
-  //descriptionList.appendChild(desc9);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc10);
-  //descriptionList.appendChild(desc12);
-  //descriptionList.appendChild(desc13);
-  //descriptionList.appendChild(desc14);
-  //descriptionList.appendChild(desc15);
-  //descriptionList.appendChild(desc16);
-  //descriptionList.appendChild(desc17);
-  //descriptionList.appendChild(desc18);
-  //descriptionList.appendChild(desc19);
-  //descriptionList.appendChild(desc20);
-  //descriptionList.appendChild(descriptionHeader2) //Rubrik 2
-  //descriptionList.appendChild(descriptionHeader3) //Rubrik 3
-  //descriptionList.appendChild(descriptionHeader4) //Rubrik 4
-  //descriptionList.appendChild(descriptionHeader5) //Rubrik 5
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
-//  selection of three recepies and choose to random pick one of them.  
+// Desserts recipes list  
 function dessertMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
@@ -1926,6 +1543,7 @@ function dessert1(){
   
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -2012,6 +1630,7 @@ function dessert2(){
   divCookTime.appendChild(cookTime);
   divCutlery.appendChild(imgCutlery);
   divCutlery.appendChild(selector);
+
   //  will create a line under info.
   let hr = document.createElement("hr");
   section.appendChild(hr);
@@ -2038,13 +1657,6 @@ function dessert2(){
   let ingrediensSecondHeader = document.createElement("h4");
   ingrediensSecondHeader.textContent = "";
   ingrediensSecondHeader.setAttribute("class", "listHeader");
-  //ingrediensList.appendChild(ingrediensSecondHeader);
-  
-  // for(let i = 0; i < ingrediensVegan.length; i++){
-  //   let ingredien = document.createElement("li")
-  //   ingredien.textContent = ingrediensVegan[i];
-  //   ingrediensList.appendChild(ingredien);
-  // }
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -2065,6 +1677,7 @@ function dessert2(){
   
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -2173,13 +1786,6 @@ function dessert3(){
   let ingrediensSecondHeader = document.createElement("h4");
   ingrediensSecondHeader.textContent = "";
   ingrediensSecondHeader.setAttribute("class", "listHeader");
-  //ingrediensList.appendChild(ingrediensSecondHeader);
-  
-  // for(let i = 0; i < ingrediensVegan.length; i++){
-  //   let ingredien = document.createElement("li")
-  //   ingredien.textContent = ingrediensVegan[i];
-  //   ingrediensList.appendChild(ingredien);
-  // }
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -2200,10 +1806,11 @@ function dessert3(){
   
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
-//  selection of three recepies and choose to random pick one of them.  
+// Vegetarian recipes list  
 function vegetarianMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
@@ -2446,6 +2053,7 @@ function vegetarian1(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -2559,24 +2167,10 @@ function vegetarian2(){
   let ingredientsSecondHeader = document.createElement("h4");
   ingredientsSecondHeader.textContent = "";
   ingredientsSecondHeader.setAttribute("class", "listHeader");
-  //ingredientsList.appendChild(ingredientsSecondHeader);
-  
-  // for(let i = 0; i < ingredients2.length; i++){
-  //   let ingredien = document.createElement("li")
-  //   ingredien.textContent = ingredients2[i];
-  //   ingredientsList.appendChild(ingredien);
-  // }
 
   let ingredientsThirdHeader = document.createElement("h4");
   ingredientsThirdHeader.textContent = "";
   ingredientsThirdHeader.setAttribute("class", "listHeader");
-  //ingredientsList.appendChild(ingredientsThirdHeader);
-  
-  // for(let i = 0; i < ingredients3.length; i++){
-  //   let ingredien = document.createElement("li")
-  //   ingredien.textContent = ingredients3[i];
-  //   ingredientsList.appendChild(ingredien);
-  // }
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -2597,6 +2191,7 @@ function vegetarian2(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -2770,10 +2365,11 @@ function vegetarian3(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
-//  selection of three recepies and choose to random pick one of them.  
+// Vegan recepies list  
 function veganMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
@@ -3001,6 +2597,7 @@ function vegan1(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -3151,6 +2748,7 @@ function vegan2(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
@@ -3324,17 +2922,19 @@ function vegan3(){
 
   footer();
   btnBackOneStep();
+  btnBack();
   btnsLikeDislike();
 }
 
+// Footer creation
 function footer(){
   mainFooter.innerHTML = "";
   mainFooter.setAttribute('id', 'main-footer');
   document.body.appendChild(mainFooter);
 }
 
+  // Back to main menu Button
 function btnBack(){
-  //  "Go-Back-Button"
   let aTag = document.createElement("a");
   aTag.setAttribute("href", "index.html");
   aTag.setAttribute("class", "button");
@@ -3342,6 +2942,7 @@ function btnBack(){
   mainFooter.appendChild(aTag);
 }
 
+// Like and Dislike buttons
 function btnsLikeDislike(){
   let likeButton = document.createElement("a");
   //likeButton.setAttribute("href", "#");
@@ -3365,9 +2966,10 @@ function btnsLikeDislike(){
   holdButtonsDiv.appendChild(dislikeButton);
 }
 
+// Go back to recipelist
 function btnBackOneStep(){
   let backOneButton = document.createElement("a");
-  //dislikeButton.setAttribute("href", "#");
+  //backOneButton.setAttribute("href", "#"); //Sparar denna utkommenterade koden då den senare ska länkas tillbaka till "mellanmenyn"
   backOneButton.setAttribute("class", "button arrow");
   backOneButton.textContent = '⟵';
   mainFooter.appendChild(backOneButton);
