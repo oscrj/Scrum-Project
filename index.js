@@ -118,7 +118,7 @@ function starterMenu(){
 
   //  add eventlisterner
   recepie1.addEventListener("click", starter1);
-  recepie2.addEventListener("click", starter3);
+  recepie2.addEventListener("click", starter2);
   recepie3.addEventListener("click", starter3);
   randomBtn.addEventListener("click", randomStarter);
 
