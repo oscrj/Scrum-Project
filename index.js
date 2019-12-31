@@ -697,6 +697,393 @@ function starter3(){
   btnsLikeDislike();
 }
 
+/** -------------------------------- */
+/** Starter4 - filo */
+function starter4(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediensFilodegskorgar = [
+    "25 g smör",
+    "4 filodegsark"
+  ]
+
+  let ingrediensCitronmajonnas = [
+    "1 citron, finrivet skal och sasft",
+    "100 g majonnäs",
+    "1 msk finhackad dill",
+    "Salt och nymalen svartpeppar"
+  ]
+
+  let ingrediensRakfyllning = [
+    "1 knippe grön sparris",
+    "300 g skalade räkor",
+    "1 hjärtsallatshuvud"
+  ]
+
+  let ingrediensTillservering = [
+    "Färsk körvel",
+    "Färsk dill"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTofilodegskorgarna = [
+    "Sätt ugnen på 175°. Smält smöret i en liten kastrull.",
+    "Skär filodegsarken i 8 lika stora fyrkanter, totalt 32 st. Pensla alla med smält smör.",
+    "Lägg 4 filodegsfyrkanter ovanpå varandra så de bildar en stjärna. Gör likadant med resten av arken så du får 8 filodegsstjärnor.",
+    "Pensla ett muffinsbleck med smör och tryck försiktigt ner filodegsstjärnorna i var sin form.",
+    "Grädda dem i ugnen i cirka 10 minuter tills de är spröda.",
+    "Låt svalna, ta ur formen och lägg på galler."
+  ]
+
+  let howToRakfyllningen = [
+    "Skölj sparrisen och bryt loss den nedre träiga delen.",
+    "Skala dem i långa tunna strimlor med en potatisskalare och lägg i skål med isvatten i 15 minuter så de blir krispiga och krullar ihop sig."
+  ]
+
+  let howToCitronmajonnas = [
+    "Skölj citronen och finriv skalet. Halvera citronen och pressa ur saften.",
+    "Rör ihop citronskal, dill och majonnäs. Smaka av med citronsaft, salt och peppar.",
+    "Skölj och strimla salladen.",
+    "Fyll korgarna med sallad, räkor och sparris.",
+    "Toppa med citronmajonnäs och strö över körvel och dill.",
+    "Frasiga filodegskorgar med räkor, sparris och citronmajonnäs",
+    "Filodegskorgar med räkor och citronmajonnäs."
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "FILODEGSKORGAR MED RÄKOR OCH CITRONMAJONNÄS";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/starters/filo/filodegskorgar-rakor-sparris-citron-980x515-c.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "60 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option8);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+  
+  let ingrediensHeader = document.createElement("h4");
+  ingrediensHeader.textContent = "Filodegskorgar:";
+  ingrediensHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensHeader);
+
+  for(let i = 0; i < ingrediensFilodegskorgar.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediensFilodegskorgar[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensSecondHeader = document.createElement("h4");
+  ingrediensSecondHeader.textContent = "Citronmajonnäs:";
+  ingrediensSecondHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensSecondHeader);
+  
+  for(let i = 0; i < ingrediensCitronmajonnas.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensCitronmajonnas[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensThirdHeader = document.createElement("h4");
+  ingrediensThirdHeader.textContent = "Räkfyllning:";
+  ingrediensThirdHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensThirdHeader);
+  
+  for(let i = 0; i < ingrediensRakfyllning.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensRakfyllning[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensFourthHeader = document.createElement("h4");
+  ingrediensFourthHeader.textContent = "Till servering:";
+  ingrediensFourthHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensFourthHeader);
+  
+  for(let i = 0; i < ingrediensTillservering.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensTillservering[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader1 = document.createElement("h4");
+  descriptionHeader1.innerText = "Gör filodegskorgarna så här:";
+  divDescription.appendChild(descriptionHeader1);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTofilodegskorgarna.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTofilodegskorgarna[i];
+    descriptionList.appendChild(description);
+  }
+  
+  descriptionHeader2 = document.createElement("h4");
+  descriptionHeader2.innerText = "Gör räkfyllningen så här:";
+  divDescription.appendChild(descriptionHeader2);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howToRakfyllningen.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howToRakfyllningen[i];
+    descriptionList.appendChild(description);
+  }
+
+  descriptionHeader3 = document.createElement("h4");
+  descriptionHeader3.innerText = "Gör citronmajonnäs så här:";
+  divDescription.appendChild(descriptionHeader3);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howToCitronmajonnas.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howToCitronmajonnas[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
+/** -------------------------------- */
+/**Start5 pizza */
+function starter5(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediensDeg = [
+    "3 dl vatten",
+    "15 g jäst",
+    "1 msk olivolja",
+    "2 tsk salt",
+    "1 dl dinkelmjöl",
+    "6 1/4 dl vetemjöl"
+  ]
+
+  let ingrediensTopping = [
+    "250 g ricotta",
+    "4 msk olivolja",
+    "2–3 rödbetor",
+    "100 g getost",
+    "2 msk pinjenötter",
+    "1 msk flytande honung"
+  ]
+
+  let ingrediensBasilikaolja = [
+    "1 kruka basilika",
+    "1 olivolja",
+    "salt",
+    "färskmalen svartpeppar"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Häll 37-gradigt vatten i en skål och lös upp jästen i det. Tillsätt olja, salt och dinkelmjöl. Knåda sedan i vetemjölet till en blank och smidig deg. Låt jäsa under bakduk i 30 minuter på ett dragfritt ställe i huset.",
+    "Mixa alla ingredienserna till basilikaoljan i en matberedare, smaka av med salt och nymalen svartpeppar.",
+    "Kavla ut degen på mjölat bord till två tunna pizzabottnar.",
+    "Bred på ett tunt lager ricotta på pizzabottnarna, låt 1 cm av degen vara fri från fyllning och pensla den kanten med olja. Skala och skär rödbetorna så tunt som möjligt, gärna på en mandolin. Om du vill kan du använda olikfärgade betor för en vacker effekt, exempelvis gulbetor och polkabetor. Fördela dem i tunna lager på pizzan. Smula över getost och strö över pinjenötter.",
+    "Ringla honung och basilikaoljan över pizzan innan servering. Njut nygräddad eller lite avsvalnad."
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "PIZZA BIANCO MED GETOST OCH RÖDBETOR";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/starters/pizza/pizza-bianco-getost-rodbetor-utvald-980x515-c.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "50 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+  
+  let ingrediensHeader = document.createElement("h4");
+  ingrediensHeader.textContent = "Deg:";
+  ingrediensHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensHeader);
+
+  for(let i = 0; i < ingrediensDeg.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediensDeg[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensSecondHeader = document.createElement("h4");
+  ingrediensSecondHeader.textContent = "Topping:";
+  ingrediensSecondHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensSecondHeader);
+  
+  for(let i = 0; i < ingrediensTopping.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensTopping[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensThirdHeader = document.createElement("h4");
+  ingrediensThirdHeader.textContent = "Basilikaolja:";
+  ingrediensThirdHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensThirdHeader);
+  
+  for(let i = 0; i < ingrediensBasilikaolja.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensBasilikaolja[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+} 
+
 //  Main course recipes list  
 function mainCourseMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -1328,6 +1715,309 @@ function mainCourse3(){
   btnsLikeDislike();
 }
 
+/** -------------------------------- */
+/** Maincourse4 - ITALIENSK KYCKLINGGRATÄNG */
+function maincourse4(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediens = [
+    "8 kycklinglårfiléer med skinn",
+    "flingsalt",
+    "svartpeppar, nymald",
+    "10 soltorkade tomater, i olja",
+    "1 klyfta vitlök",
+    "0,5 röd chilifrukt, utan kärnor",
+    "1 tsk torkad timjan",
+    "1 tsk torkad oregano",
+    "3 dl kycklingbuljong",
+    "1,5 dl vispgrädde",
+    "1 dl parmesanost, fint riven"
+  ]
+
+  let ingrediensTillservering = [
+    "8 körsbärstomater",
+    "0,5 kruka basilika",
+    "4 port pasta, kokt"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Värm ugnen till 180 grader, varmluft.",
+    "Koka pastan enligt anvisningar på förpackningen.",
+    "Fräs kycklingen på medelvärme tills den får lite färg runtom, i cirka 5 minuter. Salta och peppra. Lägg över i en ugnsform.",
+    "Strimla de soltorkade tomaterna. Skala och finhacka vitlöken. Finhacka chilin. Fräs tomaterna, vitlöken och chilin i cirka 2 minuter, tills det börjar dofta härligt.",
+    "Krydda med timjan och oregano och häll i buljongen. Tillsätt grädden och parmesanosten. Låt det sjuda försiktigt tills osten smälter.",
+    "Skeda såsen över kycklingen i formen. Grädda i mitten av ugnen i cirka 15 minuter.",
+    "Dela körsbärstomaterna i halvor. Plocka basilikabladen.",
+    "Ta ut formen. Lägg ut körsbärstomaterna i formen och toppa med färsk basilika. Servera gratängen direkt med pasta.",
+    "Matsortera dina lökskal till återvinning och njut av din krämiga gratäng!"
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "ITALIENSK KYCKLINGGRATÄNG";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/Kötträtter/Italiensk kycklinggratäng/kycklinggratäng.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "45 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+  
+
+  for(let i = 0; i < ingrediens.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediens[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  let ingrediensSecondHeader = document.createElement("h4");
+  ingrediensSecondHeader.textContent = "Till servering:";
+  ingrediensSecondHeader.setAttribute("class", "listHeader");
+  ingrediensList.appendChild(ingrediensSecondHeader);
+  
+  for(let i = 0; i < ingrediensTillservering.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingrediensTillservering[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+} 
+
+/** -------------------------------- */
+/** Maincourse5 - PANNBIFF */
+function maincourse5(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediens = [
+    "300 g nötfärs",
+    "300 g blandfärs",
+    "2 gula lökar",
+    "smör, till stekning",
+    "olja, till stekning",
+    "3 potatisar, kokta",
+    "0,5 dl grädde",
+    "0,5 dl mjölk",
+    "1 ägg",
+    "1 dl ströbröd",
+    "1 dl vatten",
+    "1 msk koncentrerad kalvfond",
+    "1 msk japansk soja",
+    "salt",
+    "peppar",
+    "2 gula lökar (stora)",
+    "smör, till stekning",
+    "strösocker (en nypa)",
+    "potatis, stekt (eller kokt)",
+    "pressgurka",
+    "skysås"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Skala de medelstora lökarna.",
+    "Riv en av lökarna, den andra hackar du fint och bryner i smör.",
+    "Mosa potatisarna med en gaffel.",
+    "Blanda grädden, mjölken, ägget, den rivna och den frästa löken, potatisen, ströbrödet och vattnet i en bunke.",
+    "Ställ åt sidan och låt svälla en stund.",
+    "Blanda smeten med färsen, kalvfond och soja.",
+    "Salta och peppra och blanda noga ihop till en jämn smet.",
+    "Provstek en bit för att smaka av kryddningen.",
+    "Ställ smeten åt sidan.",
+    "Skala de stora lökarna och skär dem i tunna skivor.",
+    "Stek dem gyllenbruna i smör, pudra över en nypa socker och ställ åt sidan.",
+    "Forma fyra stora pannbiffar och stek dem sakta i smör och lite olja tills de är knaprigt gyllenbruna, 4–5 minuter på varje sida.",
+    "Fräs samtidigt löken en gång till och lägg den sedan i ett tjockt lager ovanpå den färdigstekta biffen.",
+    "Matsortera dina lökskal och potatisskal till återvinning och njut av din pannbiff!"
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "PANNBIFF";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/Kötträtter/Pannbiff/pannbiff.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "30 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+
+  for(let i = 0; i < ingrediens.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediens[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
 // Desserts recipes list  
 function dessertMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -1809,6 +2499,268 @@ function dessert3(){
   btnBack();
   btnsLikeDislike();
 }
+
+/** -------------------------------- */
+/** Dessert4 - KEYLIMEPIE */
+function dessert4(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediens = [
+    "150 g digestivekex",
+    "50 g smör",
+    "200 g söt kondenserad mjölk",
+    "2 äggulor",
+    "1/2 dl färskpressad limejuice",
+    "1/2 tsk vaniljsocker",
+    "1/2 liter färska jordgubbar",
+    "2 dl vispgrädde",
+    "4 limeklyftor"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Smula kexen med kniv i en matberedare.",
+    "Smält smör och blanda med kexsmulorna.",
+    "Rör samman kondenserad mjölk, äggulor, limejuice och vaniljsocker.",
+    "Varva ”limekrämen” med kexsmulor och skivade jordgubbar i vackra glas.",
+    "Garnera med vispad grädde och en limeklyfta."
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "KEY LIME PIE I GLAS";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/Desserts/KeyLimePie/key-lime-pie-glas-utvald-980x515-c.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "15 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+
+  for(let i = 0; i < ingrediens.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediens[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+} 
+
+/** -------------------------------- */
+/** Dessert5 - KLADDKAKA */
+function dessert5(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingrediensList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+  let mainFooter;  //  Create a wrapper that will cointain "Go back button"
+
+  //  Array of ingredians
+  let ingrediens = [
+    "125g mörk choklad",
+    "100g smör",
+    "2,5 msk lakritspulver",
+    "1 tsk vaniljsocker",
+    "1 krm salt",
+    "2 dl strösocker",
+    "2 ägg",
+    "1,5 dl vetemjöl",
+    "0,5 tsk bakpulver",
+    "1 ask hallon (cirka 250g)",
+    "3 dl vispgrädde",
+    "florsocker"
+  ]
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Byt chokladen till mindre bitar i en bunke. Smält smöret i en kastrull och häll det över chokladen så den smälter. Rör i lakritspulver, vaniljsocker, salt och strösocker så det löser upp sig. Rör i äggen sist.",
+    "Rör ihop chokladsmeten med vetemjöl och bakpulver.",
+    "Smöra och mjöla en springform på cirka 23 centimeter i diameter. Häll smeten i formen och grädda kakan i 175°C i 20-25 minuter. Låt svalna.",
+    "Varva ”limekrämen” med kexsmulor och skivade jordgubbar i vackra glas.",
+    "Vispa grädden. Lossa kakan från formen och lägg på ett fat. Toppa med grädde, hallon och pudra över lite florsocker. Vill du vafriera det hela byter du hallonen mot jordgubbar. Det är också gott att blanda både jordgubbar och hallon."
+  ]
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "KLADDKAKA MED LAKRITS OCH HALLON";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "/Desserts/Kladdkaka/kladdkaka-0D5A7372.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "40 min";
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option8);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingrediens
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingrediensList = document.createElement("ul");
+  divIngredients.appendChild(ingrediensList);
+
+  for(let i = 0; i < ingrediens.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingrediens[i];
+    ingrediensList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+  
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
 
 // Vegetarian recipes list  
 function vegetarianMenu(){
