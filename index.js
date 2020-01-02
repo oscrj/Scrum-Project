@@ -5173,7 +5173,7 @@ function veganMenu(){
   section.id = "secondMenuSection"
   document.body.appendChild(section);
 
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     let divWrapper = document.createElement("div");
     divWrapper.setAttribute("class","secondMenuWrapper");
     section.appendChild(divWrapper);
@@ -5182,16 +5182,16 @@ function veganMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
-  // let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
-  // let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
-  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[5];
 
   //  add eventlisterner
   recepie1.addEventListener("click", vegan1);
   recepie2.addEventListener("click", vegan2);
   recepie3.addEventListener("click", vegan3);
-  // recepie4.addEventListener("click", vegan4);
-  // recepie5.addEventListener("click", vegan5);
+  recepie4.addEventListener("click", vegan4);
+  recepie5.addEventListener("click", vegan5);
   randomBtn.addEventListener("click", randomVegan);
 
   //  recepie1
@@ -5219,20 +5219,20 @@ function veganMenu(){
   recepie3.appendChild(recepieHeader3);
 
   // recepie4
-  // let recepieImg4 = document.createElement("img");
-  // recepieImg4.src = "";
-  // recepie4.appendChild(recepieImg4);
-  // let recepieHeader4 = document.createElement("h5");
-  // recepieHeader4.textContent = "Recept 4";
-  // recepie4.appendChild(recepieHeader4);
+  let recepieImg4 = document.createElement("img");
+  recepieImg4.src = "vegan/quinoabollar-med-tikka-masalasås/quinoabollar-med-tikka-masalasås.jpg";
+  recepie4.appendChild(recepieImg4);
+  let recepieHeader4 = document.createElement("h5");
+  recepieHeader4.textContent = "QUINOABOLLAR MED TIKKA MASALASÅS";
+  recepie4.appendChild(recepieHeader4);
 
   // recepie5
-  // let recepieImg5 = document.createElement("img");
-  // recepieImg5.src = "";
-  // recepie5.appendChild(recepieImg5);
-  // let recepieHeader5 = document.createElement("h5");
-  // recepieHeader5.textContent = "Recept 5";
-  // recepie5.appendChild(recepieHeader5);
+  let recepieImg5 = document.createElement("img");
+  recepieImg5.src = "vegan/vegansk-paj-med-svamp-och-zucchini/vegansk-paj-med-svamp-och-zucchini.jpg";
+  recepie5.appendChild(recepieImg5);
+  let recepieHeader5 = document.createElement("h5");
+  recepieHeader5.textContent = "VEGANSK PAJ MED SVAMP OCH ZUCCHINI";
+  recepie5.appendChild(recepieHeader5);
 
   //  Random recepie
   let randomImg = document.createElement("img");
@@ -5909,6 +5909,354 @@ function vegan3(){
   }
 
   sixPortions();
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
+/** Vegan4 - QUINOABOLLAR MED TIKKA MASALASÅS */
+function vegan4(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingredientsList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+
+  //  Currypasta tikka masala
+  let ingredients = [
+    "2 msk hel spiskummin",
+    "1 msk hel koriander",
+    "2 vitlöksklyftor",
+    "2 cm färsk ingefära",
+    "1 röd chili",
+    "1/2 tsk cayennepeppar",
+    "1 tsk chiliflakes",
+    "2 tsk garam masala",
+    "1/2 tsk havssalt",
+    "2 msk tomatpuré",
+    "2 msk kokosflingor",
+    "2 msk äppelcidervinäger"
+  ];
+
+  // Quinoabollar
+  let ingredients2 = [
+    "1 paket quinoaburgare (à 200 g)",
+    "2 gula lökar",
+    "5 cm färsk ingefära",
+    "1 röd chili",
+    "1 kruka koriander",
+    "ca 2 msk matolja",
+    "2 msk av tikka masala currypasta (från steg 1-2)",
+    "400 g krossade tomater",
+    "400 ml kokosmjölk"
+  ];
+
+  // Tillbehör
+  let ingredients3 = [
+    "Råris"
+  ];
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Rosta spiskummin och koriander i en torr het panna. Mal dem i en mortel.",
+    "Skala vitlök och ingefära. Pressa vitlöken, finhacka ingefäran, kärna ur och finhacka chilin, tillsätt dessa med resterande ingredienser i de mortlade kryddorna och mortla ihop till en pasta. Det går även bra att mixa allt i en liten matberedare. Ställ åt sidan.",
+    "Tillaga quinoamixen enligt anvisningarna på förpackningen och forma till bollar. Stek i en stekpanna i hälften av oljan.",
+    "Skala och hacka gul lök, ingefära och chili. Hacka korianderstjälkarna, spara bladen till servering.",
+    "Hetta upp resten av oljan i en panna med höga kanter, fräs lök, chili, ingefära och korianderstjälkar på medelhög värme tills de mjuknat. Tillsätt tikka masalapastan och fräs lite till. Häll därefter i tomatkross och kokosmjölk, koka upp och sjud i 10 min tills smakerna kommit ihop sig. Lägg i de tillagade quinoabollarna och låt dem sjuda med i 5-10 min.",
+    "Servera med råris och toppa med färska korianderblad."
+  ];
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "QUINOABOLLAR MED TIKKA MASALASÅS";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "vegan/quinoabollar-med-tikka-masalasås/quinoabollar-med-tikka-masalasås.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "50 min";  // estimated cooking time
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingredients
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingredientsList = document.createElement("ul");
+  divIngredients.appendChild(ingredientsList);
+  
+  let ingredientsHeader = document.createElement("h4");
+  ingredientsHeader.textContent = "Currypasta tikka masala:";
+  ingredientsHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsHeader);
+
+  for(let i = 0; i < ingredients.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingredients[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsSecondHeader = document.createElement("h4");
+  ingredientsSecondHeader.textContent = "Quinoabollar:";
+  ingredientsSecondHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsSecondHeader);
+  
+  for(let i = 0; i < ingredients2.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients2[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsThirdHeader = document.createElement("h4");
+  ingredientsThirdHeader.textContent = "Tillbehör:";
+  ingredientsThirdHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsThirdHeader);
+  
+  for(let i = 0; i < ingredients3.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients3[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör såhär:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
+/** Vegan5 - VEGANSK PAJ MED SVAMP OCH ZUCCHINI */
+function vegan5(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingredientsList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+
+  //  Pajdeg
+  let ingredients = [
+    "125 g mjölkfritt margarin",
+    "3 dl siktat dinkelmjöl eller vetemjöl",
+    "1 msk kallt vatten",
+    "1 krm salt"
+  ];
+
+  // Fyllning
+  let ingredients2 = [
+    "2 rödlökar",
+    "2 vitlöksklyftor",
+    "1 zucchini (à ca 300 g)",
+    "250 g kastanjechampinjoner",
+    "olivolja (till stekning)",
+    "2 tsk torkad timjan",
+    "1 1/2 tsk salt",
+    "1/2 tsk malen svartpeppar",
+    "5 dl havregrädde (13%)",
+    "2 msk majsstärkelse",
+    "200 g vegansk ost"
+  ];
+
+  // Tillbehör
+  let ingredients3 = [
+    "Sallad"
+  ];
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Värm vattnet till 41 grader.",
+    "Blanda ihop de torra ingredienser till pizzabotten och rör ut dem i vattnet.",
+    "Knåda degen ordentligt. Låt degen jäsa under bakduk medan du tillreder fyllningen.",
+    "Finhacka alla grönsaker till tomatsåsen och lägg ner dem i en kastrull.",
+    "Låt koka på svag värme i 15 minuter. Salta och peppra.",
+    "Skär auberginen i tunna skivor. Lägg ut skivorna på ett hushållspapper på arbetsbänken. Strö på rikligt med havssalt och vänta tills vätskan från auberginen dragits ut. Torka av vätska och överflödigt salt. Stek skivorna i olja i stekpanna eller i ugn på mittersta/översta falsen i 250 grader 15 minuter.",
+    "Kavla ut degen och lägg den på bakplåtspapper på en bakplåt. Bred på tomatsås och fördela aubergine, oliver och skivade champinjoner över pizzan. Strö riven Oddlygood ovanpå. Grädda i 15 minuter.",
+    "Toppa med färsk basilika."
+  ];
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "VEGANSK PAJ MED SVAMP OCH ZUCCHINI";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "vegan/vegansk-paj-med-svamp-och-zucchini/vegansk-paj-med-svamp-och-zucchini.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "90 min";  // estimated cooking time
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingredients
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingredientsList = document.createElement("ul");
+  divIngredients.appendChild(ingredientsList);
+  
+  let ingredientsHeader = document.createElement("h4");
+  ingredientsHeader.textContent = "Pajdeg:";
+  ingredientsHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsHeader);
+
+  for(let i = 0; i < ingredients.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingredients[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsSecondHeader = document.createElement("h4");
+  ingredientsSecondHeader.textContent = "Fyllning:";
+  ingredientsSecondHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsSecondHeader);
+  
+  for(let i = 0; i < ingredients2.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients2[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsThirdHeader = document.createElement("h4");
+  ingredientsThirdHeader.textContent = "Tillbehör:";
+  ingredientsThirdHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsThirdHeader);
+  
+  for(let i = 0; i < ingredients3.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients3[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör såhär:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
   footer();
   btnBackOneStep();
   btnBack();
