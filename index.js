@@ -15,7 +15,7 @@ function addEventListeners(){
 
 //Starters - random
 function randomStarter(){
-  let randomNr = Math.floor(Math.random() * 3) + 1;
+  let randomNr = Math.floor(Math.random() * 5) + 1;
 
   if (randomNr === 1){
     starter1();
@@ -26,11 +26,17 @@ function randomStarter(){
   if (randomNr === 3){
     starter3();
   }
+  if (randomNr === 4){
+    starter4();
+  }
+  if (randomNr === 5){
+    starter5();
+  }
 }
 
 //Main courses - random
 function randomMainCourse(){
-  let randomNr = Math.floor(Math.random() * 3) + 1;
+  let randomNr = Math.floor(Math.random() * 5) + 1;
 
   if (randomNr === 1){
     mainCourse1();
@@ -41,11 +47,17 @@ function randomMainCourse(){
   if (randomNr === 3){
     mainCourse3();
   }
+  if (randomNr === 4){
+    maincourse4();
+  }
+  if (randomNr === 5){
+    maincourse5();
+  }
 }
 
 //Desserts - random
 function randomDessert(){
-  let randomNr = Math.floor(Math.random() * 3) + 1;
+  let randomNr = Math.floor(Math.random() * 5) + 1;
 
   if (randomNr === 1){
     dessert1();
@@ -56,11 +68,17 @@ function randomDessert(){
   if (randomNr === 3){
     dessert3();
   }
+  if (randomNr === 4){
+    dessert4();
+  }
+  if (randomNr === 5){
+    dessert5();
+  }
 }
 
 //Vegeterian - random
 function randomVegetarian(){
-  let randomNr = Math.floor(Math.random() * 3) + 1;
+  let randomNr = Math.floor(Math.random() * 5) + 1;
 
   if (randomNr === 1){
     vegetarian1();
@@ -71,11 +89,17 @@ function randomVegetarian(){
   if (randomNr === 3){
     vegetarian3();
   }
+  if (randomNr === 4){
+    vegetarian4();
+  }
+  if (randomNr === 5){
+    vegetarian5();
+  }
 }
 
 //Vegan - random
 function randomVegan(){
-  let randomNr = Math.floor(Math.random() * 3) + 1;
+  let randomNr = Math.floor(Math.random() * 5) + 1;
 
   if (randomNr === 1){
     vegan1();
@@ -93,7 +117,7 @@ function starterMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let headerWrapper = document.createElement("header");
-  headerWrapper.setAttribute("id", "rec-header");
+  headerWrapper.setAttribute("id", "secondMenuHeader");
   document.body.appendChild(headerWrapper);
 
   //  Page Header
@@ -105,7 +129,7 @@ function starterMenu(){
   section.id = "secondMenuSection"
   document.body.appendChild(section);
 
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     let divWrapper = document.createElement("div");
     divWrapper.setAttribute("class","secondMenuWrapper");
     section.appendChild(divWrapper);
@@ -114,19 +138,22 @@ function starterMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
-  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[5];
 
   //  add eventlisterner
   recepie1.addEventListener("click", starter1);
   recepie2.addEventListener("click", starter2);
   recepie3.addEventListener("click", starter3);
+  recepie4.addEventListener("click", starter4);
+  recepie5.addEventListener("click", starter5);
   randomBtn.addEventListener("click", randomStarter);
 
   //  recepie1
   let recepieImg = document.createElement("img");
   recepieImg.src = "starters/gin/starter1.jpg";
   recepie1.appendChild(recepieImg);
-
   let recepieHeader = document.createElement("h5");
   recepieHeader.textContent = "GIN & TONIC-GRAVAD LAX MED INLAGD GURKA"
   recepie1.appendChild(recepieHeader);
@@ -135,7 +162,6 @@ function starterMenu(){
   let recepieImg2 = document.createElement("img");
   recepieImg2.src = "starters/sill/pask-rora-sill-potatis-agg-glas-utvald-980x515-c.jpg";
   recepie2.appendChild(recepieImg2);
-
   let recepieHeader2 = document.createElement("h5");
   recepieHeader2.textContent = "RÖRA MED SILL, POTATIS OCH ÄGG I GLAS"
   recepie2.appendChild(recepieHeader2);
@@ -144,16 +170,33 @@ function starterMenu(){
   let recepieImg3 = document.createElement("img");
   recepieImg3.src = "starters/soppa/vargron-artsoppa-recept-980x515-c.jpg";
   recepie3.appendChild(recepieImg3);
-
   let recepieHeader3 = document.createElement("h5");
   recepieHeader3.textContent = "VÅRGRÖN ÄRTSOPPA MED VITT VIN"
   recepie3.appendChild(recepieHeader3);
 
+  // recepie4
+  let recepieImg4 = document.createElement("img");
+  recepieImg4.src = "/starters/filo/filodegskorgar-rakor-sparris-citron-980x515-c.jpg";
+  recepie4.appendChild(recepieImg4);
+  let recepieHeader4 = document.createElement("h5");
+  recepieHeader4.textContent = "FILODEGSKORGAR MED RÄKOR OCH CITRONMAJONNÄS";
+  recepie4.appendChild(recepieHeader4);
+
+  // recepie5
+  let recepieImg5 = document.createElement("img");
+  recepieImg5.src = "/starters/pizza/pizza-bianco-getost-rodbetor-utvald-980x515-c.jpg";
+  recepie5.appendChild(recepieImg5);
+  let recepieHeader5 = document.createElement("h5");
+  recepieHeader5.textContent = "PIZZA BIANCO MED GETOST OCH RÖDBETOR";
+  recepie5.appendChild(recepieHeader5);
+
   //  Random recepie
-  let randomAtag = document.createElement("a");
-  randomAtag.setAttribute("class", "button");
-  randomAtag.textContent = "Slumpa ett recept";
-  randomBtn.appendChild(randomAtag);
+  let randomImg = document.createElement("img");
+  randomImg.src = "/media/RandomPick.png"
+  randomBtn.appendChild(randomImg);
+  let randomHeader = document.createElement("h5");
+  randomHeader.textContent = "SVÅRT ATT VÄLJA?";
+  randomBtn.appendChild(randomHeader);
   
   footer();
   btnBack();
@@ -945,7 +988,6 @@ function starter3(){
   btnsLikeDislike();
 }
 
-/** -------------------------------- */
 /** Starter4 - filo */
 function starter4(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -1163,7 +1205,6 @@ function starter4(){
   btnsLikeDislike();
 }
 
-/** -------------------------------- */
 /**Start5 pizza */
 function starter5(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -1337,7 +1378,7 @@ function mainCourseMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let headerWrapper = document.createElement("header");
-  headerWrapper.setAttribute("id", "rec-header");
+  headerWrapper.setAttribute("id", "secondMenuHeader");
   document.body.appendChild(headerWrapper);
 
   //  Page Header
@@ -1349,7 +1390,7 @@ function mainCourseMenu(){
   section.id = "secondMenuSection"
   document.body.appendChild(section);
 
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     let divWrapper = document.createElement("div");
     divWrapper.setAttribute("class","secondMenuWrapper");
     section.appendChild(divWrapper);
@@ -1358,19 +1399,22 @@ function mainCourseMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
-  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[5];
 
   //  add eventlisterner
   recepie1.addEventListener("click", mainCourse1);
   recepie2.addEventListener("click", mainCourse2);
   recepie3.addEventListener("click", mainCourse3);
+  recepie4.addEventListener("click", maincourse4);
+  recepie5.addEventListener("click", maincourse5);
   randomBtn.addEventListener("click", randomMainCourse);
 
   //  recepie1
   let recepieImg = document.createElement("img");
   recepieImg.src = "/Kötträtter/Mannerströms Oxfile/oxfile.jpg";
   recepie1.appendChild(recepieImg);
-
   let recepieHeader = document.createElement("h5");
   recepieHeader.textContent = "MANNERSTRÖM OXFILE MED PEPPARSÅS"
   recepie1.appendChild(recepieHeader);
@@ -1379,7 +1423,6 @@ function mainCourseMenu(){
   let recepieImg2 = document.createElement("img");
   recepieImg2.src = "/Kötträtter/Korv Stroganoff/korvstroganoff.jpg";
   recepie2.appendChild(recepieImg2);
-
   let recepieHeader2 = document.createElement("h5");
   recepieHeader2.textContent = "KORV STROGANOFF"
   recepie2.appendChild(recepieHeader2);
@@ -1388,16 +1431,33 @@ function mainCourseMenu(){
   let recepieImg3 = document.createElement("img");
   recepieImg3.src = "/Kötträtter/Mustig Lövbiffsgryta/lövbiffsgryta.jpg";
   recepie3.appendChild(recepieImg3);
-
   let recepieHeader3 = document.createElement("h5");
   recepieHeader3.textContent = "MUSTIG LÖVBIFFSGRYTA"
   recepie3.appendChild(recepieHeader3);
 
+  // recepie4
+  let recepieImg4 = document.createElement("img");
+  recepieImg4.src = "/Kötträtter/Italiensk kycklinggratäng/kycklinggratäng.jpg";
+  recepie4.appendChild(recepieImg4);
+  let recepieHeader4 = document.createElement("h5");
+  recepieHeader4.textContent = "ITALIENSK KYCKLINGGRATÄNG";
+  recepie4.appendChild(recepieHeader4);
+
+  // recepie5
+  let recepieImg5 = document.createElement("img");
+  recepieImg5.src = "/Kötträtter/Pannbiff/pannbiff.jpg";
+  recepie5.appendChild(recepieImg5);
+  let recepieHeader5 = document.createElement("h5");
+  recepieHeader5.textContent = "PANNBIFF";
+  recepie5.appendChild(recepieHeader5);
+
   //  Random recepie
-  let randomAtag = document.createElement("a");
-  randomAtag.setAttribute("class", "button");
-  randomAtag.textContent = "Slumpa ett recept";
-  randomBtn.appendChild(randomAtag);
+  let randomImg = document.createElement("img");
+  randomImg.src = "/media/RandomPick.png"
+  randomBtn.appendChild(randomImg);
+  let randomHeader = document.createElement("h5");
+  randomHeader.textContent = "SVÅRT ATT VÄLJA?";
+  randomBtn.appendChild(randomHeader);
   
   footer();
   btnBack();
@@ -2207,7 +2267,6 @@ function mainCourse3(){
   btnsLikeDislike();
 }
 
-/** -------------------------------- */
 /** Maincourse4 - ITALIENSK KYCKLINGGRATÄNG */
 function maincourse4(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -2360,7 +2419,6 @@ function maincourse4(){
   btnsLikeDislike();
 } 
 
-/** -------------------------------- */
 /** Maincourse5 - PANNBIFF */
 function maincourse5(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -2515,7 +2573,7 @@ function dessertMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let headerWrapper = document.createElement("header");
-  headerWrapper.setAttribute("id", "rec-header");
+  headerWrapper.setAttribute("id", "secondMenuHeader");
   document.body.appendChild(headerWrapper);
 
   //  Page Header
@@ -2527,7 +2585,7 @@ function dessertMenu(){
   section.id = "secondMenuSection"
   document.body.appendChild(section);
 
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     let divWrapper = document.createElement("div");
     divWrapper.setAttribute("class","secondMenuWrapper");
     section.appendChild(divWrapper);
@@ -2536,19 +2594,22 @@ function dessertMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
-  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[5];
 
   //  add eventlisterner
   recepie1.addEventListener("click", dessert1);
   recepie2.addEventListener("click", dessert2);
   recepie3.addEventListener("click", dessert3);
+  recepie4.addEventListener("click", dessert4);
+  recepie5.addEventListener("click", dessert5);
   randomBtn.addEventListener("click", randomDessert);
 
   //  recepie1
   let recepieImg = document.createElement("img");
   recepieImg.src = "/Desserts/Banansushi/banana-sushi.jpg";
   recepie1.appendChild(recepieImg);
-
   let recepieHeader = document.createElement("h5");
   recepieHeader.textContent = "BANANSUSHI MED JORDNÖTSSMÖR OCH NUTELLA"
   recepie1.appendChild(recepieHeader);
@@ -2557,7 +2618,6 @@ function dessertMenu(){
   let recepieImg2 = document.createElement("img");
   recepieImg2.src = "/Desserts/Chokladmousse/avokado-choklad-mousse-shutterstock.jpg";
   recepie2.appendChild(recepieImg2);
-
   let recepieHeader2 = document.createElement("h5");
   recepieHeader2.textContent = "CHOKLADMOUSSE PÅ AVOKADO OCH BANANA"
   recepie2.appendChild(recepieHeader2);
@@ -2566,16 +2626,33 @@ function dessertMenu(){
   let recepieImg3 = document.createElement("img");
   recepieImg3.src = "/Desserts/Fudge-brownies/vegan-fudge-brownie-980x515-c.jpg";
   recepie3.appendChild(recepieImg3);
-
   let recepieHeader3 = document.createElement("h5");
   recepieHeader3.textContent = "FUDGE BROWNIES"
   recepie3.appendChild(recepieHeader3);
 
+  // recepie4
+  let recepieImg4 = document.createElement("img");
+  recepieImg4.src = "/Desserts/KeyLimePie/key-lime-pie-glas-utvald-980x515-c.jpg";
+  recepie4.appendChild(recepieImg4);
+  let recepieHeader4 = document.createElement("h5");
+  recepieHeader4.textContent = "KEY LIME PIE I GLAS";
+  recepie4.appendChild(recepieHeader4);
+
+  // recepie5
+  let recepieImg5 = document.createElement("img");
+  recepieImg5.src = "/Desserts/Kladdkaka/kladdkaka-0D5A7372.jpg";
+  recepie5.appendChild(recepieImg5);
+  let recepieHeader5 = document.createElement("h5");
+  recepieHeader5.textContent = "KLADDKAKA MED LAKRITS OCH HALLON";
+  recepie5.appendChild(recepieHeader5);
+
   //  Random recepie
-  let randomAtag = document.createElement("a");
-  randomAtag.setAttribute("class", "button");
-  randomAtag.textContent = "Slumpa ett recept";
-  randomBtn.appendChild(randomAtag);
+  let randomImg = document.createElement("img");
+  randomImg.src = "/media/RandomPick.png"
+  randomBtn.appendChild(randomImg);
+  let randomHeader = document.createElement("h5");
+  randomHeader.textContent = "SVÅRT ATT VÄLJA?";
+  randomBtn.appendChild(randomHeader);
   
   footer();
   btnBack();
@@ -3364,7 +3441,6 @@ function dessert3(){
   btnsLikeDislike();
 }
 
-/** -------------------------------- */
 /** Dessert4 - KEYLIMEPIE */
 function dessert4(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -3493,7 +3569,6 @@ function dessert4(){
   btnsLikeDislike();
 } 
 
-/** -------------------------------- */
 /** Dessert5 - KLADDKAKA */
 function dessert5(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -3630,7 +3705,7 @@ function vegetarianMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let headerWrapper = document.createElement("header");
-  headerWrapper.setAttribute("id", "rec-header");
+  headerWrapper.setAttribute("id", "secondMenuHeader");
   document.body.appendChild(headerWrapper);
 
   //  Page Header
@@ -3667,7 +3742,6 @@ function vegetarianMenu(){
   let recepieImg = document.createElement("img");
   recepieImg.src = "Vegetarisk/pastagratang/pastagratang.jpg";
   recepie1.appendChild(recepieImg);
-
   let recepieHeader = document.createElement("h5");
   recepieHeader.textContent = "ITALIENSK PASTAGRATÄNG MED AUBERGINE";
   recepie1.appendChild(recepieHeader);
@@ -3676,7 +3750,6 @@ function vegetarianMenu(){
   let recepieImg2 = document.createElement("img");
   recepieImg2.src = "Vegetarisk/Vegobullar/vegobullar-med-kryddpeppar-och-karameliserad-lok.jpg";
   recepie2.appendChild(recepieImg2);
-
   let recepieHeader2 = document.createElement("h5");
   recepieHeader2.textContent = "VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK";
   recepie2.appendChild(recepieHeader2);
@@ -3685,7 +3758,6 @@ function vegetarianMenu(){
   let recepieImg3 = document.createElement("img");
   recepieImg3.src = "Vegetarisk/Vegetariska kroppkakor/vegetariska-kroppkakor-med-brynt-smor-och-krasse.jpg";
   recepie3.appendChild(recepieImg3);
-
   let recepieHeader3 = document.createElement("h5");
   recepieHeader3.textContent = "VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KRASSE";
   recepie3.appendChild(recepieHeader3);
@@ -3694,7 +3766,6 @@ function vegetarianMenu(){
   let recepieImg4 = document.createElement("img");
   recepieImg4.src = "Vegetarisk/Vego auberginepizza/vego-auberginepizza-med-oliver-och-champinjoner.jpg";
   recepie4.appendChild(recepieImg4);
-
   let recepieHeader4 = document.createElement("h5");
   recepieHeader4.textContent = "VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER";
   recepie4.appendChild(recepieHeader4);
@@ -3703,18 +3774,18 @@ function vegetarianMenu(){
   let recepieImg5 = document.createElement("img");
   recepieImg5.src = "Vegetarisk/Vegoburgare/vegetarisk-matsvinnsburgare.jpg";
   recepie5.appendChild(recepieImg5);
-
   let recepieHeader5 = document.createElement("h5");
   recepieHeader5.textContent = "VEGETARISK MATSVINNSBURGARE";
   recepie5.appendChild(recepieHeader5);
 
-
   //  Random recepie
-  let randomAtag = document.createElement("a");
-  randomAtag.setAttribute("class", "button");
-  randomAtag.textContent = "Slumpa ett recept";
-  randomBtn.appendChild(randomAtag);
-  
+  let randomImg = document.createElement("img");
+  randomImg.src = "/media/RandomPick.png"
+  randomBtn.appendChild(randomImg);
+  let randomHeader = document.createElement("h5");
+  randomHeader.textContent = "SVÅRT ATT VÄLJA?";
+  randomBtn.appendChild(randomHeader);
+
   footer();
   btnBack();
 }
@@ -4764,7 +4835,6 @@ function vegetarian3(){
   btnsLikeDislike();
 }
 
-
 /** Vegetarian4 - VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER */
 function vegetarian4(){
   document.getElementsByTagName("body")[0].innerHTML = "";
@@ -5091,7 +5161,7 @@ function veganMenu(){
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let headerWrapper = document.createElement("header");
-  headerWrapper.setAttribute("id", "rec-header");
+  headerWrapper.setAttribute("id", "secondMenuHeader");
   document.body.appendChild(headerWrapper);
 
   //  Page Header
@@ -5112,19 +5182,22 @@ function veganMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
+  // let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  // let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
   let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
 
   //  add eventlisterner
   recepie1.addEventListener("click", vegan1);
   recepie2.addEventListener("click", vegan2);
   recepie3.addEventListener("click", vegan3);
+  // recepie4.addEventListener("click", vegan4);
+  // recepie5.addEventListener("click", vegan5);
   randomBtn.addEventListener("click", randomVegan);
 
   //  recepie1
   let recepieImg = document.createElement("img");
   recepieImg.src = "vegan/broccolisoppa-med-kryddrostade-kikärter-och-tofu/broccolisoppa-med-kryddrostade-kikärter-och-tofu.jpg";
   recepie1.appendChild(recepieImg);
-
   let recepieHeader = document.createElement("h5");
   recepieHeader.textContent = "BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU"
   recepie1.appendChild(recepieHeader);
@@ -5133,7 +5206,6 @@ function veganMenu(){
   let recepieImg2 = document.createElement("img");
   recepieImg2.src = "vegan/sötpotatisbiffar-med-ingefära-och-nötter/sötpotatisbiffar-med-ingefära-och-nötter.jpg";
   recepie2.appendChild(recepieImg2);
-
   let recepieHeader2 = document.createElement("h5");
   recepieHeader2.textContent = "SÖTPOTATISBIFFAR MED INGEFÖRA OCH NÖTTER"
   recepie2.appendChild(recepieHeader2);
@@ -5142,16 +5214,33 @@ function veganMenu(){
   let recepieImg3 = document.createElement("img");
   recepieImg3.src = "vegan/vegansk-kalops/vegansk-kalops.jpg";
   recepie3.appendChild(recepieImg3);
-
   let recepieHeader3 = document.createElement("h5");
   recepieHeader3.textContent = "VEGANSK KALOPS"
   recepie3.appendChild(recepieHeader3);
 
+  // recepie4
+  // let recepieImg4 = document.createElement("img");
+  // recepieImg4.src = "";
+  // recepie4.appendChild(recepieImg4);
+  // let recepieHeader4 = document.createElement("h5");
+  // recepieHeader4.textContent = "Recept 4";
+  // recepie4.appendChild(recepieHeader4);
+
+  // recepie5
+  // let recepieImg5 = document.createElement("img");
+  // recepieImg5.src = "";
+  // recepie5.appendChild(recepieImg5);
+  // let recepieHeader5 = document.createElement("h5");
+  // recepieHeader5.textContent = "Recept 5";
+  // recepie5.appendChild(recepieHeader5);
+
   //  Random recepie
-  let randomAtag = document.createElement("a");
-  randomAtag.setAttribute("class", "button");
-  randomAtag.textContent = "Slumpa ett recept";
-  randomBtn.appendChild(randomAtag);
+  let randomImg = document.createElement("img");
+  randomImg.src = "/media/RandomPick.png"
+  randomBtn.appendChild(randomImg);
+  let randomHeader = document.createElement("h5");
+  randomHeader.textContent = "SVÅRT ATT VÄLJA?";
+  randomBtn.appendChild(randomHeader);
   
   footer();
   btnBack();
