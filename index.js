@@ -167,7 +167,6 @@ function starter1(){
   document.body.appendChild(section);
 
   let header = document.createElement("header");
-
   header.setAttribute("id", "rec-header");
   section.appendChild(header);
 
@@ -188,10 +187,17 @@ function starter1(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -199,15 +205,9 @@ function starter1(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "38 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option6); // 6 - 8 port
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -222,79 +222,6 @@ function starter1(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "600 g sushilax";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "6 enbär";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "75 g salt";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1/2 dl socker";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "1/2 dl gin";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "1 1/2 dl tonic";
-  list.appendChild(ing6);
-
-  let head1 = document.createElement("li");
-  head1.textContent = "Limesås:";
-  head1.setAttribute("class", "listHeader");
-  list.appendChild(head1);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "1 dl crème fraiche";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "1 lime, saft och rivet skal";
-  list.appendChild(ing8);
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 dl gräddfil";
-  list.appendChild(ing9);
-
-  let ing10 = document.createElement("li");
-  ing10.textContent = "socker";
-  list.appendChild(ing10);
-
-  let ing11 = document.createElement("li");
-  ing11.textContent = "salt och nymalen svartpeppar";
-  list.appendChild(ing11);
-
-  let head2 = document.createElement("li");
-  head2.textContent = "Inlagd gurka:";
-  head2.setAttribute("class", "listHeader");
-  list.appendChild(head2);
-
-  let ing12 = document.createElement("li");
-  ing12.textContent = "4 snacksgurkor";
-  list.appendChild(ing12);
-
-  let ing13 = document.createElement("li");
-  ing13.textContent = "1/2 dl ättika, 12%";
-  list.appendChild(ing13);
-
-  let ing14 = document.createElement("li");
-  ing14.textContent = "1/2 dl socker";
-  list.appendChild(ing14);
-
-  let ing15 = document.createElement("li");
-  ing15.textContent = "1/2 dl tonic";
-  list.appendChild(ing15);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
@@ -351,6 +278,164 @@ function starter1(){
   descriptionList3.appendChild(descri2);
   descriptionList3.appendChild(descri3);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "200 g sushilax";
+    list.appendChild(document.createElement("li")).textContent = "2 enbär";
+    list.appendChild(document.createElement("li")).textContent = "13 g salt";
+    list.appendChild(document.createElement("li")).textContent = "1 msk socker";  
+    list.appendChild(document.createElement("li")).textContent = "1 msk gin";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl tonic";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Limesås:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "2 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1/3 lime, saft och rivet skal";
+    list.appendChild(document.createElement("li")).textContent = "2 msk gräddfil";
+    list.appendChild(document.createElement("li")).textContent = "socker";
+    list.appendChild(document.createElement("li")).textContent = "salt och nymalen svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Inlagd gurka:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "2 snacksgurka";
+    list.appendChild(document.createElement("li")).textContent = "1 msk ättika, 12%";
+    list.appendChild(document.createElement("li")).textContent = "1 msk socker";
+    list.appendChild(document.createElement("li")).textContent = "1 msk tonic";
+  }
+
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "400 g sushilax";
+    list.appendChild(document.createElement("li")).textContent = "4 enbär";
+    list.appendChild(document.createElement("li")).textContent = "25 g salt";
+    list.appendChild(document.createElement("li")).textContent = "2 msk socker";  
+    list.appendChild(document.createElement("li")).textContent = "2 msk gin";
+    list.appendChild(document.createElement("li")).textContent = "1 dl tonic";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Limesås:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "4 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1/2 lime, saft och rivet skal";
+    list.appendChild(document.createElement("li")).textContent = "4 msk gräddfil";
+    list.appendChild(document.createElement("li")).textContent = "socker";
+    list.appendChild(document.createElement("li")).textContent = "salt och nymalen svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Inlagd gurka:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "4 snacksgurka";
+    list.appendChild(document.createElement("li")).textContent = "2 msk ättika, 12%";
+    list.appendChild(document.createElement("li")).textContent = "2 msk socker";
+    list.appendChild(document.createElement("li")).textContent = "2 msk tonic";
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "600 g sushilax";
+    list.appendChild(document.createElement("li")).textContent = "6 enbär";
+    list.appendChild(document.createElement("li")).textContent = "40 g salt";
+    list.appendChild(document.createElement("li")).textContent = "3 msk socker";  
+    list.appendChild(document.createElement("li")).textContent = "3 msk gin";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl tonic";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Limesås:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "1 dl crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1 lime, saft och rivet skal";
+    list.appendChild(document.createElement("li")).textContent = "6 msk gräddfil";
+    list.appendChild(document.createElement("li")).textContent = "socker";
+    list.appendChild(document.createElement("li")).textContent = "salt och nymalen svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Inlagd gurka:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "6 snacksgurka";
+    list.appendChild(document.createElement("li")).textContent = "3 msk ättika, 12%";
+    list.appendChild(document.createElement("li")).textContent = "3 msk socker";
+    list.appendChild(document.createElement("li")).textContent = "3 msk tonic";
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "800 g sushilax";
+    list.appendChild(document.createElement("li")).textContent = "8 enbär";
+    list.appendChild(document.createElement("li")).textContent = "52 g salt";
+    list.appendChild(document.createElement("li")).textContent = "4 msk socker";  
+    list.appendChild(document.createElement("li")).textContent = "4 msk gin";
+    list.appendChild(document.createElement("li")).textContent = "2 dl tonic";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Limesås:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "8 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1 lime, saft och rivet skal";
+    list.appendChild(document.createElement("li")).textContent = "8 msk gräddfil";
+    list.appendChild(document.createElement("li")).textContent = "socker";
+    list.appendChild(document.createElement("li")).textContent = "salt och nymalen svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Inlagd gurka:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "8 snacksgurka";
+    list.appendChild(document.createElement("li")).textContent = "4 msk ättika, 12%";
+    list.appendChild(document.createElement("li")).textContent = "4 msk socker";
+    list.appendChild(document.createElement("li")).textContent = "4 msk tonic";
+  }
+
+  fourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -365,7 +450,6 @@ function starter2(){
   document.body.appendChild(section);
 
   let header = document.createElement("header");
-
   header.setAttribute("id", "rec-header");
   section.appendChild(header);
 
@@ -386,10 +470,17 @@ function starter2(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -397,15 +488,9 @@ function starter2(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "45 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option4); // 4 - 6 port
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -420,66 +505,6 @@ function starter2(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "2 skivor kavring";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "150 g kokt potatis, avsvalnad";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "3 ägg, hårdkokta";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1 liten burk inlagd sill, (240 g, avrunnen 120 g)";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "2 msk finhackad rödlök";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "2 msk finhackad dill";
-  list.appendChild(ing6);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "1 msk finhackad gräslök";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "1/2 dl crème fraiche";
-  list.appendChild(ing8);  
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 msk majonnäs";
-  list.appendChild(ing9);
-
-  let ing10 = document.createElement("li");
-  ing10.textContent = "rivet skal från ½ citron";
-  list.appendChild(ing10);
-
-  let ing11 = document.createElement("li");
-  ing11.textContent = "salt och svartpeppar";
-  list.appendChild(ing11);
-
-  let head1 = document.createElement("li");
-  head1.textContent = "Till garnering:";
-  head1.setAttribute("class", "listHeader");
-  list.appendChild(head1);
-
-  let ing12 = document.createElement("li");
-  ing12.textContent = "2 msk hackad gräslök";
-  list.appendChild(ing12);
-
-  let ing13 = document.createElement("li");
-  ing13.textContent = "2 msk hackad rödlök";
-  list.appendChild(ing13);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
@@ -503,6 +528,132 @@ function starter2(){
   descriptionList.appendChild(desc2);
   descriptionList.appendChild(desc3);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 skivor kavring";
+    list.appendChild(document.createElement("li")).textContent = "75 g kokt potatis, avsvalnad";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 ägg, hårdkokta";
+    list.appendChild(document.createElement("li")).textContent = "1/2 liten burk inlagd sill, (240 g, avrunnen 120 g)";  
+    list.appendChild(document.createElement("li")).textContent = "1 msk finhackad rödlök";
+    list.appendChild(document.createElement("li")).textContent = "1 msk finhackad dill";
+    list.appendChild(document.createElement("li")).textContent = "1/2 msk finhackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "1/4 dl crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1/2 msk majonnäs";
+    list.appendChild(document.createElement("li")).textContent = "rivet skal från ½ citron";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Till garnering:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "1 msk hackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "1 msk hackad rödlök";    
+  }
+  
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "2 skivor kavring";
+    list.appendChild(document.createElement("li")).textContent = "150 g kokt potatis, avsvalnad";
+    list.appendChild(document.createElement("li")).textContent = "3 ägg, hårdkokta";
+    list.appendChild(document.createElement("li")).textContent = "1 liten burk inlagd sill, (240 g, avrunnen 120 g)";  
+    list.appendChild(document.createElement("li")).textContent = "2 msk finhackad rödlök";
+    list.appendChild(document.createElement("li")).textContent = "2 msk finhackad dill";
+    list.appendChild(document.createElement("li")).textContent = "1 msk finhackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1 msk majonnäs";
+    list.appendChild(document.createElement("li")).textContent = "rivet skal från ½ citron";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Till garnering:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "2 msk hackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "2 msk hackad rödlök";    
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "3 skivor kavring";
+    list.appendChild(document.createElement("li")).textContent = "225 g kokt potatis, avsvalnad";
+    list.appendChild(document.createElement("li")).textContent = "4 ägg, hårdkokta";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 liten burk inlagd sill, (240 g, avrunnen 120 g)";  
+    list.appendChild(document.createElement("li")).textContent = "3 msk finhackad rödlök";
+    list.appendChild(document.createElement("li")).textContent = "3 msk finhackad dill";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk finhackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "3/4 dl crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk majonnäs";
+    list.appendChild(document.createElement("li")).textContent = "rivet skal från ½ citron";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Till garnering:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "3 msk hackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "3 msk hackad rödlök";    
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "4 skivor kavring";
+    list.appendChild(document.createElement("li")).textContent = "300 g kokt potatis, avsvalnad";
+    list.appendChild(document.createElement("li")).textContent = "6 ägg, hårdkokta";
+    list.appendChild(document.createElement("li")).textContent = "2 små burkar inlagd sill, (240 g, avrunnen 120 g)";  
+    list.appendChild(document.createElement("li")).textContent = "2 msk finhackad rödlök";
+    list.appendChild(document.createElement("li")).textContent = "4 msk finhackad dill";
+    list.appendChild(document.createElement("li")).textContent = "2 msk finhackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "1 dl crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "2 msk majonnäs";
+    list.appendChild(document.createElement("li")).textContent = "rivet skal från ½ citron";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+   
+    let head1 = document.createElement("li");
+    head1.textContent = "Till garnering:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "4 msk hackad gräslök";
+    list.appendChild(document.createElement("li")).textContent = "4 msk hackad rödlök";    
+  }
+
+  fourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -517,7 +668,6 @@ function starter3(){
   document.body.appendChild(section);
 
   let header = document.createElement("header");
-
   header.setAttribute("id", "rec-header");
   section.appendChild(header);
 
@@ -538,10 +688,17 @@ function starter3(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -549,15 +706,9 @@ function starter3(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "65 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option4); // 4 port
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -572,88 +723,7 @@ function starter3(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  /**Soppa */
-  let head1 = document.createElement("li");
-  head1.textContent = "Soppa:";
-  head1.setAttribute("class", "listHeader");
-  list.appendChild(head1);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "2 schalottenlökar";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "1 purjolök";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "1 klyfta vitlök";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1 1/2 msk smör";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "1 1/2 dl vitt vin";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "3 dl färdig grönsaks- eller hönsbuljong";
-  list.appendChild(ing6);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "500 g frysta gröna ärter";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "1 dl vispgrädde";
-  list.appendChild(ing8);
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 citron, lite av saften";
-  list.appendChild(ing9);
-
-  let ing10 = document.createElement("li");
-  ing10.textContent = "Salt och svartpeppar";
-  list.appendChild(ing10);
-
-  /** Till servering */
-  let head2 = document.createElement("li");
-  head2.textContent = "Till servering:";
-  head2.setAttribute("class", "listHeader");
-  list.appendChild(head2);
-
-  let ing11 = document.createElement("li");
-  ing11.textContent = "4 msk crème fraiche";
-  list.appendChild(ing11);
-
-  let ing12 = document.createElement("li");
-  ing12.textContent = "Rostat bröd";
-  list.appendChild(ing12);
-
-  /** Garnering */
-  let head3 = document.createElement("li");
-  head3.textContent = "Garnering:";
-  head3.setAttribute("class", "listHeader");
-  list.appendChild(head3);
-
-  let ing13 = document.createElement("li");
-  ing13.textContent = "30 g hasselnötsflagor, eller hackade nötter";
-  list.appendChild(ing13);
-
-  let ing14 = document.createElement("li");
-  ing14.textContent = "Färska örter eller groddar";
-  list.appendChild(ing14);
-
-  let ing15 = document.createElement("li");
-  ing15.textContent = "Ätliga blommor";
-  list.appendChild(ing15);
-
+ 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
   divDescription.id = "description";
@@ -690,7 +760,185 @@ function starter3(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
   descriptionList.appendChild(desc8);
-  
+
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    let head1 = document.createElement("li");
+    head1.textContent = "Soppa:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "1 schalottenlök";
+    list.appendChild(document.createElement("li")).textContent = "1/2 purjolök";
+    list.appendChild(document.createElement("li")).textContent = "1/2 klyfta vitlök";
+    list.appendChild(document.createElement("li")).textContent = "1 msk smör";  
+    list.appendChild(document.createElement("li")).textContent = "1 dl vitt vin";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl färdig grönsaks- eller hönsbuljong";
+    list.appendChild(document.createElement("li")).textContent = "250 g frysta gröna ärter";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl vispgrädde";
+    list.appendChild(document.createElement("li")).textContent = "1/2 citron, lite av saften";
+    list.appendChild(document.createElement("li")).textContent = "Salt och svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Till servering:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "2 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "Rostat bröd";
+
+    let head3 = document.createElement("li");
+    head3.textContent = "Garnering:";
+    head3.setAttribute("class", "listHeader");
+    list.appendChild(head3);
+
+    list.appendChild(document.createElement("li")).textContent = "15 g hasselnötsflagor, eller hackade nötter";
+    list.appendChild(document.createElement("li")).textContent = "Färska örter eller groddar";
+    list.appendChild(document.createElement("li")).textContent = "Ätliga blommor";
+  }
+
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    let head1 = document.createElement("li");
+    head1.textContent = "Soppa:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "2 schalottenlökar";
+    list.appendChild(document.createElement("li")).textContent = "1 purjolök";
+    list.appendChild(document.createElement("li")).textContent = "1 klyfta vitlök";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk smör";  
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl vitt vin";
+    list.appendChild(document.createElement("li")).textContent = "3 dl färdig grönsaks- eller hönsbuljong";
+    list.appendChild(document.createElement("li")).textContent = "500 g frysta gröna ärter";
+    list.appendChild(document.createElement("li")).textContent = "1 dl vispgrädde";
+    list.appendChild(document.createElement("li")).textContent = "1 citron, lite av saften";
+    list.appendChild(document.createElement("li")).textContent = "Salt och svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Till servering:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "4 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "Rostat bröd";
+
+    let head3 = document.createElement("li");
+    head3.textContent = "Garnering:";
+    head3.setAttribute("class", "listHeader");
+    list.appendChild(head3);
+
+    list.appendChild(document.createElement("li")).textContent = "30 g hasselnötsflagor, eller hackade nötter";
+    list.appendChild(document.createElement("li")).textContent = "Färska örter eller groddar";
+    list.appendChild(document.createElement("li")).textContent = "Ätliga blommor";
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    let head1 = document.createElement("li");
+    head1.textContent = "Soppa:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "3 schalottenlökar";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 purjolök";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 klyfta vitlök";
+    list.appendChild(document.createElement("li")).textContent = "2 msk smör";  
+    list.appendChild(document.createElement("li")).textContent = "2 dl vitt vin";
+    list.appendChild(document.createElement("li")).textContent = "4 1/2 dl färdig grönsaks- eller hönsbuljong";
+    list.appendChild(document.createElement("li")).textContent = "750 g frysta gröna ärter";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl vispgrädde";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 citron, lite av saften";
+    list.appendChild(document.createElement("li")).textContent = "Salt och svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Till servering:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "6 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "Rostat bröd";
+
+    let head3 = document.createElement("li");
+    head3.textContent = "Garnering:";
+    head3.setAttribute("class", "listHeader");
+    list.appendChild(head3);
+
+    list.appendChild(document.createElement("li")).textContent = "45 g hasselnötsflagor, eller hackade nötter";
+    list.appendChild(document.createElement("li")).textContent = "Färska örter eller groddar";
+    list.appendChild(document.createElement("li")).textContent = "Ätliga blommor";
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    let head1 = document.createElement("li");
+    head1.textContent = "Soppa:";
+    head1.setAttribute("class", "listHeader");
+    list.appendChild(head1);
+
+    list.appendChild(document.createElement("li")).textContent = "4 schalottenlökar";
+    list.appendChild(document.createElement("li")).textContent = "2 purjolökar";
+    list.appendChild(document.createElement("li")).textContent = "2 klyftor vitlök";
+    list.appendChild(document.createElement("li")).textContent = "3 msk smör";  
+    list.appendChild(document.createElement("li")).textContent = "3 dl vitt vin";
+    list.appendChild(document.createElement("li")).textContent = "6 dl färdig grönsaks- eller hönsbuljong";
+    list.appendChild(document.createElement("li")).textContent = "1000 g frysta gröna ärter";
+    list.appendChild(document.createElement("li")).textContent = "2 dl vispgrädde";
+    list.appendChild(document.createElement("li")).textContent = "2 citroner, lite av saften";
+    list.appendChild(document.createElement("li")).textContent = "Salt och svartpeppar";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Till servering:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "8 msk crème fraiche";
+    list.appendChild(document.createElement("li")).textContent = "Rostat bröd";
+
+    let head3 = document.createElement("li");
+    head3.textContent = "Garnering:";
+    head3.setAttribute("class", "listHeader");
+    list.appendChild(head3);
+
+    list.appendChild(document.createElement("li")).textContent = "60 g hasselnötsflagor, eller hackade nötter";
+    list.appendChild(document.createElement("li")).textContent = "Färska örter eller groddar";
+    list.appendChild(document.createElement("li")).textContent = "Ätliga blommor";
+  }
+
+  fourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -777,18 +1025,34 @@ function mainCourse1(){
   let tillagningsTid = "60min";
   let ingrediensRubrik1 = "Pepparsås";
   let ingrediensRubrik2 = "Oxfilé";
-  let ingrediens1 = "2msk vitpepparkorn";
-  let ingrediens2 = "1st schalottenlök, finhackad";
-  let ingrediens3 = "0,5msk grönpeppar";
-  let ingrediens4 = "0,5msk estragon, finhackad";
-  let ingrediens5 = "olja";
-  let ingrediens6 = "3dl kalvfond";
-  let ingrediens7 = "1dl rött vin";
-  let ingrediens8 = "2msk cognac";
-  let ingrediens9 = "2dl grädde";
-  let ingrediens10 = "1000g oxfilé, i 4 bitar";
-  let ingrediens11 = "peppar, att rulla köttet i";
+  let ingrediensRubrik3 = "";
+  let ingrediensRubrik4 = "";
+  let ingrediensRubrik5 = "";
+  let ingrediens1 = "";
+  let ingrediens2 = "";
+  let ingrediens3 = "";
+  let ingrediens4 = "";
+  let ingrediens5 = "";
+  let ingrediens6 = "";
+  let ingrediens7 = "";
+  let ingrediens8 = "";
+  let ingrediens9 = "";
+  let ingrediens10 = "";
+  let ingrediens11 = "";
+  let ingrediens12 = "";
+  let ingrediens13 = "";
+  let ingrediens14 = "";
+  let ingrediens15 = "";
+  let ingrediens16 = "";
+  let ingrediens17 = "";
+  let ingrediens18 = "";
+  let ingrediens19 = "";
+  let ingrediens20 = "";
   let beskrivningsRubrik1 = "Gör såhär:";
+  let beskrivningsRubrik2 = "";
+  let beskrivningsRubrik3 = "";
+  let beskrivningsRubrik4 = "";
+  let beskrivningsRubrik5 = "";
   let beskrivning1 = "Rosta vitpeppar i ugnen på 150 grader i 10min eller i en varm, torr panna, stöt den sedan grovt i mortel.";
   let beskrivning2 = "Fräs schalottenlöken, grönpeppar, estragon samt lite av den rostade vitpepparen.";
   let beskrivning3 = "Slå i lite olja, slå på kalvfond, rödvin, konjak. OBS! Om du använder koncentrerad fond på flaska måste du späda ut den enligt förpackningen så att du får 3 dl buljong.";
@@ -824,10 +1088,17 @@ function mainCourse1(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -837,17 +1108,11 @@ function mainCourse1(){
 
   //Sättär tillagningstiden
   cookTime.textContent = tillagningsTid;
-
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
   
   //Välj "utgångsläge" för hur många portioner. Appenda fler options för fler val (Senare vid skalning)
-  selector.appendChild(option4);
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -865,9 +1130,6 @@ function mainCourse1(){
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
 
-  //Skapar UL listan för ingredienser
-  let list = document.createElement("ul");
-
   //Ingrediensrubriker 1-5
   let head1 = document.createElement("li");
   head1.textContent = ingrediensRubrik1;
@@ -876,47 +1138,6 @@ function mainCourse1(){
   head2.textContent = ingrediensRubrik2;
   head2.setAttribute("class", "listHeader");
 
-  //Ingredienser
-  let ing1 = document.createElement("li");
-  ing1.textContent = ingrediens1;
-  let ing2 = document.createElement("li");
-  ing2.textContent = ingrediens2;
-  let ing3 = document.createElement("li");
-  ing3.textContent = ingrediens3;
-  let ing4 = document.createElement("li");
-  ing4.textContent = ingrediens4;
-  let ing5 = document.createElement("li");
-  ing5.textContent = ingrediens5;
-  let ing6 = document.createElement("li");
-  ing6.textContent = ingrediens6;
-  let ing7 = document.createElement("li");
-  ing7.textContent = ingrediens7;
-  let ing8 = document.createElement("li");
-  ing8.textContent = ingrediens8;
-  let ing9 = document.createElement("li");
-  ing9.textContent = ingrediens9;
-  let ing10 = document.createElement("li");
-  ing10.textContent = ingrediens10;
-  let ing11 = document.createElement("li");
-  ing11.textContent = ingrediens11;
-
-  //Appenda ingredienser och ingrediensrubriker
-  divIngredients.appendChild(list); // ul listan
-  list.appendChild(head1); //Rubrik 1
-  list.appendChild(ing1);
-  list.appendChild(ing2);
-  list.appendChild(ing3);
-  list.appendChild(ing4);
-  list.appendChild(ing5);
-  list.appendChild(ing6);
-  list.appendChild(ing7);
-  list.appendChild(ing8);
-  list.appendChild(ing9);
-  list.appendChild(head2); //Rubrik 2
-  list.appendChild(ing10);
-  list.appendChild(ing11);
-
-  //Div container innehållandes tillagningsbeskrivningar
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
   divDescription.id = "description";
@@ -953,6 +1174,113 @@ function mainCourse1(){
   descriptionList.appendChild(desc5);
   descriptionList.appendChild(desc6);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function twoPortions(){
+    ingrediens1 = "1msk vitpepparkorn";
+    ingrediens2 = "0,5 schalottenlök, finhackad";
+    ingrediens3 = "0,25msk grönpeppar";
+    ingrediens4 = "0,25msk estragon, finhackad";
+    ingrediens5 = "olja";
+    ingrediens6 = "1,5dl kalvfond";
+    ingrediens7 = "0,5dl rött vin";
+    ingrediens8 = "1msk cognac";
+    ingrediens9 = "1dl grädde";
+    ingrediens10 = "500g oxfilé, i 4 bitar";
+    ingrediens11 = "peppar, att rulla köttet i";
+  }
+
+  function fourPortions(){
+    ingrediens1 = "2msk vitpepparkorn";
+    ingrediens2 = "1st schalottenlök, finhackad";
+    ingrediens3 = "0,5msk grönpeppar";
+    ingrediens4 = "0,5msk estragon, finhackad";
+    ingrediens5 = "olja";
+    ingrediens6 = "3dl kalvfond";
+    ingrediens7 = "1dl rött vin";
+    ingrediens8 = "2msk cognac";
+    ingrediens9 = "2dl grädde";
+    ingrediens10 = "1000g oxfilé, i 4 bitar";
+    ingrediens11 = "peppar, att rulla köttet i";
+  }
+
+  function sixPortions(){
+    ingrediens1 = "3msk vitpepparkorn";
+    ingrediens2 = "1,5 schalottenlök, finhackad";
+    ingrediens3 = "0,75msk grönpeppar";
+    ingrediens4 = "0,75msk estragon, finhackad";
+    ingrediens5 = "olja";
+    ingrediens6 = "4,5dl kalvfond";
+    ingrediens7 = "1,5dl rött vin";
+    ingrediens8 = "3msk cognac";
+    ingrediens9 = "3dl grädde";
+    ingrediens10 = "1500g oxfilé, i 4 bitar";
+    ingrediens11 = "peppar, att rulla köttet i";
+  }
+
+  function eightPortions(){
+    ingrediens1 = "4msk vitpepparkorn";
+    ingrediens2 = "2st schalottenlök, finhackad";
+    ingrediens3 = "1msk grönpeppar";
+    ingrediens4 = "1msk estragon, finhackad";
+    ingrediens5 = "olja";
+    ingrediens6 = "6dl kalvfond";
+    ingrediens7 = "2dl rött vin";
+    ingrediens8 = "4msk cognac";
+    ingrediens9 = "4dl grädde";
+    ingrediens10 = "2000g oxfilé, i 4 bitar";
+    ingrediens11 = "peppar, att rulla köttet i";
+  }
+
+  function createAndAppendIngredients(){ //Ingredienser och ingrediensrubriker
+    //Skapar UL listan för ingredienser
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list); // ul listan
+    list.appendChild(head1); //Rubrik 1
+    list.appendChild(document.createElement("li")).textContent = ingrediens1;
+    list.appendChild(document.createElement("li")).textContent = ingrediens2;
+    list.appendChild(document.createElement("li")).textContent = ingrediens3;
+    list.appendChild(document.createElement("li")).textContent = ingrediens4;
+    list.appendChild(document.createElement("li")).textContent = ingrediens5;
+    list.appendChild(document.createElement("li")).textContent = ingrediens6;
+    list.appendChild(document.createElement("li")).textContent = ingrediens7;
+    list.appendChild(document.createElement("li")).textContent = ingrediens8;
+    list.appendChild(document.createElement("li")).textContent = ingrediens9;
+    list.appendChild(head2);
+    list.appendChild(document.createElement("li")).textContent = ingrediens10;
+    list.appendChild(document.createElement("li")).textContent = ingrediens11;
+  }
+  
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        createAndAppendIngredients();
+        break;
+      case 4:
+        fourPortions();
+        createAndAppendIngredients();
+        break;
+      case 6:
+        sixPortions();
+        createAndAppendIngredients();
+        break;
+      case 8:
+        eightPortions();
+        createAndAppendIngredients();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  fourPortions();
+  createAndAppendIngredients();
+
   footer();
   btnBackOneStep();
   btnBack();
@@ -968,20 +1296,29 @@ function mainCourse2(){
   let tillagningsTid = "30min";
   let ingrediensRubrik1 = "";
   let ingrediensRubrik2 = "Servering";
-  let ingrediens1 = "500 g falukorv (av god kvalitet)";
-  let ingrediens2 = "2 gula lökar";
-  let ingrediens3 = "2 msk smör";
-  let ingrediens4 = "2-3 msk tomatpuré";
-  let ingrediens5 = "1 msk paprikapulver";
-  let ingrediens6 = "2 lagerblad";
-  let ingrediens7 = "1 dl köttbuljong";
-  let ingrediens8 = "2 dl kaffegrädde (eller vispgrädde + mjölk)";
-  let ingrediens9 = "ev ljust redningsmjöl";
-  let ingrediens10 = "1000g oxfilé, i 4 bitar";
-  let ingrediens11 = "salt";
-  let ingrediens12 = "peppar";
-  let ingrediens13 = "kokt ris";
-  let ingrediens14 = "gräddfil";
+  let ingrediensRubrik3 = "";
+  let ingrediensRubrik4 = "";
+  let ingrediensRubrik5 = "";
+  let ingrediens1 = "";
+  let ingrediens2 = "";
+  let ingrediens3 = "";
+  let ingrediens4 = "";
+  let ingrediens5 = "";
+  let ingrediens6 = "";
+  let ingrediens7 = "";
+  let ingrediens8 = "";
+  let ingrediens9 = "";
+  let ingrediens10 = "";
+  let ingrediens11 = "";
+  let ingrediens12 = "";
+  let ingrediens13 = "";
+  let ingrediens14 = "";
+  let ingrediens15 = "";
+  let ingrediens16 = "";
+  let ingrediens17 = "";
+  let ingrediens18 = "";
+  let ingrediens19 = "";
+  let ingrediens20 = "";
   let beskrivningsRubrik1 = "Gör så här";
   let beskrivning1 = "Skär korven i centimetertjocka stavar. Skala och hacka löken.";
   let beskrivning2 = "Fräs korv och lök i smör i en stor stekpanna.";
@@ -1016,10 +1353,17 @@ function mainCourse2(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+  
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1029,17 +1373,11 @@ function mainCourse2(){
 
   //Sättär tillagningstiden
   cookTime.textContent = tillagningsTid;
-
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
   
   //Välj "utgångsläge" för hur många portioner. Appenda fler options för fler val (Senare vid skalning)
-  selector.appendChild(option4);
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -1057,9 +1395,6 @@ function mainCourse2(){
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
 
-  //Skapar UL listan för ingredienser
-  let list = document.createElement("ul");
-
   //Ingrediensrubriker 1-5
   let head1 = document.createElement("li");
   head1.textContent = ingrediensRubrik1;
@@ -1068,56 +1403,6 @@ function mainCourse2(){
   head2.textContent = ingrediensRubrik2;
   head2.setAttribute("class", "listHeader");
 
-  //Ingredienser
-  let ing1 = document.createElement("li");
-  ing1.textContent = ingrediens1;
-  let ing2 = document.createElement("li");
-  ing2.textContent = ingrediens2;
-  let ing3 = document.createElement("li");
-  ing3.textContent = ingrediens3;
-  let ing4 = document.createElement("li");
-  ing4.textContent = ingrediens4;
-  let ing5 = document.createElement("li");
-  ing5.textContent = ingrediens5;
-  let ing6 = document.createElement("li");
-  ing6.textContent = ingrediens6;
-  let ing7 = document.createElement("li");
-  ing7.textContent = ingrediens7;
-  let ing8 = document.createElement("li");
-  ing8.textContent = ingrediens8;
-  let ing9 = document.createElement("li");
-  ing9.textContent = ingrediens9;
-  let ing10 = document.createElement("li");
-  ing10.textContent = ingrediens10;
-  let ing11 = document.createElement("li");
-  ing11.textContent = ingrediens11;
-  let ing12 = document.createElement("li");
-  ing12.textContent = ingrediens12;
-  let ing13 = document.createElement("li");
-  ing13.textContent = ingrediens13;
-  let ing14 = document.createElement("li");
-  ing14.textContent = ingrediens14;
-
-  //Appenda ingredienser och ingrediensrubriker
-  divIngredients.appendChild(list); // ul listan
-  list.appendChild(head1); //Rubrik 1
-  list.appendChild(ing1);
-  list.appendChild(ing2);
-  list.appendChild(ing3);
-  list.appendChild(ing4);
-  list.appendChild(ing5);
-  list.appendChild(ing6);
-  list.appendChild(ing7);
-  list.appendChild(ing8);
-  list.appendChild(ing9);
-  list.appendChild(ing10);
-  list.appendChild(ing11);
-  list.appendChild(ing12);
-  list.appendChild(head2); //Rubrik 2
-  list.appendChild(ing13);
-  list.appendChild(ing14);
-
-  //Div container innehållandes tillagningsbeskrivningar
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
   divDescription.id = "description";
@@ -1147,7 +1432,128 @@ function mainCourse2(){
   descriptionList.appendChild(desc2);
   descriptionList.appendChild(desc3);
   descriptionList.appendChild(desc4);
+  
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
 
+  function twoPortions(){
+    ingrediens1 = "250 g falukorv (av god kvalitet)";
+    ingrediens2 = "1 gul lök";
+    ingrediens3 = "1 msk smör";
+    ingrediens4 = "1-2 msk tomatpuré";
+    ingrediens5 = "0,5 msk paprikapulver";
+    ingrediens6 = "1 lagerblad";
+    ingrediens7 = "0,5 dl köttbuljong";
+    ingrediens8 = "1 dl kaffegrädde (eller vispgrädde + mjölk)";
+    ingrediens9 = "ev ljust redningsmjöl";
+    ingrediens10 = "500g oxfilé, i 2 bitar";
+    ingrediens11 = "salt";
+    ingrediens12 = "peppar";
+    ingrediens13 = "kokt ris";
+    ingrediens14 = "gräddfil";
+  }
+
+  function fourPortions(){
+    ingrediens1 = "500 g falukorv (av god kvalitet)";
+    ingrediens2 = "2 gula lökar";
+    ingrediens3 = "2 msk smör";
+    ingrediens4 = "2-3 msk tomatpuré";
+    ingrediens5 = "1 msk paprikapulver";
+    ingrediens6 = "2 lagerblad";
+    ingrediens7 = "1 dl köttbuljong";
+    ingrediens8 = "2 dl kaffegrädde (eller vispgrädde + mjölk)";
+    ingrediens9 = "ev ljust redningsmjöl";
+    ingrediens10 = "1000g oxfilé, i 4 bitar";
+    ingrediens11 = "salt";
+    ingrediens12 = "peppar";
+    ingrediens13 = "kokt ris";
+    ingrediens14 = "gräddfil";
+  }
+
+  function sixPortions(){
+    ingrediens1 = "750 g falukorv (av god kvalitet)";
+    ingrediens2 = "3 gula lökar";
+    ingrediens3 = "3 msk smör";
+    ingrediens4 = "3-5 msk tomatpuré";
+    ingrediens5 = "1,5 msk paprikapulver";
+    ingrediens6 = "3 lagerblad";
+    ingrediens7 = "1,5 dl köttbuljong";
+    ingrediens8 = "3 dl kaffegrädde (eller vispgrädde + mjölk)";
+    ingrediens9 = "ev ljust redningsmjöl";
+    ingrediens10 = "1500g oxfilé, i 6 bitar";
+    ingrediens11 = "salt";
+    ingrediens12 = "peppar";
+    ingrediens13 = "kokt ris";
+    ingrediens14 = "gräddfil";
+  }
+
+  function eightPortions(){
+    ingrediens1 = "1000 g falukorv (av god kvalitet)";
+    ingrediens2 = "4 gula lökar";
+    ingrediens3 = "4 msk smör";
+    ingrediens4 = "4-6 msk tomatpuré";
+    ingrediens5 = "2 msk paprikapulver";
+    ingrediens6 = "4 lagerblad";
+    ingrediens7 = "2 dl köttbuljong";
+    ingrediens8 = "4 dl kaffegrädde (eller vispgrädde + mjölk)";
+    ingrediens9 = "ev ljust redningsmjöl";
+    ingrediens10 = "2000g oxfilé, i 8 bitar";
+    ingrediens11 = "salt";
+    ingrediens12 = "peppar";
+    ingrediens13 = "kokt ris";
+    ingrediens14 = "gräddfil";
+  }
+
+  function createAndAppendIngredients(){ //Ingredienser och ingrediensrubriker
+    //Skapar UL listan för ingredienser
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list); // ul listan
+    list.appendChild(head1); //Rubrik 1
+    list.appendChild(document.createElement("li")).textContent = ingrediens1;
+    list.appendChild(document.createElement("li")).textContent = ingrediens2;
+    list.appendChild(document.createElement("li")).textContent = ingrediens3;
+    list.appendChild(document.createElement("li")).textContent = ingrediens4;
+    list.appendChild(document.createElement("li")).textContent = ingrediens5;
+    list.appendChild(document.createElement("li")).textContent = ingrediens6;
+    list.appendChild(document.createElement("li")).textContent = ingrediens7;
+    list.appendChild(document.createElement("li")).textContent = ingrediens8;
+    list.appendChild(document.createElement("li")).textContent = ingrediens9;
+    list.appendChild(document.createElement("li")).textContent = ingrediens10;
+    list.appendChild(document.createElement("li")).textContent = ingrediens11;
+    list.appendChild(document.createElement("li")).textContent = ingrediens12;
+    list.appendChild(head2);
+    list.appendChild(document.createElement("li")).textContent = ingrediens13;
+    list.appendChild(document.createElement("li")).textContent = ingrediens14;
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        createAndAppendIngredients();
+        break;
+      case 4:
+        fourPortions();
+        createAndAppendIngredients();
+        break;
+      case 6:
+        sixPortions();
+        createAndAppendIngredients();
+        break;
+      case 8:
+        eightPortions();
+        createAndAppendIngredients();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  fourPortions();
+  createAndAppendIngredients();
   footer();
   btnBackOneStep();
   btnBack();
@@ -1162,15 +1568,30 @@ function mainCourse3(){
   let matBild = "/Kötträtter/Mustig Lövbiffsgryta/lövbiffsgryta.jpg";
   let tillagningsTid = "2h";
   let ingrediensRubrik1 = "";
-  let ingrediens1 = "800 g lövbiff";
-  let ingrediens2 = "smör, att steka i";
-  let ingrediens3 = "4 msk tomatpuré";
-  let ingrediens4 = "3 dl vatten";
-  let ingrediens5 = "3 msk koncentrerad oxfond";
-  let ingrediens6 = "2 msk kinesisk soja";
-  let ingrediens7 = "3 dl crème fraîche";
-  let ingrediens8 = "flingsalt";
-  let ingrediens9 = "persilja, att garnera med";
+  let ingrediensRubrik2 = "";
+  let ingrediensRubrik3 = "";
+  let ingrediensRubrik4 = "";
+  let ingrediensRubrik5 = "";
+  let ingrediens1 = "";
+  let ingrediens2 = "";
+  let ingrediens3 = "";
+  let ingrediens4 = "";
+  let ingrediens5 = "";
+  let ingrediens6 = "";
+  let ingrediens7 = "";
+  let ingrediens8 = "";
+  let ingrediens9 = "";
+  let ingrediens10 = "";
+  let ingrediens11 = "";
+  let ingrediens12 = "";
+  let ingrediens13 = "";
+  let ingrediens14 = "";
+  let ingrediens15 = "";
+  let ingrediens16 = "";
+  let ingrediens17 = "";
+  let ingrediens18 = "";
+  let ingrediens19 = "";
+  let ingrediens20 = "";
   let beskrivningsRubrik1 = "Gör så här";
   let beskrivning1 = "Skär lövbiffen i centimeterbreda strimlor. Hetta upp en stekpanna med smör och bryn köttet tills det får färg.";
   let beskrivning2 = "Rör ner tomatpurén och låt fräsa en kort stund.";
@@ -1206,10 +1627,17 @@ function mainCourse3(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1219,17 +1647,11 @@ function mainCourse3(){
 
   //Sättär tillagningstiden
   cookTime.textContent = tillagningsTid;
-
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
   
   //Välj "utgångsläge" för hur många portioner. Appenda fler options för fler val (Senare vid skalning)
-  selector.appendChild(option4);
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -1247,48 +1669,23 @@ function mainCourse3(){
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
 
-  //Skapar UL listan för ingredienser
-  let list = document.createElement("ul");
-
   //Ingrediensrubriker 1-5
   let head1 = document.createElement("li");
   head1.textContent = ingrediensRubrik1;
   head1.setAttribute("class", "listHeader");
-
-  //Ingredienser
-  let ing1 = document.createElement("li");
-  ing1.textContent = ingrediens1;
-  let ing2 = document.createElement("li");
-  ing2.textContent = ingrediens2;
-  let ing3 = document.createElement("li");
-  ing3.textContent = ingrediens3;
-  let ing4 = document.createElement("li");
-  ing4.textContent = ingrediens4;
-  let ing5 = document.createElement("li");
-  ing5.textContent = ingrediens5;
-  let ing6 = document.createElement("li");
-  ing6.textContent = ingrediens6;
-  let ing7 = document.createElement("li");
-  ing7.textContent = ingrediens7;
-  let ing8 = document.createElement("li");
-  ing8.textContent = ingrediens8;
-  let ing9 = document.createElement("li");
-  ing9.textContent = ingrediens9;
-
-  //Appenda ingredienser och ingrediensrubriker
-  divIngredients.appendChild(list); // ul listan
-  list.appendChild(head1); //Rubrik 1
-  list.appendChild(ing1);
-  list.appendChild(ing2);
-  list.appendChild(ing3);
-  list.appendChild(ing4);
-  list.appendChild(ing5);
-  list.appendChild(ing6);
-  list.appendChild(ing7);
-  list.appendChild(ing8);
-  list.appendChild(ing9);
-
-  //Div container innehållandes tillagningsbeskrivningar
+  let head2 = document.createElement("li");
+  head2.textContent = ingrediensRubrik2;
+  head2.setAttribute("class", "listHeader");
+  let head3 = document.createElement("li");
+  head3.textContent = ingrediensRubrik3;
+  head3.setAttribute("class", "listHeader");
+  let head4 = document.createElement("li");
+  head4.textContent = ingrediensRubrik4;
+  head4.setAttribute("class", "listHeader");
+  let head5 = document.createElement("li");
+  head5.textContent = ingrediensRubrik5;
+  head5.setAttribute("class", "listHeader");
+ 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
   divDescription.id = "description";
@@ -1321,7 +1718,102 @@ function mainCourse3(){
   descriptionList.appendChild(desc3);
   descriptionList.appendChild(desc4);
   descriptionList.appendChild(desc5);
+ 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
 
+  function twoPortions(){
+    ingrediens1 = "400 g lövbiff";
+    ingrediens2 = "smör, att steka i";
+    ingrediens3 = "2 msk tomatpuré";
+    ingrediens4 = "1,5 dl vatten";
+    ingrediens5 = "1,5 msk koncentrerad oxfond";
+    ingrediens6 = "1 msk kinesisk soja";
+    ingrediens7 = "1,5 dl crème fraîche";
+    ingrediens8 = "flingsalt";
+    ingrediens9 = "persilja, att garnera med";
+  }
+
+  function fourPortions(){
+    ingrediens1 = "800 g lövbiff";
+    ingrediens2 = "smör, att steka i";
+    ingrediens3 = "4 msk tomatpuré";
+    ingrediens4 = "3 dl vatten";
+    ingrediens5 = "3 msk koncentrerad oxfond";
+    ingrediens6 = "2 msk kinesisk soja";
+    ingrediens7 = "3 dl crème fraîche";
+    ingrediens8 = "flingsalt";
+    ingrediens9 = "persilja, att garnera med";
+  }
+
+  function sixPortions(){
+    ingrediens1 = "1200 g lövbiff";
+    ingrediens2 = "smör, att steka i";
+    ingrediens3 = "6 msk tomatpuré";
+    ingrediens4 = "4,5 dl vatten";
+    ingrediens5 = "4,5 msk koncentrerad oxfond";
+    ingrediens6 = "3 msk kinesisk soja";
+    ingrediens7 = "4,5 dl crème fraîche";
+    ingrediens8 = "flingsalt";
+    ingrediens9 = "persilja, att garnera med";
+  }
+
+  function eightPortions(){
+    ingrediens1 = "1600 g lövbiff";
+    ingrediens2 = "smör, att steka i";
+    ingrediens3 = "8 msk tomatpuré";
+    ingrediens4 = "6 dl vatten";
+    ingrediens5 = "6 msk koncentrerad oxfond";
+    ingrediens6 = "4 msk kinesisk soja";
+    ingrediens7 = "6 dl crème fraîche";
+    ingrediens8 = "flingsalt";
+    ingrediens9 = "persilja, att garnera med";
+  }
+  
+  function createAndAppendIngredients(){ //Ingredienser och ingrediensrubriker
+    //Skapar UL listan för ingredienser
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list); // ul listan
+    list.appendChild(head1); //Rubrik 1
+    list.appendChild(document.createElement("li")).textContent = ingrediens1;
+    list.appendChild(document.createElement("li")).textContent = ingrediens2;
+    list.appendChild(document.createElement("li")).textContent = ingrediens3;
+    list.appendChild(document.createElement("li")).textContent = ingrediens4;
+    list.appendChild(document.createElement("li")).textContent = ingrediens5;
+    list.appendChild(document.createElement("li")).textContent = ingrediens6;
+    list.appendChild(document.createElement("li")).textContent = ingrediens7;
+    list.appendChild(document.createElement("li")).textContent = ingrediens8;
+    list.appendChild(document.createElement("li")).textContent = ingrediens9;
+  }
+  
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        createAndAppendIngredients();
+        break;
+      case 4:
+        fourPortions();
+        createAndAppendIngredients();
+        break;
+      case 6:
+        sixPortions();
+        createAndAppendIngredients();
+        break;
+      case 8:
+        eightPortions();
+        createAndAppendIngredients();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  fourPortions();
+  createAndAppendIngredients();
   footer();
   btnBackOneStep();
   btnBack();
@@ -1413,7 +1905,7 @@ function dessert1(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingrediens = [
+  let ingrediensTwoPortions = [
     "2 st Bananer",
     "2 dl hasselnötter",
     "1/2dl kakao",
@@ -1423,13 +1915,72 @@ function dessert1(){
     "5 dl mandelmjölk",
     "1 avocado"
   ]
-  let ingrediensVegan = [
+
+  let ingrediensFourPortions = [
+    "4 st Bananer",
+    "4 dl hasselnötter",
+    "1 dl kakao",
+    "4 tsk agavesirap",
+    "4 tsk vaniljepulver en nypa havssalt",
+    "2 msk kokosolja värmd över vattenbad", 
+    "1 l mandelmjölk",
+    "2 avocado"
+  ]
+
+  let ingrediensSixPortions = [
+    "6 st Bananer",
+    "6 dl hasselnötter",
+    "1 1/2 dl kakao",
+    "6 tsk agavesirap",
+    "6 tsk vaniljepulver en nypa havssalt",
+    "3 msk kokosolja värmd över vattenbad", 
+    "1 1/2 l mandelmjölk",
+    "3 avocado"
+  ]
+
+  let ingrediensEightPortions = [
+    "8 st Bananer",
+    "8 dl hasselnötter",
+    "2 dl kakao",
+    "8 tsk agavesirap",
+    "8 tsk vaniljepulver en nypa havssalt",
+    "4 msk kokosolja värmd över vattenbad", 
+    "2 l mandelmjölk",
+    "4 avocado"
+  ]
+
+  let ingrediensVeganTwoPortions = [
     "3-4 msk kokosolja värmd över vattenbad",
     "5-6 msk raw kakaopulver",
     "1 tsk cayennepeppar",
     "2-3 msk agavesirap",
     "1 knivsudd himalayasalt"
   ]
+
+  let ingrediensVeganFourPortions = [
+    "1-1 1/2 dl kokosolja värmd över vattenbad",
+    "1 1/2-2 dl raw kakaopulver",
+    "2 tsk cayennepeppar",
+    "4-6 msk agavesirap",
+    "2 knivsuddar himalayasalt"
+  ]
+
+  let ingrediensVeganSixPortions = [
+    "1 1/2-2 dl kokosolja värmd över vattenbad",
+    "2-2 1/2 dl raw kakaopulver",
+    "3 tsk cayennepeppar",
+    "1-1 1/2 dl agavesirap",
+    "3 knivsuddar himalayasalt"
+  ]
+
+  let ingrediensVeganEightPortions = [
+    "2-3 dl kokosolja värmd över vattenbad",
+    "3-4 dl raw kakaopulver",
+    "4 tsk cayennepeppar",
+    "1 1/2-2 dl agavesirap",
+    "4 knivsuddar himalayasalt"
+  ]
+
   //  Array of "StepByStep" how to
   let howTo = [
     "Skär bananen längs med.",
@@ -1465,10 +2016,17 @@ function dessert1(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 2){
+      foo.setAttribute("selected","selected");
+    }
+  }
+  
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1476,14 +2034,9 @@ function dessert1(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "10 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option2);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -1499,30 +2052,6 @@ function dessert1(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingrediensList = document.createElement("ul");
-  divIngredients.appendChild(ingrediensList);
-  
-  let ingrediensHeader = document.createElement("h4");
-  ingrediensHeader.textContent = "Raw nutella:";
-  ingrediensHeader.setAttribute("class", "listHeader");
-  ingrediensList.appendChild(ingrediensHeader);
-
-  for(let i = 0; i < ingrediens.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingrediens[i];
-    ingrediensList.appendChild(ingredien);
-  }
-
-  let ingrediensSecondHeader = document.createElement("h4");
-  ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
-  ingrediensSecondHeader.setAttribute("class", "listHeader");
-  ingrediensList.appendChild(ingrediensSecondHeader);
-  
-  for(let i = 0; i < ingrediensVegan.length; i++){
-    let ingredien = document.createElement("li")
-    ingredien.textContent = ingrediensVegan[i];
-    ingrediensList.appendChild(ingredien);
-  }
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -1540,7 +2069,141 @@ function dessert1(){
     description.textContent = howTo[i];
     descriptionList.appendChild(description);
   }
+
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function createAndAppendIngredientsTwoPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
   
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "Raw nutella:";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensTwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensTwoPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+
+    let ingrediensSecondHeader = document.createElement("h4");
+    ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
+    ingrediensSecondHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensSecondHeader);
+  
+    for(let i = 0; i < ingrediensVeganTwoPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingrediensVeganTwoPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsFourPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "Raw nutella:";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensFourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensFourPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+
+    let ingrediensSecondHeader = document.createElement("h4");
+    ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
+    ingrediensSecondHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensSecondHeader);
+  
+    for(let i = 0; i < ingrediensVeganFourPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingrediensVeganFourPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsSixPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "Raw nutella:";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensSixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensSixPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+
+    let ingrediensSecondHeader = document.createElement("h4");
+    ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
+    ingrediensSecondHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensSecondHeader);
+  
+    for(let i = 0; i < ingrediensVeganSixPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingrediensVeganSixPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsEightPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "Raw nutella:";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensEightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensEightPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+
+    let ingrediensSecondHeader = document.createElement("h4");
+    ingrediensSecondHeader.textContent = "Raw vegan chokladsås:";
+    ingrediensSecondHeader.setAttribute("class", "listHeader");
+    ingrediensList.appendChild(ingrediensSecondHeader);
+  
+    for(let i = 0; i < ingrediensVeganEightPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingrediensVeganEightPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsTwoPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -1561,7 +2224,7 @@ function dessert2(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingrediens = [
+  let ingrediensTwoPortions = [
     "1 mogen avokado",
     "2 mogna bananer",
     "6 dadlar",
@@ -1569,6 +2232,36 @@ function dessert2(){
     "1 msk lönnsirap",
     "2 rågade tsk mandelsmör", 
     "2 rågade tsk raw kakao"
+  ]
+
+  let ingrediensFourPortions = [
+    "2 mogna avokado",
+    "4 mogna bananer",
+    "12 dadlar",
+    "1 dl vatten",
+    "2 msk lönnsirap",
+    "4 rågade tsk mandelsmör", 
+    "4 rågade tsk raw kakao"
+  ]
+
+  let ingrediensSixPortions = [
+    "3 mogna avokado",
+    "6 mogna bananer",
+    "18 dadlar",
+    "1 1/2 dl vatten",
+    "3 msk lönnsirap",
+    "2 rågade msk mandelsmör", 
+    "2 rågade msk raw kakao"
+  ]
+
+  let ingrediensEightPortions = [
+    "4 mogna avokado",
+    "8 mogna bananer",
+    "24 dadlar",
+    "2 dl vatten",
+    "4 msk lönnsirap",
+    "8 rågade tsk mandelsmör", 
+    "8 rågade tsk raw kakao"
   ]
 
   //  Array of "StepByStep" how to
@@ -1605,10 +2298,17 @@ function dessert2(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 2){
+      foo.setAttribute("selected","selected");
+    }
+  }
+  
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1616,14 +2316,9 @@ function dessert2(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "20 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option2);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -1640,23 +2335,6 @@ function dessert2(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingrediensList = document.createElement("ul");
-  divIngredients.appendChild(ingrediensList);
-  
-  let ingrediensHeader = document.createElement("h4");
-  ingrediensHeader.textContent = "";
-  ingrediensHeader.setAttribute("class", "listHeader");
-  //ingrediensList.appendChild(ingrediensHeader);
-
-  for(let i = 0; i < ingrediens.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingrediens[i];
-    ingrediensList.appendChild(ingredien);
-  }
-
-  let ingrediensSecondHeader = document.createElement("h4");
-  ingrediensSecondHeader.textContent = "";
-  ingrediensSecondHeader.setAttribute("class", "listHeader");
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -1674,7 +2352,97 @@ function dessert2(){
     description.textContent = howTo[i];
     descriptionList.appendChild(description);
   }
+
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function createAndAppendIngredientsTwoPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
   
+    for(let i = 0; i < ingrediensTwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensTwoPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsFourPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+  
+    for(let i = 0; i < ingrediensFourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensFourPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsSixPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+  
+    for(let i = 0; i < ingrediensSixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensSixPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsEightPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+  
+    for(let i = 0; i < ingrediensEightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensEightPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsTwoPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -1695,11 +2463,32 @@ function dessert3(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingrediens = [
+  let ingrediensTwoPortions = [
     "6 ordentligt mogna bananer (ungefär 5 dl när de är mosade)",
     "2,5 dl jordnötssmör (eller annat nötsmör)",
     "8 msk proteinpulver",
     "4 msk kakao",
+  ]
+
+  let ingrediensFourPortions = [
+    "12 ordentligt mogna bananer (ungefär 5 dl när de är mosade)",
+    "5 dl jordnötssmör (eller annat nötsmör)",
+    "2,5 dl proteinpulver",
+    "8 msk kakao",
+  ]
+
+  let ingrediensSixPortions = [
+    "18 ordentligt mogna bananer (ungefär 5 dl när de är mosade)",
+    "7,5 dl jordnötssmör (eller annat nötsmör)",
+    "4 dl proteinpulver",
+    "2 dl kakao",
+  ]
+
+  let ingrediensEightPortions = [
+    "24 ordentligt mogna bananer (ungefär 5 dl när de är mosade)",
+    "1 l jordnötssmör (eller annat nötsmör)",
+    "5 dl proteinpulver",
+    "2,5 dl kakao",
   ]
 
   //  Array of "StepByStep" how to
@@ -1735,10 +2524,17 @@ function dessert3(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 2){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1746,14 +2542,9 @@ function dessert3(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "60 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option2);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -1769,23 +2560,6 @@ function dessert3(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingrediensList = document.createElement("ul");
-  divIngredients.appendChild(ingrediensList);
-  
-  let ingrediensHeader = document.createElement("h4");
-  ingrediensHeader.textContent = "";
-  ingrediensHeader.setAttribute("class", "listHeader");
-  //ingrediensList.appendChild(ingrediensHeader);
-
-  for(let i = 0; i < ingrediens.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingrediens[i];
-    ingrediensList.appendChild(ingredien);
-  }
-
-  let ingrediensSecondHeader = document.createElement("h4");
-  ingrediensSecondHeader.textContent = "";
-  ingrediensSecondHeader.setAttribute("class", "listHeader");
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -1804,6 +2578,96 @@ function dessert3(){
     descriptionList.appendChild(description);
   }
   
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+  
+  function createAndAppendIngredientsTwoPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensTwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensTwoPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsFourPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensFourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensFourPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsSixPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensSixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensSixPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsEightPortions(){
+    ingrediensList = document.createElement("ul");
+    divIngredients.appendChild(ingrediensList);
+  
+    let ingrediensHeader = document.createElement("h4");
+    ingrediensHeader.textContent = "";
+    ingrediensHeader.setAttribute("class", "listHeader");
+    //ingrediensList.appendChild(ingrediensHeader);
+
+    for(let i = 0; i < ingrediensEightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingrediensEightPortions[i];
+      ingrediensList.appendChild(ingredien);
+    }
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsTwoPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -1918,9 +2782,35 @@ function vegetarian1(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingredients = ["500 g pasta (gärna kort som t.ex. penne)"];
+  let ingredients1TwoPortions = ["250 g pasta (gärna kort som t.ex. penne)"];
 
-  let ingredients2 = [
+  let ingredients2TwoPortions = [
+    "175 g passerade tomater",
+    "175 g krossade tomater",
+    "2 klyftor vitlök",
+    "0,5 kruka basilika, strimlade basilikablad",
+    "ca 0,5 tsk salt",
+    "0,5 tsk strösocker",
+    "2 msk olivolja",
+    "250 g aubergine, skuren i bitar",
+    "1,5-2 msk olivolja",
+    "0,5 tsk salt",
+    "0,25 krm svartpeppar",
+    "0,75 dl parmesanost",
+    "ca 125 g mozzarellaost",
+    "0,5-1 dl ströbröd"
+  ];
+
+  let ingredients3TwoPortions = [
+    "0,5 huvudsallad",
+    "1,5 msk olivolja",
+    "0,5 msk balsamvinäger (av god kvalitet)",
+    "0,5 rödlök"
+  ];
+
+  let ingredients1FourPortions = ["500 g pasta (gärna kort som t.ex. penne)"];
+
+  let ingredients2FourPortions = [
     "350 g passerade tomater",
     "350 g krossade tomater",
     "4 klyftor vitlök",
@@ -1937,12 +2827,65 @@ function vegetarian1(){
     "1-2 dl ströbröd"
   ];
 
-  let ingredients3 = [
+  let ingredients3FourPortions = [
     "1 huvudsallad",
     "3 msk olivolja",
     "1 msk balsamvinäger (av god kvalitet)",
     "1 rödlök"
   ];
+
+  let ingredients1SixPortions = ["750 g pasta (gärna kort som t.ex. penne)"];
+
+  let ingredients2SixPortions = [
+    "525 g passerade tomater",
+    "525 g krossade tomater",
+    "6 klyftor vitlök",
+    "1,5 kruka basilika, strimlade basilikablad",
+    "ca 1,5 tsk salt",
+    "1,5 tsk strösocker",
+    "6 msk olivolja",
+    "750 g aubergine, skuren i bitar",
+    "4,5-6 msk olivolja",
+    "1,5 tsk salt",
+    "0,75 krm svartpeppar",
+    "2,25 dl parmesanost",
+    "ca 375 g mozzarellaost",
+    "1,5-3 dl ströbröd"
+  ];
+
+  let ingredients3SixPortions = [
+    "1,5 huvudsallad",
+    "4,5 msk olivolja",
+    "1,5 msk balsamvinäger (av god kvalitet)",
+    "1,5 rödlök"
+  ];
+
+  let ingredients1EightPortions = ["1 kg pasta (gärna kort som t.ex. penne)"];
+
+  let ingredients2EightPortions = [
+    "700 g passerade tomater",
+    "700 g krossade tomater",
+    "8 klyftor vitlök",
+    "2 krukor basilika, strimlade basilikablad",
+    "ca 2 tsk salt",
+    "2 tsk strösocker",
+    "8 msk olivolja",
+    "1 kg aubergine, skuren i bitar",
+    "6-8 msk olivolja",
+    "2 tsk salt",
+    "1 krm svartpeppar",
+    "3 dl parmesanost",
+    "ca 500 g mozzarellaost",
+    "2-4 dl ströbröd"
+  ];
+
+  let ingredients3EightPortions = [
+    "2 huvudsallad",
+    "6 msk olivolja",
+    "2 msk balsamvinäger (av god kvalitet)",
+    "2 rödlök"
+  ];
+
 
   //  Array of "StepByStep" how to
   let howTo = [
@@ -1987,10 +2930,17 @@ function vegetarian1(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -1998,14 +2948,9 @@ function vegetarian1(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "60 min";  // estimated cooking time
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option4);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -2021,41 +2966,6 @@ function vegetarian1(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingredientsList = document.createElement("ul");
-  divIngredients.appendChild(ingredientsList);
-  
-  let ingredientsHeader = document.createElement("h4");
-  ingredientsHeader.textContent = "Pasta:";
-  ingredientsHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsHeader);
-
-  for(let i = 0; i < ingredients.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingredients[i];
-    ingredientsList.appendChild(ingredien);
-  }
-
-  let ingredientsSecondHeader = document.createElement("h4");
-  ingredientsSecondHeader.textContent = "Tomatsås:";
-  ingredientsSecondHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsSecondHeader);
-  
-  for(let i = 0; i < ingredients2.length; i++){
-    let ingredien = document.createElement("li")
-    ingredien.textContent = ingredients2[i];
-    ingredientsList.appendChild(ingredien);
-  }
-
-  let ingredientsThirdHeader = document.createElement("h4");
-  ingredientsThirdHeader.textContent = "Sallad:";
-  ingredientsThirdHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsThirdHeader);
-  
-  for(let i = 0; i < ingredients3.length; i++){
-    let ingredien = document.createElement("li")
-    ingredien.textContent = ingredients3[i];
-    ingredientsList.appendChild(ingredien);
-  }
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -2074,6 +2984,184 @@ function vegetarian1(){
     descriptionList.appendChild(description);
   }
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+  
+  function createAndAppendIngredientsTwoPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "Pasta:";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1TwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Tomatsås:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2TwoPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Sallad:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3TwoPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsFourPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "Pasta:";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1FourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Tomatsås:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2FourPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Sallad:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3FourPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsSixPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "Pasta:";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1SixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Tomatsås:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2SixPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Sallad:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3SixPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsEightPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "Pasta:";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1EightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Tomatsås:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2EightPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Sallad:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3EightPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsFourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -2094,7 +3182,19 @@ function vegetarian2(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingredients = [
+  let ingredientsTwoPortions = [
+    "200 g Hälsans Kök Incredible Mince",
+    "1 gul lök",
+    "1,5 msk rapsolja",
+    "0,5 tsk malen kryddpeppar",
+    "0,5 tsk svartpeppar",
+    "1 krm vitpeppar",
+    "1 msk dijonsenap",
+    "1 msk soja",
+    "0,5 msk grönsaksfond"
+  ];
+
+  let ingredientsFourPortions = [
     "400 g Hälsans Kök Incredible Mince",
     "2 gula lökar",
     "3 msk rapsolja",
@@ -2104,6 +3204,30 @@ function vegetarian2(){
     "2 msk dijonsenap",
     "2 msk soja",
     "1 msk grönsaksfond"
+  ];
+
+  let ingredientsSixPortions = [
+    "600 g Hälsans Kök Incredible Mince",
+    "3 gula lökar",
+    "4,5 msk rapsolja",
+    "1,5 tsk malen kryddpeppar",
+    "1,5 tsk svartpeppar",
+    "1 tsk vitpeppar",
+    "3 msk dijonsenap",
+    "3 msk soja",
+    "1,5 msk grönsaksfond"
+  ];
+
+  let ingredientsEightPortions = [
+    "800 g Hälsans Kök Incredible Mince",
+    "4 gula lökar",
+    "6 msk rapsolja",
+    "2 tsk malen kryddpeppar",
+    "2 tsk svartpeppar",
+    "1 tsk vitpeppar",
+    "4 msk dijonsenap",
+    "4 msk soja",
+    "2 msk grönsaksfond"
   ];
 
   //  Array of "StepByStep" how to
@@ -2139,10 +3263,17 @@ function vegetarian2(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -2150,14 +3281,9 @@ function vegetarian2(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "30 min";  // estimated cooking time
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option4);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -2173,27 +3299,6 @@ function vegetarian2(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingredientsList = document.createElement("ul");
-  divIngredients.appendChild(ingredientsList);
-  
-  let ingredientsHeader = document.createElement("h4");
-  ingredientsHeader.textContent = "";
-  ingredientsHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsHeader);
-
-  for(let i = 0; i < ingredients.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingredients[i];
-    ingredientsList.appendChild(ingredien);
-  }
-
-  let ingredientsSecondHeader = document.createElement("h4");
-  ingredientsSecondHeader.textContent = "";
-  ingredientsSecondHeader.setAttribute("class", "listHeader");
-
-  let ingredientsThirdHeader = document.createElement("h4");
-  ingredientsThirdHeader.textContent = "";
-  ingredientsThirdHeader.setAttribute("class", "listHeader");
 
   //  Description / How-to-do
   divDescription = document.createElement("div");
@@ -2212,6 +3317,96 @@ function vegetarian2(){
     descriptionList.appendChild(description);
   }
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+  
+  function createAndAppendIngredientsTwoPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredientsTwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredientsTwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsFourPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredientsFourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredientsFourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsSixPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredientsSixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredientsSixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function createAndAppendIngredientsEightPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredientsEightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredientsEightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsFourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -2232,7 +3427,34 @@ function vegetarian3(){
   let descriptionList;  //  Create a list of step by step description
 
   //  Array of ingredians
-  let ingredients = [
+  let ingredients1TwoPortions = [
+    "0,5 kg mjölig potatis",
+    "0,5 tsk salt",
+    "0,5 ägg",
+    "1,5 dl vetemjöl",
+    "olja, till stekning"
+  ];
+
+  // Fyllning
+  let ingredients2TwoPortions = [
+    "0,5 gul lök",
+    "0,5 morot",
+    "75 g rotselleri",
+    "75 g vitkål",
+    "1 msk solrosfrö",
+    "0,5 tsk vitpeppar",
+    "0,25 krm liquid smoke",
+    "salt",
+    "peppar"
+  ];
+
+  let ingredients3TwoPortions = [
+    "38 g smör, brynt",
+    "0,25 ask krasse",
+    "1 dl rårörda lingon"
+  ];
+
+  let ingredients1FourPortions = [
     "1 kg mjölig potatis",
     "1 tsk salt",
     "1 ägg",
@@ -2241,7 +3463,7 @@ function vegetarian3(){
   ];
 
   // Fyllning
-  let ingredients2 = [
+  let ingredients2FourPortions = [
     "1 gul lök",
     "1 morot",
     "150 g rotselleri",
@@ -2253,10 +3475,64 @@ function vegetarian3(){
     "peppar"
   ];
 
-  let ingredients3 = [
+  let ingredients3FourPortions = [
     "75 g smör, brynt",
     "0,5 ask krasse",
     "2 dl rårörda lingon"
+  ];
+
+  let ingredients1SixPortions = [
+    "1,5 kg mjölig potatis",
+    "1,5 tsk salt",
+    "1,5 ägg",
+    "4,5 dl vetemjöl",
+    "olja, till stekning"
+  ];
+
+  // Fyllning
+  let ingredients2SixPortions = [
+    "1,5 gul lök",
+    "1,5 morot",
+    "225 g rotselleri",
+    "225 g vitkål",
+    "3 msk solrosfrö",
+    "1,5 tsk vitpeppar",
+    "0,75 krm liquid smoke",
+    "salt",
+    "peppar"
+  ];
+
+  let ingredients3SixPortions = [
+    "110 g smör, brynt",
+    "0,75 ask krasse",
+    "3 dl rårörda lingon"
+  ];
+
+  let ingredients1EightPortions = [
+    "2 kg mjölig potatis",
+    "2 tsk salt",
+    "2 ägg",
+    "6 dl vetemjöl",
+    "olja, till stekning"
+  ];
+
+  // Fyllning
+  let ingredients2EightPortions = [
+    "2 gula lökar",
+    "2 morötter",
+    "300 g rotselleri",
+    "300 g vitkål",
+    "4 msk solrosfrö",
+    "2 tsk vitpeppar",
+    "1 krm liquid smoke",
+    "salt",
+    "peppar"
+  ];
+
+  let ingredients3EightPortions = [
+    "150 g smör, brynt",
+    "1 ask krasse",
+    "4 dl rårörda lingon"
   ];
 
   //  Array of "StepByStep" how to
@@ -2299,10 +3575,17 @@ function vegetarian3(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -2310,14 +3593,9 @@ function vegetarian3(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "60 min";  // estimated cooking time
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  selector.appendChild(option4);  //  choose how many servings/portion.
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -2333,40 +3611,157 @@ function vegetarian3(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-  ingredientsList = document.createElement("ul");
-  divIngredients.appendChild(ingredientsList);
-  
-  let ingredientsHeader = document.createElement("h4");
-  ingredientsHeader.textContent = "";
-  ingredientsHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsHeader);
 
-  for(let i = 0; i < ingredients.length; i++){
-    let ingredien = document.createElement("li");
-    ingredien.textContent = ingredients[i];
-    ingredientsList.appendChild(ingredien);
+  function createAndAppendIngredientsTwoPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1TwoPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Fyllning:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2TwoPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Till servering:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3TwoPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3TwoPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
   }
 
-  let ingredientsSecondHeader = document.createElement("h4");
-  ingredientsSecondHeader.textContent = "Fyllning:";
-  ingredientsSecondHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsSecondHeader);
+  function createAndAppendIngredientsFourPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
   
-  for(let i = 0; i < ingredients2.length; i++){
-    let ingredien = document.createElement("li")
-    ingredien.textContent = ingredients2[i];
-    ingredientsList.appendChild(ingredien);
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1FourPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Fyllning:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2FourPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Till servering:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3FourPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3FourPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
   }
 
-  let ingredientsThirdHeader = document.createElement("h4");
-  ingredientsThirdHeader.textContent = "Till servering:";
-  ingredientsThirdHeader.setAttribute("class", "listHeader");
-  ingredientsList.appendChild(ingredientsThirdHeader);
+  function createAndAppendIngredientsSixPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
   
-  for(let i = 0; i < ingredients3.length; i++){
-    let ingredien = document.createElement("li")
-    ingredien.textContent = ingredients3[i];
-    ingredientsList.appendChild(ingredien);
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1SixPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Fyllning:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2SixPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Till servering:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3SixPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3SixPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+  }
+  
+  function createAndAppendIngredientsEightPortions(){
+    ingredientsList = document.createElement("ul");
+    divIngredients.appendChild(ingredientsList);
+  
+    let ingredientsHeader = document.createElement("h4");
+    ingredientsHeader.textContent = "";
+    ingredientsHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsHeader);
+
+    for(let i = 0; i < ingredients1EightPortions.length; i++){
+      let ingredien = document.createElement("li");
+      ingredien.textContent = ingredients1EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsSecondHeader = document.createElement("h4");
+    ingredientsSecondHeader.textContent = "Fyllning:";
+    ingredientsSecondHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsSecondHeader);
+  
+    for(let i = 0; i < ingredients2EightPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients2EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
+
+    let ingredientsThirdHeader = document.createElement("h4");
+    ingredientsThirdHeader.textContent = "Till servering:";
+    ingredientsThirdHeader.setAttribute("class", "listHeader");
+    ingredientsList.appendChild(ingredientsThirdHeader);
+  
+    for(let i = 0; i < ingredients3EightPortions.length; i++){
+      let ingredien = document.createElement("li")
+      ingredien.textContent = ingredients3EightPortions[i];
+      ingredientsList.appendChild(ingredien);
+    }
   }
 
   //  Description / How-to-do
@@ -2386,6 +3781,32 @@ function vegetarian3(){
     descriptionList.appendChild(description);
   }
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        createAndAppendIngredientsTwoPortions();
+        break;
+      case 4:
+        createAndAppendIngredientsFourPortions();
+        break;
+      case 6:
+        createAndAppendIngredientsSixPortions();
+        break;
+      case 8:
+        createAndAppendIngredientsEightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+  
+  createAndAppendIngredientsFourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -2813,10 +4234,17 @@ function vegan1(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -2824,15 +4252,9 @@ function vegan1(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "45 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option4);
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -2847,65 +4269,6 @@ function vegan1(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "1 gul lök";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "2 broccoli (à 250 g)";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "1 msk riven ingefära";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1 tsk olja";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "1 vitlöksklyfta";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "1 tsk sambal oelek";
-  list.appendChild(ing6);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "400 ml kokosmjölk";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "7 1/2 dl grönsaksbuljong";
-  list.appendChild(ing8);
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 förp kokta kikärter (à 380 g)";
-  list.appendChild(ing9);
-
-  let ing10 = document.createElement("li");
-  ing10.textContent = "1 tsk olivolja";
-  list.appendChild(ing10);
-
-  let ing11 = document.createElement("li");
-  ing11.textContent = "1/2 tsk spiskummin";
-  list.appendChild(ing11);
-
-  let ing12 = document.createElement("li");
-  ing12.textContent = "1/2 kruka persilja";
-  list.appendChild(ing12);
-
-  let ing13 = document.createElement("li");
-  ing13.textContent = "270 g tofu";
-  list.appendChild(ing13);
-
-  let ing14 = document.createElement("li");
-  ing14.textContent = "Salt och peppar";
-  list.appendChild(ing14);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
@@ -2940,6 +4303,112 @@ function vegan1(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1/2 gul lök";
+    list.appendChild(document.createElement("li")).textContent = "1 broccoli (à 250 g)";
+    list.appendChild(document.createElement("li")).textContent = "1/2 msk riven ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1/2 tsk olja";
+    list.appendChild(document.createElement("li")).textContent = "1/2 vitlöksklyfta";
+    list.appendChild(document.createElement("li")).textContent = "1/2 tsk sambal oelek";
+    list.appendChild(document.createElement("li")).textContent = "200 ml kokosmjölk";
+    list.appendChild(document.createElement("li")).textContent = "3 3/4 dl grönsaksbuljong";
+    list.appendChild(document.createElement("li")).textContent = "1/2 förp kokta kikärter (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1/2 tsk olivolja";
+    list.appendChild(document.createElement("li")).textContent = "1/4 tsk spiskummin";
+    list.appendChild(document.createElement("li")).textContent = "1/4 kruka persilja";
+    list.appendChild(document.createElement("li")).textContent = "135 g tofu";
+    list.appendChild(document.createElement("li")).textContent = "Salt och peppar";
+  }
+
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 gul lök";
+    list.appendChild(document.createElement("li")).textContent = "2 broccoli (à 250 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 msk riven ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1 tsk olja";
+    list.appendChild(document.createElement("li")).textContent = "1 vitlöksklyfta";
+    list.appendChild(document.createElement("li")).textContent = "1 tsk sambal oelek";
+    list.appendChild(document.createElement("li")).textContent = "400 ml kokosmjölk";
+    list.appendChild(document.createElement("li")).textContent = "7 1/2 dl grönsaksbuljong";
+    list.appendChild(document.createElement("li")).textContent = "1 förp kokta kikärter (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 tsk olivolja";
+    list.appendChild(document.createElement("li")).textContent = "1/2 tsk spiskummin";
+    list.appendChild(document.createElement("li")).textContent = "1/2 kruka persilja";
+    list.appendChild(document.createElement("li")).textContent = "270 g tofu";
+    list.appendChild(document.createElement("li")).textContent = "Salt och peppar";
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 gul lök";
+    list.appendChild(document.createElement("li")).textContent = "3 broccoli (à 250 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk riven ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 tsk olja";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 vitlöksklyfta";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 tsk sambal oelek";
+    list.appendChild(document.createElement("li")).textContent = "600 ml kokosmjölk";
+    list.appendChild(document.createElement("li")).textContent = "1 1/8 liter grönsaksbuljong";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 förp kokta kikärter (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 tsk olivolja";
+    list.appendChild(document.createElement("li")).textContent = "3/4 tsk spiskummin";
+    list.appendChild(document.createElement("li")).textContent = "3/4 kruka persilja";
+    list.appendChild(document.createElement("li")).textContent = "400 g tofu";
+    list.appendChild(document.createElement("li")).textContent = "Salt och peppar";
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "2 gula lökar";
+    list.appendChild(document.createElement("li")).textContent = "4 broccoli (à 250 g)";
+    list.appendChild(document.createElement("li")).textContent = "2 msk riven ingefära";
+    list.appendChild(document.createElement("li")).textContent = "2 tsk olja";
+    list.appendChild(document.createElement("li")).textContent = "2 vitlöksklyfta";
+    list.appendChild(document.createElement("li")).textContent = "2 tsk sambal oelek";
+    list.appendChild(document.createElement("li")).textContent = "800 ml kokosmjölk";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 liter grönsaksbuljong";
+    list.appendChild(document.createElement("li")).textContent = "2 förp kokta kikärter (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "2 tsk olivolja";
+    list.appendChild(document.createElement("li")).textContent = "1 tsk spiskummin";
+    list.appendChild(document.createElement("li")).textContent = "1 kruka persilja";
+    list.appendChild(document.createElement("li")).textContent = "540 g tofu";
+    list.appendChild(document.createElement("li")).textContent = "Salt och peppar";
+  }
+
+  fourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -2974,10 +4443,16 @@ function vegan2(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 4){
+      foo.setAttribute("selected","selected");
+    }
+  }
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -2985,15 +4460,9 @@ function vegan2(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "45 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option4);
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -3008,55 +4477,6 @@ function vegan2(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "1 dl cashewnötter";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "200 g sötpotatis";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "1 1/2 msk finriven färsk ingefära";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1 lime";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "2 förp kokta vita bönor (à 380 g)";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "1 krm svartpeppar";
-  list.appendChild(ing6);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "1/2 msk bakpulver";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "1/2 dl majsstärkelse";
-  list.appendChild(ing8);
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 dl sesamfrön";
-  list.appendChild(ing9);
-
-  // Tillbehör
-  let head2 = document.createElement("li");
-  head2.textContent = "Tillbehör:";
-  head2.setAttribute("class", "listHeader");
-  list.appendChild(head2);
-
-  let ing10 = document.createElement("li");
-  ing10.textContent = "Grön couscous";
-  list.appendChild(ing10);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
@@ -3091,6 +4511,120 @@ function vegan2(){
   descriptionList.appendChild(desc6);
   descriptionList.appendChild(desc7);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl cashewnötter";
+    list.appendChild(document.createElement("li")).textContent = "100 g sötpotatis";
+    list.appendChild(document.createElement("li")).textContent = "3/4 msk finriven färsk ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1/2 lime";
+    list.appendChild(document.createElement("li")).textContent = "1 förp kokta vita bönor (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1/2 krm svartpeppar";
+    list.appendChild(document.createElement("li")).textContent = "1/4 msk bakpulver";
+    list.appendChild(document.createElement("li")).textContent = "1/4 dl majsstärkelse";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl sesamfrön";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Grön couscous";
+  }
+
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 dl cashewnötter";
+    list.appendChild(document.createElement("li")).textContent = "200 g sötpotatis";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk finriven färsk ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1 lime";
+    list.appendChild(document.createElement("li")).textContent = "2 förp kokta vita bönor (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 krm svartpeppar";
+    list.appendChild(document.createElement("li")).textContent = "1/2 msk bakpulver";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl majsstärkelse";
+    list.appendChild(document.createElement("li")).textContent = "1 dl sesamfrön";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Grön couscous";
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl cashewnötter";
+    list.appendChild(document.createElement("li")).textContent = "300 g sötpotatis";
+    list.appendChild(document.createElement("li")).textContent = "2 1/4 msk finriven färsk ingefära";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 lime";
+    list.appendChild(document.createElement("li")).textContent = "3 förp kokta vita bönor (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 krm svartpeppar";
+    list.appendChild(document.createElement("li")).textContent = "2 1/4 msk bakpulver";
+    list.appendChild(document.createElement("li")).textContent = "3/4 dl majsstärkelse";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 dl sesamfrön";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Grön couscous";
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "2 dl cashewnötter";
+    list.appendChild(document.createElement("li")).textContent = "400 g sötpotatis";
+    list.appendChild(document.createElement("li")).textContent = "3 msk finriven färsk ingefära";
+    list.appendChild(document.createElement("li")).textContent = "2 lime";
+    list.appendChild(document.createElement("li")).textContent = "4 förp kokta vita bönor (à 380 g)";
+    list.appendChild(document.createElement("li")).textContent = "2 krm svartpeppar";
+    list.appendChild(document.createElement("li")).textContent = "1 msk bakpulver";
+    list.appendChild(document.createElement("li")).textContent = "1 dl majsstärkelse";
+    list.appendChild(document.createElement("li")).textContent = "2 dl sesamfrön";
+
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Grön couscous";
+  }
+
+  fourPortions();
   footer();
   btnBackOneStep();
   btnBack();
@@ -3125,10 +4659,17 @@ function vegan3(){
   let imgTime = document.createElement("img");
   let cookTime = document.createElement("h2");
   let selector = document.createElement("select");
-  let option2 = document.createElement("option");
-  let option4 = document.createElement("option");
-  let option6 = document.createElement("option");
-  let option8 = document.createElement("option");
+  selector.id = "numberOfPortions";
+
+  for(let i = 2; i <= 8; i+=2){
+    let foo =  selector.appendChild(document.createElement("option"));
+    foo.value = i;
+    foo.text = i +" port";
+    if (foo.value == 6){
+      foo.setAttribute("selected","selected");
+    }
+  }
+ 
   let imgCutlery = document.createElement("img");
   divCookTime.id = "cookTime";
   divCutlery.id = "portions";
@@ -3136,15 +4677,9 @@ function vegan3(){
   imgTime.style.height = "30px";
   imgTime.style.width = "30px";
   cookTime.textContent = "80 min";
-  option2.text = "2 port";
-  option4.text = "4 port";
-  option6.text = "6 port";
-  option8.text = "8 port";
   imgCutlery.src = "media/cutlery.png";
   imgCutlery.style.height = "28px";
   imgCutlery.style.width = "28px";
-  
-  selector.appendChild(option6); // 6 port
   divPrepareInfo.appendChild(divCookTime);
   divPrepareInfo.appendChild(divCutlery);
   divCookTime.appendChild(imgTime);
@@ -3159,75 +4694,6 @@ function vegan3(){
   divIngredients.setAttribute("class", "container");
   divIngredients.id = "ingredients";
   section.appendChild(divIngredients);
-
-  let list = document.createElement("ul");
-  divIngredients.appendChild(list);
-
-  let ing1 = document.createElement("li");
-  ing1.textContent = "2 msk mjölkfritt matfett (+ extra till stekning av grönsaker)";
-  list.appendChild(ing1);
-
-  let ing2 = document.createElement("li");
-  ing2.textContent = "20 kryddpepparkorn";
-  list.appendChild(ing2);
-
-  let ing3 = document.createElement("li");
-  ing3.textContent = "8 lagerblad";
-  list.appendChild(ing3);
-
-  let ing4 = document.createElement("li");
-  ing4.textContent = "1/2 dl vetemjöl";
-  list.appendChild(ing4);
-
-  let ing5 = document.createElement("li");
-  ing5.textContent = "1 1/2 l vatten";
-  list.appendChild(ing5);
-
-  let ing6 = document.createElement("li");
-  ing6.textContent = "2 1/2 msk kinesisk soja";
-  list.appendChild(ing6);
-
-  let ing7 = document.createElement("li");
-  ing7.textContent = "2 msk konc mörk grönsaksfond";
-  list.appendChild(ing7);
-
-  let ing8 = document.createElement("li");
-  ing8.textContent = "3 paket naturellt vegokött (à 300 g)";
-  list.appendChild(ing8);
-
-  let ing9 = document.createElement("li");
-  ing9.textContent = "1 dl sesamfrön";
-  list.appendChild(ing9);
-  
-  let ing10 = document.createElement("li");
-  ing10.textContent = "4 stora morötter";
-  list.appendChild(ing10);
-
-  let ing11 = document.createElement("li");
-  ing11.textContent = "5 små gula lökar";
-  list.appendChild(ing11);
-
-  let ing12 = document.createElement("li");
-  ing12.textContent = "salt och svartpeppar";
-  list.appendChild(ing12);
-
-  // Tillbehör
-  let head2 = document.createElement("li");
-  head2.textContent = "Tillbehör:";
-  head2.setAttribute("class", "listHeader");
-  list.appendChild(head2);
-
-  let ing13 = document.createElement("li");
-  ing13.textContent = "Kokt potatis";
-  list.appendChild(ing13);
-
-  let ing14 = document.createElement("li");
-  ing14.textContent = "Inlagda rödbetor";
-  list.appendChild(ing14);
-
-  let ing15 = document.createElement("li");
-  ing15.textContent = "Färsk persilja";
-  list.appendChild(ing15);
 
   let divDescription = document.createElement("div");
   divDescription.setAttribute("class", "container");
@@ -3265,6 +4731,144 @@ function vegan3(){
   descriptionList.appendChild(desc7);
   descriptionList.appendChild(desc8);
 
+  selector.onchange = function(){resizeIngredients(numberOfPortions);false};
+
+  function resizeIngredients(){
+    let foo = parseInt(document.getElementById("numberOfPortions").value);
+    removeIngredients();
+    switch(foo){
+      case 2:
+        twoPortions();
+        break;
+      case 4:
+        fourPortions();
+        break;
+      case 6:
+        sixPortions();
+        break;
+      case 8:
+        eightPortions();
+        break;
+    }
+  }
+
+  function removeIngredients(){
+    document.getElementById("ingredients").innerHTML = "";
+  }
+
+  function twoPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "2/3 msk mjölkfritt matfett (+ extra till stekning av grönsaker)";
+    list.appendChild(document.createElement("li")).textContent = "7 kryddpepparkorn";
+    list.appendChild(document.createElement("li")).textContent = "3 lagerblad";
+    list.appendChild(document.createElement("li")).textContent = "1 msk vetemjöl";
+    list.appendChild(document.createElement("li")).textContent = "1/2 l vatten";
+    list.appendChild(document.createElement("li")).textContent = "3/4 msk kinesisk soja";
+    list.appendChild(document.createElement("li")).textContent = "2/3 msk konc mörk grönsaksfond";
+    list.appendChild(document.createElement("li")).textContent = "1 paket naturellt vegokött (à 300 g)";
+    list.appendChild(document.createElement("li")).textContent = "1/3 dl sesamfrön";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 stora morötter";
+    list.appendChild(document.createElement("li")).textContent = "2 små gula lökar";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+
+    // Tillbehör
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Kokt potatis";
+    list.appendChild(document.createElement("li")).textContent = "Inlagda rödbetor";
+    list.appendChild(document.createElement("li")).textContent = "Färsk persilja";
+  }
+
+  function fourPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk mjölkfritt matfett (+ extra till stekning av grönsaker)";
+    list.appendChild(document.createElement("li")).textContent = "14 kryddpepparkorn";
+    list.appendChild(document.createElement("li")).textContent = "6 lagerblad";
+    list.appendChild(document.createElement("li")).textContent = "2 msk vetemjöl";
+    list.appendChild(document.createElement("li")).textContent = "1 l vatten";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 msk kinesisk soja";
+    list.appendChild(document.createElement("li")).textContent = "1 1/3 msk konc mörk grönsaksfond";
+    list.appendChild(document.createElement("li")).textContent = "2 paket naturellt vegokött (à 300 g)";
+    list.appendChild(document.createElement("li")).textContent = "2/3 dl sesamfrön";
+    list.appendChild(document.createElement("li")).textContent = "3 stora morötter";
+    list.appendChild(document.createElement("li")).textContent = "4 små gula lökar";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+
+    // Tillbehör
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Kokt potatis";
+    list.appendChild(document.createElement("li")).textContent = "Inlagda rödbetor";
+    list.appendChild(document.createElement("li")).textContent = "Färsk persilja";
+  }
+
+  function sixPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "2 msk mjölkfritt matfett (+ extra till stekning av grönsaker)";
+    list.appendChild(document.createElement("li")).textContent = "20 kryddpepparkorn";
+    list.appendChild(document.createElement("li")).textContent = "8 lagerblad";
+    list.appendChild(document.createElement("li")).textContent = "1/2 dl vetemjöl";
+    list.appendChild(document.createElement("li")).textContent = "1 1/2 l vatten";
+    list.appendChild(document.createElement("li")).textContent = "2 1/2 msk kinesisk soja";
+    list.appendChild(document.createElement("li")).textContent = "2 msk konc mörk grönsaksfond";
+    list.appendChild(document.createElement("li")).textContent = "3 paket naturellt vegokött (à 300 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 dl sesamfrön";
+    list.appendChild(document.createElement("li")).textContent = "4 stora morötter";
+    list.appendChild(document.createElement("li")).textContent = "5 små gula lökar";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+
+    // Tillbehör
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Kokt potatis";
+    list.appendChild(document.createElement("li")).textContent = "Inlagda rödbetor";
+    list.appendChild(document.createElement("li")).textContent = "Färsk persilja";
+  }
+
+  function eightPortions(){
+    let list = document.createElement("ul");
+    divIngredients.appendChild(list);
+
+    list.appendChild(document.createElement("li")).textContent = "3 msk mjölkfritt matfett (+ extra till stekning av grönsaker)";
+    list.appendChild(document.createElement("li")).textContent = "30 kryddpepparkorn";
+    list.appendChild(document.createElement("li")).textContent = "12 lagerblad";
+    list.appendChild(document.createElement("li")).textContent = "4 msk vetemjöl";
+    list.appendChild(document.createElement("li")).textContent = "2 l vatten";
+    list.appendChild(document.createElement("li")).textContent = "3 msk kinesisk soja";
+    list.appendChild(document.createElement("li")).textContent = "2 1/2 msk konc mörk grönsaksfond";
+    list.appendChild(document.createElement("li")).textContent = "4 paket naturellt vegokött (à 300 g)";
+    list.appendChild(document.createElement("li")).textContent = "1 1/3 dl sesamfrön";
+    list.appendChild(document.createElement("li")).textContent = "6 stora morötter";
+    list.appendChild(document.createElement("li")).textContent = "8 små gula lökar";
+    list.appendChild(document.createElement("li")).textContent = "salt och svartpeppar";
+
+    // Tillbehör
+    let head2 = document.createElement("li");
+    head2.textContent = "Tillbehör:";
+    head2.setAttribute("class", "listHeader");
+    list.appendChild(head2);
+
+    list.appendChild(document.createElement("li")).textContent = "Kokt potatis";
+    list.appendChild(document.createElement("li")).textContent = "Inlagda rödbetor";
+    list.appendChild(document.createElement("li")).textContent = "Färsk persilja";
+  }
+
+  sixPortions();
   footer();
   btnBackOneStep();
   btnBack();
