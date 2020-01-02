@@ -1,6 +1,17 @@
 let mainFooter = document.createElement('footer');
 let section = document.createElement("section");
 
+/** @param {number} state indicate which type of recipie it is 
+ * btnBackOneStep() uses this number to redirect correct
+ * 1 - starter
+ * 2 - main course
+ * 3 - dessert
+ * 4 - vegetarian
+ * 5 - vegan
+*/
+
+let state = 0;
+
 function init(){
   addEventListeners();
 }
@@ -110,6 +121,12 @@ function randomVegan(){
   if (randomNr === 3){
     vegan3();
   }
+  if (randomNr === 4){
+    vegan4();
+  }
+  if (randomNr === 5){
+    vegan5();
+  }
 }
 
 //  Starter recipes list  
@@ -204,6 +221,7 @@ function starterMenu(){
 
 /** Start1 - Gin */
 function starter1(){
+  state = 1;
   document.getElementsByTagName("body")[0].innerHTML = "";
   
   section = document.createElement("section");
@@ -487,6 +505,7 @@ function starter1(){
 
 /**Start2 - sill */
 function starter2(){
+  state = 1;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   section = document.createElement("section");
@@ -705,6 +724,7 @@ function starter2(){
 
 /**Start3 - soppa */
 function starter3(){
+  state = 1;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   section = document.createElement("section");
@@ -990,6 +1010,7 @@ function starter3(){
 
 /** Starter4 - filo */
 function starter4(){
+  state = 1;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -1207,6 +1228,7 @@ function starter4(){
 
 /**Start5 pizza */
 function starter5(){
+  state = 1;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -1465,6 +1487,7 @@ function mainCourseMenu(){
 
 /** Maincourse1 - MANNERSTRÖM OXFILE MED PEPPARSÅS */
 function mainCourse1(){
+  state = 2;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let rubrik = "MANNERSTRÖM OXFILE MED PEPPARSÅS";
@@ -1736,6 +1759,7 @@ function mainCourse1(){
 
 /** Maincourse2 - KORV STROGANOFF */
 function mainCourse2(){
+  state = 2;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let rubrik = "KORV STROGANOFF";
@@ -2009,6 +2033,7 @@ function mainCourse2(){
 
 /** Maincourse3 - MUSTIG LÖVBIFFSGRYTA */
 function mainCourse3(){
+  state = 2;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   let rubrik = "MUSTIG LÖVBIFFSGRYTA";
@@ -2269,6 +2294,7 @@ function mainCourse3(){
 
 /** Maincourse4 - ITALIENSK KYCKLINGGRATÄNG */
 function maincourse4(){
+  state = 2;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -2421,6 +2447,7 @@ function maincourse4(){
 
 /** Maincourse5 - PANNBIFF */
 function maincourse5(){
+  state = 2;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -2660,6 +2687,7 @@ function dessertMenu(){
 
 /** Dessert1 - BANANSUSHI MED JORDNÖTSSMÖR OCH NUTELLA */
 function dessert1(){
+  state = 3;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -2979,6 +3007,7 @@ function dessert1(){
 
 /** Dessert2 - CHOKLADMOUSSE PÅ AVOKADO OCH BANAN */
 function dessert2(){
+  state = 3;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -3218,6 +3247,7 @@ function dessert2(){
 
 /** Dessert3 - FUDGE BROWNIES */
 function dessert3(){
+  state = 3;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -3443,6 +3473,7 @@ function dessert3(){
 
 /** Dessert4 - KEYLIMEPIE */
 function dessert4(){
+  state = 3;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -3571,6 +3602,7 @@ function dessert4(){
 
 /** Dessert5 - KLADDKAKA */
 function dessert5(){
+  state = 3;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -3792,6 +3824,7 @@ function vegetarianMenu(){
 
 /** Vegetarian1 - ITALIENSK PASTAGRATÄNG MED AUBERGINE */
 function vegetarian1(){
+  state = 4;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -4192,6 +4225,7 @@ function vegetarian1(){
 
 /** Vegetarian2 - VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK */
 function vegetarian2(){
+  state = 4;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -4437,6 +4471,7 @@ function vegetarian2(){
 
 /** Vegetarian3 - VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KARSSE */
 function vegetarian3(){
+  state = 4;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -4837,6 +4872,7 @@ function vegetarian3(){
 
 /** Vegetarian4 - VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER */
 function vegetarian4(){
+  state = 4;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -5008,6 +5044,7 @@ function vegetarian4(){
 }
 
 function vegetarian5(){
+  state = 4;
   document.getElementsByTagName("body")[0].innerHTML = "";
   let headerWrapper;  //  Create header-tag, contains mainHeader
   let mainHeader;  //  Create recepie header
@@ -5248,6 +5285,7 @@ function veganMenu(){
 
 /** Vegan1 - BROCCOLISOPPA MED KRYDDROSTADE KIKÄRTER OCH TOFU */
 function vegan1(){
+  state = 5;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   section = document.createElement("section");
@@ -5457,6 +5495,7 @@ function vegan1(){
 
 /** Vegan2 - SÖTPOTATISBIFFAR MED INGEFÖRA OCH NÖTTER */
 function vegan2(){
+  state = 5;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   section = document.createElement("section");
@@ -5673,6 +5712,7 @@ function vegan2(){
 
 /** Vegan3 - VEGANSK KALOPS */
 function vegan3(){
+  state = 5;
   document.getElementsByTagName("body")[0].innerHTML = "";
 
   section = document.createElement("section");
@@ -5917,6 +5957,7 @@ function vegan3(){
 
 /** Vegan4 - QUINOABOLLAR MED TIKKA MASALASÅS */
 function vegan4(){
+  state = 5;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -6093,6 +6134,7 @@ function vegan4(){
 
 /** Vegan5 - VEGANSK PAJ MED SVAMP OCH ZUCCHINI */
 function vegan5(){
+  state = 5;
   document.getElementsByTagName("body")[0].innerHTML = "";
   //  Building-blocks that will create main elements on the recepie-page.
   let headerWrapper;  //  Create header-tag, contains mainHeader
@@ -6306,12 +6348,27 @@ function btnsLikeDislike(){
 // Go back to recipelist
 function btnBackOneStep(){
   let backOneButton = document.createElement("a");
-  //backOneButton.setAttribute("href", "#"); //Sparar denna utkommenterade koden då den senare ska länkas tillbaka till "mellanmenyn"
   backOneButton.setAttribute("class", "button arrow");
   backOneButton.textContent = '⟵';
   mainFooter.appendChild(backOneButton);
   backOneButton.addEventListener('click', function(){
-    alert("Ingen funktion ännu....");
+    switch (state){
+      case 1:
+        starterMenu();
+        break;
+      case 2:
+        mainCourseMenu();
+        break;
+      case 3:
+        dessertMenu();
+        break;
+      case 4:
+        vegetarianMenu();
+        break;
+      case 5:
+        veganMenu();
+        break;
+    }
   })
 }
 
