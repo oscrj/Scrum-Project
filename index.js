@@ -1827,7 +1827,7 @@ function vegetarianMenu(){
   section.id = "secondMenuSection"
   document.body.appendChild(section);
 
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     let divWrapper = document.createElement("div");
     divWrapper.setAttribute("class","secondMenuWrapper");
     section.appendChild(divWrapper);
@@ -1836,12 +1836,16 @@ function vegetarianMenu(){
   let recepie1 = document.getElementsByClassName("secondMenuWrapper")[0];
   let recepie2 = document.getElementsByClassName("secondMenuWrapper")[1];
   let recepie3 = document.getElementsByClassName("secondMenuWrapper")[2];
-  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie4 = document.getElementsByClassName("secondMenuWrapper")[3];
+  let recepie5 = document.getElementsByClassName("secondMenuWrapper")[4];
+  let randomBtn = document.getElementsByClassName("secondMenuWrapper")[5];
 
   //  add eventlisterner
   recepie1.addEventListener("click", vegetarian1);
   recepie2.addEventListener("click", vegetarian2);
   recepie3.addEventListener("click", vegetarian3);
+  recepie4.addEventListener("click", vegetarian4);
+  recepie5.addEventListener("click", vegetarian5);
   randomBtn.addEventListener("click", randomVegetarian);
 
   //  recepie1
@@ -1850,7 +1854,7 @@ function vegetarianMenu(){
   recepie1.appendChild(recepieImg);
 
   let recepieHeader = document.createElement("h5");
-  recepieHeader.textContent = "ITALIENSK PASTAGRATÄNG MED AUBERGINE"
+  recepieHeader.textContent = "ITALIENSK PASTAGRATÄNG MED AUBERGINE";
   recepie1.appendChild(recepieHeader);
 
   //  recepie2
@@ -1859,7 +1863,7 @@ function vegetarianMenu(){
   recepie2.appendChild(recepieImg2);
 
   let recepieHeader2 = document.createElement("h5");
-  recepieHeader2.textContent = "VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK"
+  recepieHeader2.textContent = "VEGOBULLAR MED KRYDDEPPAR OCH KARAMELISERAD LÖK";
   recepie2.appendChild(recepieHeader2);
 
   //  recepie3
@@ -1868,8 +1872,27 @@ function vegetarianMenu(){
   recepie3.appendChild(recepieImg3);
 
   let recepieHeader3 = document.createElement("h5");
-  recepieHeader3.textContent = "VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KARSSE"
+  recepieHeader3.textContent = "VEGETARISKA KROPPKAKOR MED BRYNT SMÖR OCH KRASSE";
   recepie3.appendChild(recepieHeader3);
+
+  //  recepie4
+  let recepieImg4 = document.createElement("img");
+  recepieImg4.src = "Vegetarisk/Vego auberginepizza/vego-auberginepizza-med-oliver-och-champinjoner.jpg";
+  recepie4.appendChild(recepieImg4);
+
+  let recepieHeader4 = document.createElement("h5");
+  recepieHeader4.textContent = "VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER";
+  recepie4.appendChild(recepieHeader4);
+
+  //  recepie5
+  let recepieImg5 = document.createElement("img");
+  recepieImg5.src = "Vegetarisk/Vegoburgare/vegetarisk-matsvinnsburgare.jpg";
+  recepie5.appendChild(recepieImg5);
+
+  let recepieHeader5 = document.createElement("h5");
+  recepieHeader5.textContent = "VEGETARISK MATSVINNSBURGARE";
+  recepie5.appendChild(recepieHeader5);
+
 
   //  Random recepie
   let randomAtag = document.createElement("a");
@@ -2353,6 +2376,328 @@ function vegetarian3(){
   section.appendChild(divDescription);
   descriptionHeader = document.createElement("h4");
   descriptionHeader.innerText = "Gör så här:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
+
+/** Vegetarian4 - VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER */
+function vegetarian4(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  //  Building-blocks that will create main elements on the recepie-page.
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingredientsList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+
+  //  Pizzabotten
+  let ingredients = [
+    "2 dl vatten",
+    "0,5 förp torrjäst",
+    "4 dl vetemjöl",
+    "0,5 krm salt"
+  ];
+
+  // Tomatsås
+  let ingredients2 = [
+    "400 g krossade tomater",
+    "1 gul lök",
+    "2 klyfta vitlök",
+    "1 stjälk stjälkselleri",
+    "1 röd chilifrukt",
+    "0,5 krm salt"
+  ];
+
+  // Topping
+  let ingredients3 = [
+    "1 aubergine",
+    "grovt havssalt",
+    "10 svarta oliver",
+    "3 champinjoner",
+    "150 g Valio Oddlygood Veggie grated",
+    "färsk basilika"
+  ];
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Värm vattnet till 41 grader.",
+    "Blanda ihop de torra ingredienser till pizzabotten och rör ut dem i vattnet.",
+    "Knåda degen ordentligt. Låt degen jäsa under bakduk medan du tillreder fyllningen.",
+    "Finhacka alla grönsaker till tomatsåsen och lägg ner dem i en kastrull.",
+    "Låt koka på svag värme i 15 minuter. Salta och peppra.",
+    "Skär auberginen i tunna skivor. Lägg ut skivorna på ett hushållspapper på arbetsbänken. Strö på rikligt med havssalt och vänta tills vätskan från auberginen dragits ut. Torka av vätska och överflödigt salt. Stek skivorna i olja i stekpanna eller i ugn på mittersta/översta falsen i 250 grader 15 minuter.",
+    "Kavla ut degen och lägg den på bakplåtspapper på en bakplåt. Bred på tomatsås och fördela aubergine, oliver och skivade champinjoner över pizzan. Strö riven Oddlygood ovanpå. Grädda i 15 minuter.",
+    "Toppa med färsk basilika."
+  ];
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "VEGO AUBERGINEPIZZA MED OLIVER OCH CHAMPINJONER";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "Vegetarisk/Vego auberginepizza/vego-auberginepizza-med-oliver-och-champinjoner.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "60 min";  // estimated cooking time
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingredients
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingredientsList = document.createElement("ul");
+  divIngredients.appendChild(ingredientsList);
+  
+  let ingredientsHeader = document.createElement("h4");
+  ingredientsHeader.textContent = "Pizzabotten:";
+  ingredientsHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsHeader);
+
+  for(let i = 0; i < ingredients.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingredients[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsSecondHeader = document.createElement("h4");
+  ingredientsSecondHeader.textContent = "Tomatsås:";
+  ingredientsSecondHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsSecondHeader);
+  
+  for(let i = 0; i < ingredients2.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients2[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsThirdHeader = document.createElement("h4");
+  ingredientsThirdHeader.textContent = "Topping:";
+  ingredientsThirdHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsThirdHeader);
+  
+  for(let i = 0; i < ingredients3.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients3[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör såhär:";
+  divDescription.appendChild(descriptionHeader);
+  descriptionList = document.createElement("ol");
+  divDescription.appendChild(descriptionList);
+
+  for(let i = 0; i < howTo.length; i++){
+    let description = document.createElement("li");
+    description.textContent = howTo[i];
+    descriptionList.appendChild(description);
+  }
+
+  footer();
+  btnBackOneStep();
+  btnBack();
+  btnsLikeDislike();
+}
+
+function vegetarian5(){
+  document.getElementsByTagName("body")[0].innerHTML = "";
+  let headerWrapper;  //  Create header-tag, contains mainHeader
+  let mainHeader;  //  Create recepie header
+  let recepieImage;  //  Recepie image
+  let divIngredients;  // Wrapper that contains ingredians 
+  let ingredientsList;  //  Create a list of ingredians
+  let divDescription;  //  Create a list of "How to do" the recepie
+  let descriptionHeader;  //  Descripton header
+  let descriptionList;  //  Create a list of step by step description
+
+  //  Ingredients
+  let ingredients = [
+    "3 potatisar, kokta",
+    "100 g champinjoner",
+    "1 dl ströbröd",
+    "1 dl röda linser, kokta",
+    "2 klyfta vitlök",
+    "3 salladslökar (eller 1 gul lök)",
+    "salt",
+    "peppar"
+  ];
+
+  // Servering
+  let ingredients2 = [
+    "4 hamburgerbröd",
+    "ketchup",
+    "senap",
+    "1 tomat",
+    "majonnäs",
+    "hackad gurkmix"
+  ];
+
+  //  Array of "StepByStep" how to
+  let howTo = [
+    "Skala potatisen och mosa den. Hacka vitlök och salladslök, även det gröna på salladslöken. Riv champinjonerna på den grova sidan av rivjärnet.",
+    "Blanda ihop alla ingredienser, låt svälla i 10 minuter. Är smeten för lös? Blanda i mer ströbröd och låt stå en stund till. För torr? Blanda i en skvätt vatten.",
+    "Forma smeten till burgare och stek i rapsolja i en non stick panna.",
+    "Servera burgarna i bröd med alla tillbehören på."
+  ];
+
+  section = document.createElement("section");
+  document.body.appendChild(section);
+  headerWrapper = document.createElement("header");
+  headerWrapper.setAttribute("id", "rec-header");
+  section.appendChild(headerWrapper);
+
+  //  Page Header
+  mainHeader = document.createElement("h1");
+  mainHeader.textContent = "VEGETARISK MATSVINNSBURGARE";
+  headerWrapper.appendChild(mainHeader);
+
+  //  Recepie img
+  recepieImage = document.createElement("img");
+  recepieImage.src = "Vegetarisk/Vegoburgare/vegetarisk-matsvinnsburgare.jpg";
+  section.appendChild(recepieImage);
+
+  //  Info below img
+  let divPrepareInfo = document.createElement("div");
+  divPrepareInfo.id = "prepareInfo";
+  divPrepareInfo.setAttribute("class", "container");
+  section.appendChild(divPrepareInfo);
+  let divCookTime = document.createElement("div");
+  let divCutlery = document.createElement("div");
+  let imgTime = document.createElement("img");
+  let cookTime = document.createElement("h2");
+  let selector = document.createElement("select");
+  let option2 = document.createElement("option");
+  let option4 = document.createElement("option");
+  let option6 = document.createElement("option");
+  let option8 = document.createElement("option");
+  let imgCutlery = document.createElement("img");
+  divCookTime.id = "cookTime";
+  divCutlery.id = "portions";
+  imgTime.src = "media/timer.png";
+  imgTime.style.height = "30px";
+  imgTime.style.width = "30px";
+  cookTime.textContent = "30 min";  // estimated cooking time
+  option2.text = "2 port";
+  option4.text = "4 port";
+  option6.text = "6 port";
+  option8.text = "8 port";
+  imgCutlery.src = "media/cutlery.png";
+  imgCutlery.style.height = "28px";
+  imgCutlery.style.width = "28px";
+  selector.appendChild(option4);  //  choose how many servings/portion.
+  divPrepareInfo.appendChild(divCookTime);
+  divPrepareInfo.appendChild(divCutlery);
+  divCookTime.appendChild(imgTime);
+  divCookTime.appendChild(cookTime);
+  divCutlery.appendChild(imgCutlery);
+  divCutlery.appendChild(selector);
+  //  will create a line under info.
+  let hr = document.createElement("hr");
+  section.appendChild(hr);
+
+  //  Ingredients
+  divIngredients = document.createElement("div");
+  divIngredients.setAttribute("class", "container");
+  divIngredients.id = "ingredients";
+  section.appendChild(divIngredients);
+  ingredientsList = document.createElement("ul");
+  divIngredients.appendChild(ingredientsList);
+  
+  let ingredientsHeader = document.createElement("h4");
+  ingredientsHeader.textContent = "Burgare:";
+  ingredientsHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsHeader);
+
+  for(let i = 0; i < ingredients.length; i++){
+    let ingredien = document.createElement("li");
+    ingredien.textContent = ingredients[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  let ingredientsSecondHeader = document.createElement("h4");
+  ingredientsSecondHeader.textContent = "Servering:";
+  ingredientsSecondHeader.setAttribute("class", "listHeader");
+  ingredientsList.appendChild(ingredientsSecondHeader);
+  
+  for(let i = 0; i < ingredients2.length; i++){
+    let ingredien = document.createElement("li")
+    ingredien.textContent = ingredients2[i];
+    ingredientsList.appendChild(ingredien);
+  }
+
+  //  Description / How-to-do
+  divDescription = document.createElement("div");
+  divDescription.setAttribute("class", "container");
+  divDescription.id = "description";
+  section.appendChild(divDescription);
+  descriptionHeader = document.createElement("h4");
+  descriptionHeader.innerText = "Gör såhär:";
   divDescription.appendChild(descriptionHeader);
   descriptionList = document.createElement("ol");
   divDescription.appendChild(descriptionList);
